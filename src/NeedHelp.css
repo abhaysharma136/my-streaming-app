@@ -1,0 +1,123 @@
+#form-content{
+    text-align: left;
+}
+#signin-button{
+float: right;
+margin-top: 40px;
+margin-right: 50px;
+border: 0px;
+background: none;
+font-size: 19px;
+color: red;
+}
+#signin-button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+#logo-link{
+float: left;
+margin-top: 40px;
+margin-left: 50px;
+text-decoration: none;
+color: red;
+font-size: 19px;
+}
+.Page-text{
+    width: fit-content;
+    margin: auto;
+}
+#form_need-help{
+    margin-left: 50px;
+}
+#form_need-help h1{
+    font-weight: 500;
+}
+#email_forgot_password{
+height: 20px;
+width: 20px;
+vertical-align: text-bottom;
+accent-color: #0080FF;
+margin-left: 25px;
+}
+#Text_need_help{
+    height: 20px;
+    width: 20px;
+    vertical-align: text-bottom;
+    accent-color: #0080FF;
+    margin-left: 25px;
+}
+#email_textBox{
+    width: 380px;
+    height: 40px;
+    margin-bottom: 30px;
+    margin-right: 0px;
+}
+.select_contry_code{
+    width: 80px;
+    height: 45px;
+}
+#number_otp{
+    width:295px;
+    height: 40px;
+    margin-left: 0px;
+}
+#number_otp_div{
+    margin-bottom: 30px;
+    /* display: none; */
+}
+#Send-button{
+    width: 389px;
+    height: 49px;
+    background-color:#0080FF;
+    color: white;
+    border: none;
+    font-size: medium;
+}
+.div-button-text-box{
+    width: fit-content;
+    margin: auto;
+}
+.links{
+    height: 150px;
+    list-style: none;
+    display: grid;
+grid-template-columns: 1fr 1fr;
+font-size: small;
+margin-left: 10px;
+row-gap: 0px;
+margin-bottom: 50px;
+}
+.links a{
+    text-decoration: none;
+    color: #757575;
+}
+.links li:hover{
+    text-decoration: underline;
+}
+.All-link-element{
+    background-color: #000000BF;
+    width: 100%;
+    padding: 5px;
+    margin-top: 70px;
+    color: #757575;
+}
+#language-option{
+    width: 93px;
+    height: 28px;
+    border:1px solid white;
+    background-color: transparent;
+    color: white;
+    }
+@media (min-width:650px) {
+   
+    #form-content{
+        background-color: white;
+        width: 400px;
+        margin:auto;
+        padding: 30px;
+        color: black;
+    }
+    #form_need-help{
+        margin-left:5px; ;
+    }
+}

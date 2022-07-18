@@ -1,0 +1,107 @@
+body{
+    margin: 0px;
+    padding: 0px;
+color: white;
+text-align: center;
+background-color: black;
+}
+
+.container-text{
+    color: white;
+    text-align: center;
+    clear: both;
+}
+
+.email-elements{
+    text-align: center;
+}
+#email{
+    width: 350px;
+    height: 48px;
+
+}
+.btn-signIn-btn{
+    width: 140px;
+    height: 54px;
+    font-size: 20px;
+    background-color: red;
+    color: white;
+}
+    .second-container{
+        padding-top: 1px;
+        width: 100%;
+        height: 440px;
+        background-color: black;
+        
+    }
+    .second-container-img{
+        min-width: 240px;
+        height: 240px;
+        margin:auto;
+        display: block;
+        background-color: white;
+    }
+    .second-container-text{
+        padding-top: 0px;
+        text-align: center;
+        color: white;
+        margin: 25px 15px;
+        padding-top: 15px;
+    }
+    .storyCard-title{
+        font-size:26px ;
+    }
+    .storyCard-subtitle{
+        font-size: 18px;
+    }
+    .question-container{
+        background-color: black;
+        
+    }
+    .frequent-questions{
+        background-color: #303030;
+        width: 400px;
+        padding: 10px;
+        margin:auto;
+        margin-top: 8px;
+        border-radius: 2px;
+    }
+   
+    .frequent-answers{
+        background-color: #303030;
+        width: 400px;
+        padding: 10px;
+        margin:auto;
+        margin-top: 1px;
+        border-radius: 2px;
+    }
+    @media (min-width:800px) {
+        .frequent-questions{
+    width: 600px;
+    padding: 30px;
+    font-size: larger;
+        }
+        .frequent-answers{
+    width: 600px;
+    padding: 30px;
+    font-size: larger;
+        }
+    }
+    .links-bottom-click{
+        display: grid;
+        list-style: none;
+        grid-template-columns: 1fr 1fr;
+        justify-items: start;
+        margin-left: 25%;
+        margin-top: 50px;
+        row-gap:2rem;
+        font-size: small;
+    }
+
+    a{
+        text-decoration: none;
+        color:#757575;
+    }
+    a:hover{
+        text-decoration: underline;
+    }

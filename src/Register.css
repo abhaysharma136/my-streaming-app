@@ -1,0 +1,37 @@
+.RegisterPage-container{
+    margin: 0px;
+}
+
+#email-id-registerPage{
+    width:440px;
+height:60px;
+margin-bottom:20px;;
+}
+#user-password-registerPage{
+    width:440px;
+height:60px;
+margin-bottom: 20px;
+}
+#Next-button-registerPage{
+    background-color: red;
+    color: white;
+    width: 449px;
+    height: 64px;
+    font-size:24px;
+    border-radius: 5px;
+}
+#component-main-elements{
+    width:440px;
+    margin: auto;
+    margin-top: 50px;
+}
+.component-main-elements h1{
+    width: 430px;
+}
+.component-main-elements h3{
+    width: 340px;
+}
+#password-alert-registerPage{
+    color: red;
+    margin-top: 0px;
+}

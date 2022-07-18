@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes,Route } from "react-router-dom";
+import { AdditionalLinks } from "./AdditionalLinks";
+import "./App.css";
+import { CreateProfile } from "./CreateProfile";
+import { HomePage } from "./HomePageContainer/HomePage";
+import { LoginPage } from "./LoginPage";
+import { NeedHelp } from "./NeedHelp";
+import { ProfilePage } from "./ProfilePage";
+import { Register } from "./Register";
+import { WelcomePage } from "./WelcomePage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<WelcomePage/>}/>
+        <Route path="/FAQ" element={<AdditionalLinks/>}/>
+        <Route path="/login-page" element={<LoginPage/>}/>
+        <Route path="/Need-Help" element={<NeedHelp/>}/>
+        <Route path="/Register-now" element={<Register/>}/>
+        <Route path="/Create-Profile" element={<CreateProfile/>}/>
+        <Route path="/HomePage/Onstream" element={<HomePage/>}/>
+        <Route path="/ProfilePage/Onstream" element={<ProfilePage/>}/>
+      </Routes>
+      
     </div>
   );
 }
 
 export default App;
+
+

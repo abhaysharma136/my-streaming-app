@@ -1,0 +1,130 @@
+#myForm h1{
+    text-align: left;
+    margin-left: 65px;
+}
+
+.login-container{
+    background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/59e045df-814d-4342-bf9d-e62ba23e916a/26b80b98-e1dc-48d2-ab1a-12b1001d959f/IN-en-20220418-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+    color: azure;
+    height:  100%;
+    padding: 1px;
+}
+#email_address{
+    width: 314px;
+    height: 50px;
+    background-color: #333;
+}
+#Account-password{
+    width: 314px;
+    height: 50px;
+    background-color: #333;
+}
+.SignIn_Button{
+    width: 316px;
+    padding-left: 1px;
+    padding-right: 1px;
+    margin-top: 24px;
+    height: 48px;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+}
+#needhelp{
+    margin-left: 120px;
+    text-decoration: none;
+    color: white;
+}
+/* img{
+    width: 20px;
+    height: 20px;
+} */
+#sign-up-Link{
+    text-decoration: none;
+    color: white;
+}
+#Learn-more-text{
+    width: 325px;
+}
+#Learn-more-link{
+    text-decoration:none;
+    color:#0071eb;
+    cursor: pointer;
+}
+#input-elements-all{
+    width:450px;
+    height: 530px;
+    background-color: rgba(0,0,0,.75);
+    margin: auto;
+    margin-top: 70px;
+    
+}
+#Center-dispay-div{
+    position: relative;
+    transform: translateX(10px);
+    padding-top:50px;
+}
+#rememberMe-text{
+    color: #737373;
+}
+#New-User-text{
+    color:#737373;
+    text-align: left;
+    margin-left: 70px;
+}
+#Learn-more-text{
+    color: #737373;
+    text-align: left;
+    margin-left: 70px;
+}
+
+
+
+.links{
+    height: 150px;
+    list-style: none;
+    display: grid;
+grid-template-columns: 1fr 1fr;
+font-size: small;
+margin-left: 10px;
+row-gap: 0px;
+margin-bottom: 50px;
+}
+.links li{
+    text-align: left;
+}
+.login-links a{
+    text-decoration: none;
+    color: #757575;
+    text-align: left;
+}
+.login-links:hover{
+    text-decoration: underline;
+}
+.All-link-element{
+    background-color: #000000BF;
+    width: 100%;
+    padding: 5px;
+    margin-top: 70px;
+}
+.login-seprater{
+    display: none;
+}
+#language-option{
+    width: 93px;
+    height: 28px;
+    border:1px solid white;
+    background-color: transparent;
+    color: white;
+    }
+@media (max-width:600px) {
+    .login-container{
+        background-image: none;
+        background-color: black;
+    }
+    .login-seprater{
+        margin-top: 70px;
+        margin-bottom: 20px;
+        display: block;
+    }
+    
+}
