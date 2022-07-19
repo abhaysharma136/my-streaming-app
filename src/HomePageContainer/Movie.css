@@ -1,0 +1,12 @@
+.movie-specs{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+@media (max-width:450px) {
+iframe{
+   width: 350px;
+   height: 320px;
+}    
+}
