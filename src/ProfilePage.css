@@ -40,3 +40,7 @@
     background-size: contain;
 }
 
+.profile-pic{
+    width: 100px;
+object-fit: contain;
+}

@@ -18,10 +18,10 @@ function App() {
         <Route path="/FAQ" element={<AdditionalLinks/>}/>
         <Route path="/login-page" element={<LoginPage/>}/>
         <Route path="/Need-Help" element={<NeedHelp/>}/>
-        <Route path="/Register-now" element={<Register/>}/>
-        <Route path="/Create-Profile" element={<CreateProfile/>}/>
-        <Route path="/HomePage/Onstream" element={<HomePage />}/>
-        <Route path="/ProfilePage/Onstream" element={<ProfilePage/>}/>
+        <Route path="/Register-now/:id" element={<Register/>}/>
+        <Route path="/Create-Profile/:id" element={<CreateProfile/>}/>
+        <Route path="/HomePage/Onstream/:id" element={<HomePage />}/>
+        <Route path="/ProfilePage/Onstream/:id" element={<ProfilePage/>}/>
         <Route path="/movie/:id" element={<Movie/>}/>
       </Routes>
 

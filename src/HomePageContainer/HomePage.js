@@ -1,6 +1,6 @@
 import './HomePage.css';
 import avatar from './netflix-avatar.png'
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate, useParams} from 'react-router-dom';
 import Courosel from './Courosel';
 import { useEffect, useState } from 'react';
 
@@ -16,13 +16,14 @@ export function HomePage() {
     GetMovies()
   },[])
 
-    
+  const{id}=useParams();
+    const navigate=useNavigate();
   return (
     <div className="homePage-container">
       <div className="navbar-homePage">
         <ul>
           <li><Link to="/"></Link>ONSTream</li>
-          <li><Link to="/ProfilePage/Onstream"><img src={avatar} alt="profile pix" id="user_avatar" /></Link></li>
+          <li><div onClick={()=>navigate(`/ProfilePage/Onstream/${id}`)}><img src={avatar} alt="profile pix" id="user_avatar" /></div></li>
         </ul>
       </div>
 
