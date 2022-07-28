@@ -16,7 +16,7 @@ export function LoginPage() {
               <label for="Account-password"></label>
               <input type="password" id="Account-password" name="password" placeholder="Password"></input>
               <br></br>
-              <button class="SignIn_Button" onClick={()=>navigate('/HomePage/Onstream')}>Sign In</button>
+              <button class="SignIn_Button" onClick={()=>navigate(`/HomePage/Onstream/`)}>Sign In</button>
 
               <br></br>
 

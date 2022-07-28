@@ -2,6 +2,12 @@ import { Header } from "./Header";
 import { Link, useNavigate } from "react-router-dom";
 import './WelcomePage.css'
 import { useState } from "react";
+import { useFormik } from "formik";
+import * as yup from 'yup';
+
+const EmailValidationSchema=yup.object({
+  email:yup.string().email().required()
+})
 export function WelcomePage() {
 
   
@@ -25,12 +31,19 @@ export function WelcomePage() {
   }
 
 
-  const[email,setEmail]=useState('');
 
-  const createProfile= ()=>{
-    var newUser={
-      email: email
+  const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
+    initialValues:{email:""},
+    validationSchema:EmailValidationSchema,
+    onSubmit:(newUser)=>{
+      console.log("OnSubmit",newUser);
+      createProfile(newUser)
     }
+  })
+  // const[email,setEmail]=useState('');
+
+  const createProfile= (newUser)=>{
+
 console.log(newUser)
     
       const data= fetch('https://627dfcd0b75a25d3f3af4996.mockapi.io/OnStreamUserData',{
@@ -44,7 +57,7 @@ console.log(newUser)
     }
 
     
-  
+ 
 
     
   return (
@@ -57,9 +70,19 @@ console.log(newUser)
         <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
       </div>
       <div className="email-elements">
-        <form id="myForm">
-          <input type="email" id="email" name="email" placeholder="Email address" onChange={(event)=>setEmail(event.target.value)}></input>
-          <button type="button" className="btn-signIn-btn" onClick={()=>createProfile()} >Get Started</button>
+        <form id="myForm" onSubmit={handleSubmit}>
+          <input type="email"
+           id="email"
+           name="email"
+           placeholder="Email address"
+           value={values.email}
+           onChange={handleChange}
+           onBlur={handleBlur}></input>
+          <button type="submit"
+           className="btn-signIn-btn">
+            Get Started
+            </button>
+            <p>{touched.email && errors.email?errors.email:""}</p>
         </form>
 
       </div>

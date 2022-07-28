@@ -1,12 +1,16 @@
+.movie-div{
+    width: 100%;
+    height: 100vh;
+}
+.movie-poster{
+    width: 200px;
+    object-fit: contain;
+    max-height: 400px;
+    margin: 50px;
+}
 .movie-specs{
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
 }
-
-@media (max-width:450px) {
-iframe{
-   width: 350px;
-   height: 320px;
-}    
+.movie-details{
+    margin-top: 40px;
 }

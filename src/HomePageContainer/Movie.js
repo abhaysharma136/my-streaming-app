@@ -19,13 +19,14 @@ function Movie() {
     
     return (
         <div className='movie-conatiner'>
-            <iframe width="80%" height="500px" src={movie.trailer} title="YouTube video player" frameborder="0" allow="accelerometer autoplay clipboard-write encrypted-media gyroscope picture-in-picture" allowfullscreen="true"></iframe>
-            <div className='movie-details-conatiner'>
-                <div className='movie-specs'>
-                    <h2 className='movie-name'>{movie.name}</h2>
-                    <p className='movie-rating'>{movie.rating}⭐</p>
+           <div className='movie-div'><iframe width="100%" height="100%" src={movie.trailer} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div className='movie-specs'>
+                <img className='movie-poster' src={movie.poster}></img>
+                <div className='movie-details'>
+                    <h1>{movie.name}</h1>
+                    <div className='movie-rating'>{movie.rating}⭐</div>
+                    <p>{movie.summary}</p>
                 </div>
-                <p className='movie-summary'>{movie.summary}</p>
             </div>
         </div>
     );

@@ -10,7 +10,7 @@ export function ProfilePage() {
   console.log(id);
   const[userDetails,setUserDetails]=useState(null);
 
-  function GetUserDetails(){
+  const GetUserDetails=()=>{
     const res=fetch(`https://627dfcd0b75a25d3f3af4996.mockapi.io/OnStreamUserData/${id}`,{
       method:"GET",
     });
@@ -18,20 +18,20 @@ export function ProfilePage() {
     .then((user)=>setUserDetails(user));
 }
 
-useEffect(()=>{
-  GetUserDetails()
-  },[])
+useEffect(()=> GetUserDetails(),[]);
   
   return (
     <div>
-      {userDetails?<DIsplayUserData userDetails={userDetails} />:"....Loading"}
+      {userDetails?<DisplayUserData userDetails={userDetails} />:"....Loading"}
     </div>
    
   );
 }
 
 
-function DIsplayUserData({userDetails,id}){
+function DisplayUserData({userDetails,id}){
+  const navigate=useNavigate();
+
 
   const[firstName,setFirstName]=useState(userDetails.firstName);
 const[lastName,setLastName]=useState(userDetails.LastName);
@@ -42,17 +42,6 @@ const updatedData={
   LastName:lastName,
   UserName:userName
 };
-
-function UpdateProfile(){
-  const navigate=useNavigate();
-  const res=fetch(`https://627dfcd0b75a25d3f3af4996.mockapi.io/OnStreamUserData/${id}`,{
-    method:"PUT",
-    body:JSON.stringify(updatedData),
-    headers:{"content-type":"application/json"},
-  })
-  res.then(()=>navigate(`ProfilePage/Onstream/${id}`))
-
-}
   return(
   <div className="profilePage-container">
   <div className='form-container-profilePage'>
@@ -65,29 +54,36 @@ function UpdateProfile(){
      id="userName-profilePage"
      value={userName}
      onChange={(event)=>setUserName(event.target.value)}
-      placeholder="User Name"></input>
+      placeholder="User Name" required></input>
 
     <input type="text"
      id="firstName-profilePage"
      value={firstName}
      onChange={(event)=>setFirstName(event.target.value)}
-      placeholder="First Name"></input>
+      placeholder="First Name" required></input>
 
     <input type="text"
      id="LastName-profilePage"
      value={lastName}
      onChange={(event)=>setLastName(event.target.value)}
-      placeholder="Last Name"></input>
+      placeholder="Last Name" required></input>
 
     <input type="email"
      id="Email-profilePage"
      value={userDetails.email}
       placeholder="Email"></input>
 
-    <button 
+    <button type='submit'
     className='saveButton-profilePage'
     
-     onClick={()=>UpdateProfile()}>Save Changes</button>
+     onClick={()=>{
+      const res=fetch(`https://627dfcd0b75a25d3f3af4996.mockapi.io/OnStreamUserData/${id}`,{
+    method:"PUT",
+    body:JSON.stringify(updatedData),
+    headers:{"content-type":"application/json"},
+  })
+  res.then(()=>navigate(`/HomePage/Onstream/${id}`))
+     }}>Save Changes</button>
   </form>
   </div>
   
