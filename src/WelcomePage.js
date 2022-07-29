@@ -144,7 +144,7 @@ console.log(newUser)
                     How much does ONSTREAM Cost?
                 </div>
                 <div className="frequent-answers" id="Answer1" style={styles1}>
-                    Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₹ 149 to ₹ 649 a month. No extra costs, no contracts.
+                    Watch Onstream on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₹ 149 to ₹ 649 a month. No extra costs, no contracts.
                 </div>
 
             </section>
@@ -153,9 +153,9 @@ console.log(newUser)
                     Where can I Watch?
                 </div>
                 <div className="frequent-answers" id="Answer2" style={styles2}>
-                    Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.
+                    Watch anywhere, anytime. Sign in with your Onstream account to watch instantly on the web at onstream.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.
                     <br></br>
-                    You can also download your favourite shows with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.
+                    You can also download your favourite shows with the iOS, Android, or Windows 10 app. Use downloads to watch while you're on the go and without an internet connection. Take Onstream with you anywhere.
                 </div>
             </section>
             <section >
@@ -171,7 +171,7 @@ console.log(newUser)
                     What can I watch on ONSTREAM?
                 </div>
                 <div className="frequent-answers" id="Answer4" style={styles4}>
-                    ONSTREAM has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.
+                    ONSTREAM has an extensive library of feature films, documentaries, TV shows, anime, award-winning Onstream originals, and more. Watch as much as you want, anytime you want.
                 </div>
             </section>
             <hr></hr>

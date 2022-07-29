@@ -3,10 +3,11 @@ import avatar from './netflix-avatar.png'
 import { Link, useNavigate, useParams} from 'react-router-dom';
 import Courosel from './Courosel';
 import { useEffect, useState } from 'react';
+import { API } from '../global.js';
 
 export function HomePage() {
      function GetMovies(){
-        const res=fetch('https://627dfcd0b75a25d3f3af4996.mockapi.io/movies');
+        const res=fetch(`${API}/movies`);
         res.then((data)=>data.json())
         .then((mvs)=>setMovieList(mvs));
     }
