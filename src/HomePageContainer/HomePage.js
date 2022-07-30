@@ -34,7 +34,7 @@ export function HomePage() {
         <h2>ONStream Orignals</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie.id} id={movie.id}/>
+        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
       </div>
@@ -45,7 +45,7 @@ export function HomePage() {
         <h2>Trending Now</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie.id} id={movie.id}/>
+        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
       </div>
@@ -55,7 +55,7 @@ export function HomePage() {
         <h2>Action Movies</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie.id} id={movie.id}/>
+        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
       </div>
@@ -65,7 +65,7 @@ export function HomePage() {
         <h2>Comedy Movies</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie.id} id={movie.id}/>
+        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
       </div>
@@ -75,7 +75,7 @@ export function HomePage() {
         <h2>Horror Movies</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie.id} id={movie.id}/>
+        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
       </div>
@@ -85,7 +85,7 @@ export function HomePage() {
         <h2>Romance Movies</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie.id} id={movie.id}/>
+        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
       </div>
@@ -95,7 +95,7 @@ export function HomePage() {
         <h2>Documentaries</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie.id} id={movie.id}/>
+        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
       </div>
