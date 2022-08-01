@@ -1,7 +1,37 @@
 import './LoginPage.css'
 import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as yup from 'yup';
+import { API } from './global';
 export function LoginPage() {
+
+
+
+  const PasswordValidationSchema=yup.object({
+    email:yup.string().email().required(),
+    password:yup.string().min(8).matches().required(),
+  })
   const navigate=useNavigate();
+
+    function VerifyUser(newUser){
+      const res=fetch(`${API}/users/login`,{
+        method:"POST",
+        body:JSON.stringify(newUser),
+        headers:{
+          "content-Type":"application/json"
+        }
+      });
+      res.then((result)=>result.json()).then((user)=>navigate(`/HomePage/Onstream/${user.id}`));
+  }
+  
+  const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
+    initialValues:{email:"",password:""},
+    validationSchema:PasswordValidationSchema,
+    onSubmit:(newUser)=>{
+      // console.log("OnSubmit",newUser);
+      VerifyUser(newUser)
+    }
+  })
   return (
     <div className='login-container'>
       <div id="input-elements-all">
@@ -9,14 +39,30 @@ export function LoginPage() {
          
             <h1 className='sign-up-heading'>Sign In</h1>
             <div id="loginInput">
-            <form action="#" id="myForm">
+            <form  id="myForm" onSubmit={handleSubmit}>
               <label for="email_address"></label>
-              <input type="email" id="email_address" name="email" placeholder="email or phone number"></input>
+              <input type="email"
+               id="email_address"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                 placeholder="email or phone number"></input>
+                 {touched.email && errors.email?errors.email:""}
               <br></br><br></br>
               <label for="Account-password"></label>
-              <input type="password" id="Account-password" name="password" placeholder="Password"></input>
+              <input type="password"
+               id="Account-password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                 placeholder="Password"></input>
+                 {touched.password && errors.password?errors.password:""}
               <br></br>
-              <button class="SignIn_Button" onClick={()=>navigate(`/HomePage/Onstream/`)}>Sign In</button>
+              <button class="SignIn_Button" type='submit'>
+                Sign In
+                </button>
 
               <br></br>
 

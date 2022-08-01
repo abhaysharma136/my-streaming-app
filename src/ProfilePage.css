@@ -5,42 +5,54 @@
     padding: 100px;
 }
 .form-profilePage{
-    width:340px;
+    width:300px;
     gap: 20px;
     display: flex;
     flex-direction: column;
     padding: 40px;
     background-color: red;
     margin: auto;
-    border-radius: 15px;
+    border-radius: 5px;
 
 }
-
 .form-profilePage input{
     height: 40px;
 }
-
-.profilePic-profilePage{
-    width: 100px;
-    height: 100px;
-    background-color: white;
-    margin: auto;
-    border-radius: 15px;
-}
 .saveButton-profilePage{
-    height: 40px;
+    background-color: red;
+    color: white;
+    width: 300px;
+    height: 64px;
+    font-size:24px;
     border-radius: 5px;
 }
-.upload-profilePage{
-    width: 25px;
-    height: 25px;
-    margin: auto;
-    margin-top: 35px;
-    background: url('https://static.thenounproject.com/png/625182-200.png');
-    background-size: contain;
+#firstName-profilePage{
+    width:300px;
+    height:60px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 25px;
+    background-color: white;
+    padding-top:15px ;
+    color: red;
 }
-
-.profile-pic{
-    width: 100px;
-object-fit: contain;
+#LastName-profilePage{
+    width:300px;
+    height:60px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 25px;
+    background-color: white;
+    padding-top:15px ;
+    color: red;
+}
+#Email-profilePage{
+    width:300px;
+    height:60px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 25px;
+    background-color: white;
+    padding-top:15px ;
+    color: red;
 }

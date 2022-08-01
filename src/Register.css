@@ -12,6 +12,16 @@ margin-bottom:20px;;
 height:60px;
 margin-bottom: 20px;
 }
+#FirstName-registerPage{
+    width:440px;
+    height:60px;
+    margin-bottom: 20px;
+}
+#LastName-registerPage{
+    width:440px;
+    height:60px;
+    margin-bottom: 20px;
+}
 #Next-button-registerPage{
     background-color: red;
     color: white;
