@@ -20,7 +20,7 @@ function Movie() {
     
     return (
         <div className='movie-conatiner'>
-           <div className='movie-screen'><iframe width="100%" height="100%" src={movie.trailer} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+           <div className='movie-screen'><iframe width="100%" height="100%" src={movie.trailer} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe></div>
             <div className='movie-specs'>
                 <img className='movie-poster' src={movie.poster} alt={movie.name}></img>
                 <div className='movie-details'>

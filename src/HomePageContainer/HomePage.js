@@ -17,6 +17,49 @@ export function HomePage() {
     GetMovies()
   },[])
 
+  function GetComedyMovies(){
+    const res=fetch(`${API}/movies?Genres=Comedy`);
+    res.then((data)=>data.json())
+    .then((mvs)=>setComedyMovieList(mvs));
+}
+const[ComedyMovieList,setComedyMovieList]=useState([]);
+
+useEffect(()=>{
+GetComedyMovies()
+},[])
+
+function GetHorrorMovies(){
+  const res=fetch(`${API}/movies?Genres=Horror`);
+  res.then((data)=>data.json())
+  .then((mvs)=>setHorrorMovieList(mvs));
+}
+const[HorrorMovieList,setHorrorMovieList]=useState([]);
+
+useEffect(()=>{
+GetHorrorMovies()
+},[])
+
+function GetRomanceMovies(){
+  const res=fetch(`${API}/movies?Genres=Romance`);
+  res.then((data)=>data.json())
+  .then((mvs)=>setRomanceMovieList(mvs));
+}
+const[RomanceMovieList,setRomanceMovieList]=useState([]);
+
+useEffect(()=>{
+GetRomanceMovies()
+},[])
+
+function GetDocumentaryMovies(){
+  const res=fetch(`${API}/movies?Genres=Documentary`);
+  res.then((data)=>data.json())
+  .then((mvs)=>setDocumentaryMovieList(mvs));
+}
+const[DocumentaryMovieList,setDocumentaryMovieList]=useState([]);
+
+useEffect(()=>{
+GetDocumentaryMovies()
+},[])
   const{id}=useParams();
     const navigate=useNavigate();
   return (
@@ -64,7 +107,7 @@ export function HomePage() {
       <div className="row">
         <h2>Comedy Movies</h2>
         <div className="row_posters">
-        {MovieList.map((movie)=>(
+        {ComedyMovieList.map((movie)=>(
         <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
@@ -74,7 +117,7 @@ export function HomePage() {
       <div className="row">
         <h2>Horror Movies</h2>
         <div className="row_posters">
-        {MovieList.map((movie)=>(
+        {HorrorMovieList.map((movie)=>(
         <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
@@ -84,7 +127,7 @@ export function HomePage() {
       <div className="row">
         <h2>Romance Movies</h2>
         <div className="row_posters">
-        {MovieList.map((movie)=>(
+        {RomanceMovieList.map((movie)=>(
         <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
@@ -94,7 +137,7 @@ export function HomePage() {
       <div className="row">
         <h2>Documentaries</h2>
         <div className="row_posters">
-        {MovieList.map((movie)=>(
+        {DocumentaryMovieList.map((movie)=>(
         <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
       ))}
         </div>
