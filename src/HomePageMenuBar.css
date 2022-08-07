@@ -1,0 +1,23 @@
+.MenuBar{
+    position:fixed;
+    width: 100%;
+}
+.MenuBar ul{
+    display: flex;
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(255,0,0,0.5);
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    gap: 10px;
+}
+.profile-img{
+    margin-left: auto;
+    margin-right: 15px;
+}
+.logo{
+    margin-left: 10px;
+    margin-right: 15px;
+}

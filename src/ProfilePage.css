@@ -10,7 +10,8 @@
     display: flex;
     flex-direction: column;
     padding: 40px;
-    background-color: red;
+    background-color: inherit;
+    border: 1px solid red;
     margin: auto;
     border-radius: 5px;
 
@@ -19,12 +20,23 @@
     height: 40px;
 }
 .saveButton-profilePage{
-    background-color: red;
+    background-color:inherit;
     color: white;
     width: 300px;
     height: 64px;
     font-size:24px;
+    border: 1px solid red;
     border-radius: 5px;
+}
+.saveButton-profilePage:hover{
+    background-color:red;
+    border: none;
+    color: black;   
+}
+.saveButton-profilePage:active{
+    background-color:white;
+    border: none;
+    color: black;   
 }
 #firstName-profilePage{
     width:300px;
@@ -32,9 +44,10 @@
     margin-bottom: 20px;
     text-align: center;
     font-size: 25px;
-    background-color: white;
+    background-color:inherit;
     padding-top:15px ;
-    color: red;
+    color:white;
+    font-family: Helvetica;
 }
 #LastName-profilePage{
     width:300px;
@@ -42,9 +55,10 @@
     margin-bottom: 20px;
     text-align: center;
     font-size: 25px;
-    background-color: white;
+    background-color: inherit;
     padding-top:15px ;
-    color: red;
+    color:white;
+    font-family: Helvetica;
 }
 #Email-profilePage{
     width:300px;
@@ -52,7 +66,8 @@
     margin-bottom: 20px;
     text-align: center;
     font-size: 25px;
-    background-color: white;
+    background-color: inherit;
     padding-top:15px ;
-    color: red;
+    color:white;
+    font-family: Helvetica;
 }

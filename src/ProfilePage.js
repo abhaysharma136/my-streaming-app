@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { API } from './global';
+import { NavBar } from './NavBar';
 import './ProfilePage.css'
 
 
@@ -24,6 +25,7 @@ useEffect(()=> GetUserDetails(),[]);
   
   return (
     <div>
+      <NavBar/>
       {userDetails?<DisplayUserData userDetails={userDetails} />:"....Loading"}
     </div>
    

@@ -21,3 +21,36 @@
 .movie-info{
     text-align: left;
 }
+.movie-conatiner{
+ padding-top: 30px;   
+}
+.movie-summary-2{
+    display: none;
+}
+.movie-info p{
+    margin:5px;
+ }
+@media (max-width:800px) {
+    .movie-poster{
+        width: 180px;
+        height: 290px;
+    }
+    .movie-summary{
+        display: none;
+    }
+    .movie-info{
+        line-height: 1.2em;
+    }
+    .movie-summary-2{
+        display: block;
+    }
+    .movie-info p{
+        font-size: 14px;
+     }
+     .movie-details h1{
+        font-size: 26px;
+     }
+     .movie-details{
+        margin-top: 55px;
+     }
+}

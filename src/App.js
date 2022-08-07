@@ -1,5 +1,6 @@
 import { Routes,Route } from "react-router-dom";
 import { AdditionalLinks } from "./AdditionalLinks";
+import { AllMovie } from "./AllMovie";
 import "./App.css";
 import { EditProfile } from "./EditProfile";
 import { HomePage } from "./HomePageContainer/HomePage";
@@ -22,7 +23,9 @@ function App() {
         <Route path="/HomePage/Onstream/:id" element={<HomePage />}/>
         <Route path="/ProfilePage/Onstream/:id" element={<ProfilePage/>}/>
         <Route path="/Onstream/edit/:id" element={<EditProfile/>}/>
-        <Route path="/movie/:id" element={<Movie/>}/>
+        <Route path="/movie/:id/:movieid" element={<Movie/>}/>
+        <Route path="/movies/:id/:queryType/:query" element={<AllMovie/>}/>
+        
       </Routes>
 
       
@@ -32,5 +35,6 @@ function App() {
 }
 
 export default App;
+
 
 

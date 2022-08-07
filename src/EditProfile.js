@@ -35,7 +35,7 @@ const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
 })
 
   return (
-    <div>
+    <div className="top-container">
       <div className="Edit-container">
         <form id="myForm-EditProfile" onSubmit={handleSubmit}>
           <input type="text"

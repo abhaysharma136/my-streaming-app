@@ -1,9 +1,9 @@
 import './HomePage.css';
-import avatar from './netflix-avatar.png'
-import { Link, useNavigate, useParams} from 'react-router-dom';
+import { useNavigate, useParams} from 'react-router-dom';
 import Courosel from './Courosel';
 import { useEffect, useState } from 'react';
 import { API } from '../global.js';
+import { NavBar } from '../NavBar';
 
 export function HomePage() {
      function GetMovies(){
@@ -60,24 +60,31 @@ const[DocumentaryMovieList,setDocumentaryMovieList]=useState([]);
 useEffect(()=>{
 GetDocumentaryMovies()
 },[])
-  const{id}=useParams();
-    const navigate=useNavigate();
   return (
     <div className="homePage-container">
-      <div className="navbar-homePage">
-        <ul>
-          <li><Link to="/"></Link>ONSTream</li>
-          <li><div onClick={()=>navigate(`/ProfilePage/Onstream/${id}`)}><img src={avatar} alt="profile pix" id="user_avatar" /></div></li>
-        </ul>
-      </div>
-
+      {/* <div className="MenuBar">
+      <ul>
+        <li className='logo'>Onstream</li>
+        <button onClick={()=>navigate(`/HomePage/Onstream/${id}`)}>Home</button>
+        <div className='Genres-dropdown'>
+          <button className='Genres-btn'>Genres</button>
+          <div className='dropdown-content'>
+            <a href='/movieAll'>Link1</a>
+            <a href='#'>Link2</a>
+            <a href='#'>Link3</a>
+          </div>
+          </div>
+        <li className='profile-img'><div onClick={()=>navigate(`/ProfilePage/Onstream/${id}`)}><img src={avatar} alt="profile pix" id="user_avatar" /></div></li>
+      </ul>
+    </div> */}
+<NavBar/>
       <Courosel/>
       <div>
       <div className="row">
-        <h2>ONStream Orignals</h2>
+        <h2>Onstream Orignals</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
+        <DisplayMovies movie={movie} key={movie._id} movieid={movie._id}/>
       ))}
         </div>
       </div>
@@ -88,7 +95,7 @@ GetDocumentaryMovies()
         <h2>Trending Now</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
+        <DisplayMovies movie={movie} key={movie._id} movieid={movie._id}/>
       ))}
         </div>
       </div>
@@ -98,7 +105,7 @@ GetDocumentaryMovies()
         <h2>Action Movies</h2>
         <div className="row_posters">
         {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
+        <DisplayMovies movie={movie} key={movie._id} movieid={movie._id}/>
       ))}
         </div>
       </div>
@@ -108,7 +115,7 @@ GetDocumentaryMovies()
         <h2>Comedy Movies</h2>
         <div className="row_posters">
         {ComedyMovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
+        <DisplayMovies movie={movie} key={movie._id} movieid={movie._id}/>
       ))}
         </div>
       </div>
@@ -118,7 +125,7 @@ GetDocumentaryMovies()
         <h2>Horror Movies</h2>
         <div className="row_posters">
         {HorrorMovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
+        <DisplayMovies movie={movie} key={movie._id} movieid={movie._id}/>
       ))}
         </div>
       </div>
@@ -128,7 +135,7 @@ GetDocumentaryMovies()
         <h2>Romance Movies</h2>
         <div className="row_posters">
         {RomanceMovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
+        <DisplayMovies movie={movie} key={movie._id} movieid={movie._id}/>
       ))}
         </div>
       </div>
@@ -138,7 +145,7 @@ GetDocumentaryMovies()
         <h2>Documentaries</h2>
         <div className="row_posters">
         {DocumentaryMovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie._id} id={movie._id}/>
+        <DisplayMovies movie={movie} key={movie._id} movieid={movie._id}/>
       ))}
         </div>
       </div>
@@ -147,11 +154,12 @@ GetDocumentaryMovies()
 }
 
 
-function DisplayMovies({movie,id}){
+function DisplayMovies({movie,movieid}){
   const navigate=useNavigate();
+  const{id}=useParams();
   return(
     <>
-        <img src={movie.poster} alt={movie.name} className="row_posterLarge row_poster" onClick={()=>navigate(`/movie/${id}`)} />
+        <img src={movie.poster} alt={movie.name} className="row_posterLarge row_poster" onClick={()=>navigate(`/movie/${id}/${movieid}`)} />
     </>
   )
 }

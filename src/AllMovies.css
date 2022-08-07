@@ -1,0 +1,12 @@
+.All-Movie-Container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+.All-movies{
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    margin-top: 40px;
+}
