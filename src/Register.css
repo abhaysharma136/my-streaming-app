@@ -3,29 +3,45 @@
 }
 
 #email-id-registerPage{
-    width:440px;
-height:60px;
-margin-bottom:20px;;
+ width:440px;
+height:30px;
+background-color: white;
+}
+#email-id-registerPage::placeholder{
+    color: grey;
+    font-size: large;
 }
 #user-password-registerPage{
     width:440px;
-height:60px;
-margin-bottom: 20px;
+height:30px;
+background-color: white;
+}
+#user-password-registerPage::placeholder{
+    color: grey;
+    font-size: large;
 }
 #FirstName-registerPage{
     width:440px;
-    height:60px;
-    margin-bottom: 20px;
+    height:30px;
+    background-color: white;
+}
+#FirstName-registerPage::placeholder{
+    color: grey;
+    font-size: large;
 }
 #LastName-registerPage{
     width:440px;
-    height:60px;
-    margin-bottom: 20px;
+    height:30px;
+    background-color: white;
+}
+#LastName-registerPage::placeholder{
+    color: grey;
+    font-size: large;
 }
 #Next-button-registerPage{
     background-color: red;
     color: white;
-    width: 449px;
+    width: 471px;
     height: 64px;
     font-size:24px;
     border-radius: 5px;
@@ -33,12 +49,12 @@ margin-bottom: 20px;
 #component-main-elements{
     width:440px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 80px;
 }
-.component-main-elements h1{
+#component-main-elements h1{
     width: 430px;
 }
-.component-main-elements h3{
+#component-main-elements h3{
     width: 340px;
 }
 #password-alert-registerPage{

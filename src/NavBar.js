@@ -25,7 +25,7 @@ const{id}=useParams();
         <div className='Genres-dropdown'>
           <button className='Genres-btn'>Genres</button>
           <div className='dropdown-content'>
-            <button onClick={()=>navigate(`/movies/${id}/  `)}>All Movies</button>
+            <button onClick={()=>navigate(`/movies/${id}/All`)}>All Movies</button>
             <button onClick={()=>navigate(`/movies/${id}/Genres/Horror`)}>Horror</button>
             <button onClick={()=>navigate(`/movies/${id}/Genres/Documentary`)}>Documentary</button>
             <button onClick={()=>navigate(`/movies/${id}/Genres/Comedy`)}>Comedy</button>

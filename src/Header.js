@@ -9,12 +9,6 @@ export function Header() {
           <li id="logo">ONStream</li>
           <div>
             <li>
-              <select id="language-option">
-                <option value="English">English</option>
-                <option value="Hindi">हिन्दी</option>
-              </select>
-            </li>
-            <li>
               <form>
                 <button id="SignIn-button1" onClick={()=>navigate("/login-Page")}>SignIn</button>
               </form>

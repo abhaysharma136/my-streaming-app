@@ -3,7 +3,10 @@ import { Header } from "./Header";
 import { useNavigate } from 'react-router-dom';
 import { API } from './global.js';
 import { useFormik } from "formik";
+import TextField from '@mui/material/TextField';
 import * as yup from 'yup';
+import { useState } from 'react';
+
 
 
 const PasswordValidationSchema=yup.object({
@@ -15,7 +18,15 @@ const PasswordValidationSchema=yup.object({
 
 export function Register() {
   const navigate=useNavigate();
-
+  const[result,setResult]=useState("");
+  console.log(result);
+  const verify=()=>{
+    if(result.acknowledged){
+      console.log("veifing1");
+      navigate(`/HomePage/Onstream/${result.insertedId}`)
+    }
+  }
+  verify();
   function CreateUser(newUser){
     const res=fetch(`${API}/users/signup`,{
       method:"POST",
@@ -24,7 +35,7 @@ export function Register() {
         "content-Type":"application/json"
       }
     });
-    res.then((result)=>result.json()).then((user)=>navigate(`/HomePage/Onstream/${user.insertedId}`));
+    res.then((result)=>result.json()).then((user)=>setResult(user));
 }
 
 const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
@@ -35,49 +46,61 @@ const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
     CreateUser(newUser)
   }
 })
+const styles={
+  color:result.message==='email allready exists'?"red":"green",
+}
   return (
     <div className="RegisterPage-container">
     <Header/>
     <div id="component-main-elements">
         <h1>Create your account to start your membership</h1>
             <form id="myForm-registerPage" onSubmit={handleSubmit}>
-            <input type="text" 
+              <p style={styles}>{result.message}</p>
+            <TextField type="text" 
             id="FirstName-registerPage" 
             placeholder="First Name" 
             name='FirstName'
             value={values.FirstName}
             onChange={handleChange}
             onBlur={handleBlur}
-            ></input>
-            {touched.FirstName && errors.FirstName?errors.FirstName:""}
-            <input type="text" 
+            error={touched.FirstName && errors.FirstName}
+            helperText={touched.FirstName && errors.FirstName?errors.FirstName:""}
+            ></TextField>
+            <br></br>
+            <TextField type="text" 
             id="LastName-registerPage" 
             placeholder="Last Name" 
             name='LastName'
             value={values.LastName}
             onChange={handleChange}
             onBlur={handleBlur}
-            ></input>
-            {touched.LastName && errors.LastName?errors.LastName:""}
-            <input type="email" 
+            error={touched.LastName && errors.LastName}
+            helperText={touched.LastName && errors.LastName?errors.LastName:""}
+            ></TextField>
+            
+            <TextField type="email" 
             id="email-id-registerPage" 
             placeholder="Email" 
             name='email'
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
-            ></input>
-            {touched.email && errors.email?errors.email:""}
+            error={touched.email && errors.email}
+            helperText={touched.email && errors.email?errors.email:""}
+            ></TextField>
+            
             <br></br>
-            <input type="password" 
+            <TextField type="password" 
             id="user-password-registerPage" 
             placeholder="Add a Password" 
             name='password'
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
-            ></input>
-            {touched.password && errors.password?errors.password:""}
+            error={touched.password && errors.password}
+            helperText={touched.password && errors.password?errors.password:""}
+            ></TextField>
+            
             <br/>
                 <button type='submit' id="Next-button-registerPage" >Register</button>
             </form>

@@ -1,5 +1,9 @@
 #form-content{
     text-align: left;
+    margin-top: 80px;
+}
+.email-response{
+    margin-left: 14px;
 }
 #signin-button{
 float: right;
@@ -25,9 +29,12 @@ font-size: 19px;
 .Page-text{
     width: fit-content;
     margin: auto;
+    width: 380px;
+
 }
 #form_need-help{
     margin-left: 50px;
+    
 }
 #form_need-help h1{
     font-weight: 500;
@@ -37,7 +44,7 @@ height: 20px;
 width: 20px;
 vertical-align: text-bottom;
 accent-color: #0080FF;
-margin-left: 25px;
+margin-left: 0px;
 }
 #Text_need_help{
     height: 20px;
@@ -47,10 +54,13 @@ margin-left: 25px;
     margin-left: 25px;
 }
 #email_textBox{
-    width: 380px;
-    height: 40px;
-    margin-bottom: 30px;
+    width: 360px;
+    height: 20px;
     margin-right: 0px;
+    background-color: white;
+}
+#email_textBox::placeholder{
+    color:grey;
 }
 .select_contry_code{
     width: 80px;
@@ -72,6 +82,7 @@ margin-left: 25px;
     color: white;
     border: none;
     font-size: medium;
+    margin-top: 20px;
 }
 .div-button-text-box{
     width: fit-content;
@@ -116,8 +127,15 @@ margin-bottom: 50px;
         margin:auto;
         padding: 30px;
         color: black;
+        margin-top: 80px;
     }
     #form_need-help{
         margin-left:5px; ;
+    }
+    
+}
+@media (max-width:649px) {
+    .email-response{
+        margin-left: 150px;
     }
 }

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as yup from 'yup';
 import { API } from "./global";
 import './EditProfile.css';
+import { NavBar } from "./NavBar";
 
 
 
@@ -36,6 +37,7 @@ const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
 
   return (
     <div className="top-container">
+      <NavBar/>
       <div className="Edit-container">
         <form id="myForm-EditProfile" onSubmit={handleSubmit}>
           <input type="text"

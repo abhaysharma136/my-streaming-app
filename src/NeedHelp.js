@@ -1,45 +1,87 @@
 import './NeedHelp.css'
 import { Header } from "./Header";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { API } from './global';
 import { useState } from 'react';
-export function NeedHelp() {
-    const[textbox,setTextBox]=useState(true);
-    const isChecked=()=>{
-        setTextBox(!textbox)
-    }
 
+
+
+const EmailValidationSchema=yup.object({
+    email:yup.string().email().required(),
+  })
+export function NeedHelp(){
+  const[result,setResult]=useState("");
+  console.log(result);
+    const navigate=useNavigate();
+    const verify=()=>{
+      if(result.message==='email Sent'){
+        console.log("veifing1");
+        navigate(`/Email-Sent/id`);
+      }
+    }
+    console.log(result);
+    setTimeout(verify,3000);
+    function VerifyUser(User){
+      const res=fetch(`${API}/users/forgotPassword`,{
+        method:"POST",
+        body:JSON.stringify(User),
+        headers:{
+          "content-Type":"application/json"
+        }
+      });
+      res.then((result1)=>result1.json()).then((user)=>setResult(user));
+  }
+
+    const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
+        initialValues:{email:""},
+        validationSchema:EmailValidationSchema,
+        onSubmit:(User)=>{
+          console.log("OnSubmit",User);
+          VerifyUser(User);
+        }
+      })
+      const styles={
+        color:result.message==='email Sent'?"green":"red",
+      }
   return (
     <div>
       <Header/>
       <div id="form-content">
+      <p className='email-response' style={styles}>{result.message}</p>
+      <form id="form_need-help" onSubmit={handleSubmit}>
+        
         <div className="Page-text">
-            <form id="form_need-help" action="Email-Sent.html">
-                <h1>Forgot Email/Password</h1>
-            <p>How would you like to reset your password?</p>
-                <input type="radio" id="email_forgot_password" name="password_retreve_option" value="Email" onChange={()=>isChecked()} ></input>
-            <label for="email">Email</label>
-            <br></br>
-            <input type="radio" id="Text_need_help" name="password_retreve_option" value="Text" onClick={()=>isChecked()}></input>
-            <label for="Text">Text Message (SMS)</label>
+           
+                <h1>Forgot Password?</h1>
+            <p>Reset your Password now</p>
+                <input type="radio" id="email_forgot_password" name="password_retreve_option" value="Email" checked></input>
+            <label htmlFor="email">Email</label>
+            <br/>
             <p>We will send you an email with instructions on how to reset your password.</p>
-        </form>
-        </div>
-        <div className="div-button-text-box">
-            {textbox?<div id="email_otp_div">
-                <input type="email" id="email_textBox" name="email_textBox" placeholder="name@example.com" ></input>
-            </div>:
-            
-            <div id="number_otp_div"><select class="select_contry_code"><option><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/640px-Flag_of_India.svg.png" alt="img"></img>+91</option>
-                <option>+92</option>
-                <option>+93</option>
-                <option>+94</option>
-                </select>
-                <input type="number" id="number_otp" name="number_textBox"></input>
-                </div>
-}
-
-            <input type="submit" id="Send-button" value="Email Me"></input>
+            <div className="div-button-text-box">
+            <div id="email_otp_div">
+                <TextField type="email"
+                id="email_textBox"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.email && errors.email}
+                helperText={touched.email && errors.email?errors.email:""}
+                placeholder="name@example.com" ></TextField>
             </div>
+            
+
+            <input type="submit"
+             id="Send-button" 
+             value="Email Me"></input>
+            </div>
+        </div>
+        </form>
+        
     </div>
     <div className="All-link-element">
         <p>Questions? Call 000-800-040-1843</p>
@@ -50,12 +92,7 @@ export function NeedHelp() {
 <li><Link to="/FAQ">Privacy</Link></li>
 <li><Link to="/FAQ">Cookie Preference</Link></li>
 <li><Link to="/FAQ">Corporate Information</Link></li>
-<li>
-    <select id="language-option">
-   <option value="English">English</option>
-   <option value="Hindi">हिन्दी</option>
-    </select>
-    </li>
+
     </div>
     </div>
     </div>

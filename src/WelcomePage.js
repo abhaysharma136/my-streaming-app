@@ -75,7 +75,7 @@ export function WelcomePage() {
             your phone, tablet, laptop, and TV.</h2>
 
         </div>
-        <img className="second-container-img" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile-in.png" alt="img"></img>
+        <img className="fourth-container-img" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile-in.png" alt="img"></img>
         <hr></hr>
       </div>
 
@@ -150,12 +150,7 @@ export function WelcomePage() {
     <li><Link to="/FAQ">Cookie Preference</Link></li>
     <li><Link to="/FAQ">Corporate Information</Link></li>
     <li><Link to="/FAQ">Contact Us</Link></li>
-    <li>
-        <select id="language-option">
-       <option value="English">English</option>
-       <option value="Hindi">हिन्दी</option>
-        </select>
-        </li>
+    
         </div>
 </div>
     </div>

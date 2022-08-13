@@ -23,7 +23,7 @@
     height: 100%;
     object-fit: contain;
     padding: 0px;
-    animation: 10s linear infinite;
+   transition: 6000ms;
 }
 @media (min-width:580px) {
     .banner-container{

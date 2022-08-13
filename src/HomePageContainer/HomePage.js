@@ -77,8 +77,8 @@ GetDocumentaryMovies()
         <li className='profile-img'><div onClick={()=>navigate(`/ProfilePage/Onstream/${id}`)}><img src={avatar} alt="profile pix" id="user_avatar" /></div></li>
       </ul>
     </div> */}
-<NavBar/>
-      <Courosel/>
+      <NavBar />
+      <Courosel />
       <div>
       <div className="row">
         <h2>Onstream Orignals</h2>
