@@ -23,10 +23,10 @@ export function Register() {
   const verify=()=>{
     if(result.acknowledged){
       console.log("veifing1");
-      navigate(`/HomePage/Onstream/${result.insertedId}`)
+      navigate(`/login-page`)
     }
   }
-  verify();
+  setTimeout(verify,3000);
   function CreateUser(newUser){
     const res=fetch(`${API}/users/signup`,{
       method:"POST",

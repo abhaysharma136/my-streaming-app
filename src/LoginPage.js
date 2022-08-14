@@ -14,9 +14,11 @@ export function LoginPage() {
   })
   const navigate=useNavigate();
 const[result,setResult]=useState("");
+// const [isLoggedin, setIsLoggedin] = useState(false);
 const verify=()=>{
   if(result.token){
     console.log("veifing1");
+    localStorage.setItem('token',result.token);
     navigate(`/HomePage/Onstream/${result.id}`);
   }
 }
@@ -35,7 +37,7 @@ setTimeout(verify,3000);
   
   
   const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
-    initialValues:{email:"",password:""},
+    initialValues:{email:"",password:"",},
     validationSchema:PasswordValidationSchema,
     onSubmit:(newUser)=>{
       // console.log("OnSubmit",newUser);
@@ -88,8 +90,8 @@ setTimeout(verify,3000);
               <label htmlFor="rememberMe" id="rememberMe-text">Remember me</label>
               <Link to="/Need-Help" id="needhelp">Need help?</Link>
 
-              <p id="New-User-text"> New to Onstream? <span><a href="registrationPage1.html" id="sign-up-Link">Sign up now.</a></span></p>
-              <p id="Learn-more-text">This page is protected by Google reCAPTCHA to ensure you're not a bot.<span><a href="/Learn-more" id="Learn-more-link">Learn more.</a></span></p>
+              <p id="New-User-text"> New to Onstream? <span><Link to="/Register-now" id="sign-up-Link">Sign up now.</Link></span></p>
+              <p id="Learn-more-text">This page is protected by Google reCAPTCHA to ensure you're not a bot.</p>
               </form>
             </div>
           

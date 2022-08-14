@@ -4,12 +4,19 @@ import './AllMovies.css';
 import {useNavigate, useParams } from "react-router-dom";
 import { NavBar } from "./NavBar";
 
+
 export function AllMovie() {
   const{queryType}=useParams();
   const{query}=useParams();
  
   function GetMovies(){
-    const res=fetch(`${API}/movies?${queryType}=${query}`);
+    const res=fetch(`${API}/movies?${queryType}=${query}`,{
+      method:"GET",
+          headers:{
+            "content-Type":"application/json",
+            "x-auth-token":localStorage.getItem('token'),
+          }
+    });
     res.then((data)=>data.json())
     .then((mvs)=>setMovieList(mvs));
 }

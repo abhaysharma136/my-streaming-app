@@ -6,11 +6,19 @@ import { API } from '../global.js';
 import { NavBar } from '../NavBar';
 
 export function HomePage() {
+  
      function GetMovies(){
-        const res=fetch(`${API}/movies`);
+        const res=fetch(`${API}/movies`,{
+          method:"GET",
+              headers:{
+                "content-Type":"application/json",
+                "x-auth-token":localStorage.getItem('token'),
+              }
+        });
         res.then((data)=>data.json())
         .then((mvs)=>setMovieList(mvs));
     }
+    
   const[MovieList,setMovieList]=useState([]);
 
   useEffect(()=>{
@@ -18,7 +26,13 @@ export function HomePage() {
   },[])
 
   function GetComedyMovies(){
-    const res=fetch(`${API}/movies?Genres=Comedy`);
+    const res=fetch(`${API}/movies?Genres=Comedy`,{
+      method:"GET",
+          headers:{
+            "content-Type":"application/json",
+            "x-auth-token":localStorage.getItem('token'),
+          }
+    });
     res.then((data)=>data.json())
     .then((mvs)=>setComedyMovieList(mvs));
 }
@@ -29,7 +43,13 @@ GetComedyMovies()
 },[])
 
 function GetHorrorMovies(){
-  const res=fetch(`${API}/movies?Genres=Horror`);
+  const res=fetch(`${API}/movies?Genres=Horror`,{
+    method:"GET",
+        headers:{
+          "content-Type":"application/json",
+          "x-auth-token":localStorage.getItem('token'),
+        }
+  });
   res.then((data)=>data.json())
   .then((mvs)=>setHorrorMovieList(mvs));
 }
@@ -40,7 +60,13 @@ GetHorrorMovies()
 },[])
 
 function GetRomanceMovies(){
-  const res=fetch(`${API}/movies?Genres=Romance`);
+  const res=fetch(`${API}/movies?Genres=Romance`,{
+    method:"GET",
+        headers:{
+          "content-Type":"application/json",
+          "x-auth-token":localStorage.getItem('token'),
+        }
+  });
   res.then((data)=>data.json())
   .then((mvs)=>setRomanceMovieList(mvs));
 }
@@ -51,7 +77,13 @@ GetRomanceMovies()
 },[])
 
 function GetDocumentaryMovies(){
-  const res=fetch(`${API}/movies?Genres=Documentary`);
+  const res=fetch(`${API}/movies?Genres=Documentary`,{
+    method:"GET",
+        headers:{
+          "content-Type":"application/json",
+          "x-auth-token":localStorage.getItem('token'),
+        }
+  });
   res.then((data)=>data.json())
   .then((mvs)=>setDocumentaryMovieList(mvs));
 }
@@ -60,6 +92,7 @@ const[DocumentaryMovieList,setDocumentaryMovieList]=useState([]);
 useEffect(()=>{
 GetDocumentaryMovies()
 },[])
+
   return (
     <div className="homePage-container">
       {/* <div className="MenuBar">
@@ -157,6 +190,7 @@ GetDocumentaryMovies()
 function DisplayMovies({movie,movieid}){
   const navigate=useNavigate();
   const{id}=useParams();
+  
   return(
     <>
         <img src={movie.poster} alt={movie.name} className="row_posterLarge row_poster" onClick={()=>navigate(`/movie/${id}/${movieid}`)} />

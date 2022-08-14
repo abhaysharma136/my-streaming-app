@@ -8,7 +8,13 @@ export function AllMovie2() {
   
  
   function GetMovies(){
-    const res=fetch(`${API}/movies`);
+    const res=fetch(`${API}/movies`,{
+      method:"GET",
+          headers:{
+            "content-Type":"application/json",
+            "x-auth-token":localStorage.getItem('token'),
+          }
+    });
     res.then((data)=>data.json())
     .then((mvs)=>setMovieList(mvs));
 }

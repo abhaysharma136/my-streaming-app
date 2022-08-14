@@ -37,7 +37,10 @@ function DisplayUserData({userDetails}){
   
 
 const navigate=useNavigate();
-
+const Logout=()=>{
+  localStorage.removeItem('token');
+  navigate(`/`);
+}
 
   return(
   <div className="profilePage-container">
@@ -58,7 +61,13 @@ const navigate=useNavigate();
     onClick={()=>navigate(`/Onstream/edit/${userDetails._id}`)}>
       Edit
       </button>
+      <button type='button'
+    className='saveButton-profilePage'
+    onClick={()=>Logout()}>
+      Logout
+      </button>
   </div>
+  
   </div>
   
 </div>)
