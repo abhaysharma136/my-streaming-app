@@ -20,6 +20,7 @@ const verify=()=>{
     console.log("veifing1");
     localStorage.setItem('token',result.token);
     window.open(`/HomePage/Onstream/${result.id}`,'_black');
+    window.location.reload();
   }
 }
 console.log(result);

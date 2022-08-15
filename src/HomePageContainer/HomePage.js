@@ -25,6 +25,23 @@ export function HomePage() {
     GetMovies()
   },[])
 
+  function GetActionMovies(){
+    const res=fetch(`${API}/movies?Genres=Action`,{
+      method:"GET",
+          headers:{
+            "content-Type":"application/json",
+            "x-auth-token":localStorage.getItem('token'),
+          }
+    });
+    res.then((data)=>data.json())
+    .then((mvs)=>setActionMovieList(mvs));
+}
+const[ActionMovieList,setActionMovieList]=useState([]);
+
+useEffect(()=>{
+GetActionMovies()
+},[])
+
   function GetComedyMovies(){
     const res=fetch(`${API}/movies?Genres=Comedy`,{
       method:"GET",
@@ -112,18 +129,7 @@ GetDocumentaryMovies()
     </div> */}
       <NavBar />
       <Courosel />
-      <div>
-      <div className="row">
-        <h2>Onstream Orignals</h2>
-        <div className="row_posters">
-        {MovieList.map((movie)=>(
-        <DisplayMovies movie={movie} key={movie._id} movieid={movie._id}/>
-      ))}
-        </div>
-      </div>
-    </div>
       
-
       <div className="row">
         <h2>Trending Now</h2>
         <div className="row_posters">
@@ -137,7 +143,7 @@ GetDocumentaryMovies()
       <div className="row">
         <h2>Action Movies</h2>
         <div className="row_posters">
-        {MovieList.map((movie)=>(
+        {ActionMovieList.map((movie)=>(
         <DisplayMovies movie={movie} key={movie._id} movieid={movie._id}/>
       ))}
         </div>
