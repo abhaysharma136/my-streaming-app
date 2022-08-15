@@ -1,5 +1,5 @@
 import './LoginPage.css'
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from 'yup';
 import { API } from './global';
@@ -12,14 +12,14 @@ export function LoginPage() {
     email:yup.string().email().required(),
     password:yup.string().min(8).matches().required(),
   })
-  const navigate=useNavigate();
+  
 const[result,setResult]=useState("");
 // const [isLoggedin, setIsLoggedin] = useState(false);
 const verify=()=>{
   if(result.token){
     console.log("veifing1");
     localStorage.setItem('token',result.token);
-    navigate(`/HomePage/Onstream/${result.id}`);
+    window.open(`/HomePage/Onstream/${result.id}`,'_black');
   }
 }
 console.log(result);
