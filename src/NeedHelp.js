@@ -19,7 +19,7 @@ export function NeedHelp(){
     const verify=()=>{
       if(result.message==='email Sent'){
         console.log("veifing1");
-        navigate(`/Email-Sent/id`);
+        navigate(`/Email-Sent/${values.email}`);
       }
     }
     console.log(result);

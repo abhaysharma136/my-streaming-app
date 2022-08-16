@@ -29,7 +29,7 @@ function App() {
         <Route path="/movie/:id/:movieid" element={<Movie/>}/>
         <Route path="/movies/:id/:queryType/:query" element={<AllMovie/>}/>
         <Route path="/movies/:id/All" element={<AllMovie2/>}/>
-        <Route path="/Email-Sent/id" element={<LinkSend/>}/>
+        <Route path="/Email-Sent/:email" element={<LinkSend/>}/>
       </Routes>
 
       
