@@ -23,7 +23,7 @@ function App() {
         <Route path="/login-page" element={<LoginPage/>}/>
         <Route path="/Need-Help" element={<NeedHelp/>}/>
         <Route path="/Register-now" element={<Register/>}/>
-        <Route path="/HomePage/Onstream/:id" element={<HomePage />}/>
+        <Route path="/HomePage/Onstream/:id" element={<HomePage/>}/>
         <Route path="/ProfilePage/Onstream/:id" element={<ProfilePage/>}/>
         <Route path="/Onstream/edit/:id" element={<EditProfile/>}/>
         <Route path="/movie/:id/:movieid" element={<Movie/>}/>
