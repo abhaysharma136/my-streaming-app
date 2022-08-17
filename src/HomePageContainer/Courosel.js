@@ -1,5 +1,7 @@
 import React from 'react';
 import './Courosel.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 function Courosel() {
     const movieBanner=[
         {id:0,
@@ -18,12 +20,13 @@ function Courosel() {
 ];
     return (
         <div>
-            <div className='slides'>
-               
+           
+            <Carousel autoPlay	infiniteLoop interval="5000">
             {movieBanner.map((movB)=>(
                 <CreateBanner movB={movB} key={movB.id}/>
             ))}
-            </div>
+            </Carousel>
+        
         </div>
     );
 }
