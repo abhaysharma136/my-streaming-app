@@ -1,5 +1,5 @@
 import './LoginPage.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from 'yup';
 import { API } from './global';
@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 
 export function LoginPage() {
-
+const navigate=useNavigate();
   const PasswordValidationSchema=yup.object({
     email:yup.string().email().required(),
     password:yup.string().min(8).matches().required(),
@@ -19,8 +19,8 @@ const verify=()=>{
   if(result.token){
     console.log("veifing1");
     localStorage.setItem('token',result.token);
-    window.open(`/HomePage/Onstream/${result.id}`,'_black');
     
+    navigate(`/HomePage/Onstream/${result.id}`);
   }
 }
 console.log(result);
