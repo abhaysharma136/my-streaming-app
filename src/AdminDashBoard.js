@@ -145,15 +145,14 @@ error={touched.time && errors.time}
 helperText={touched.time && errors.time?errors.time:""}
 className='add-movie-component' />
 
-<Button variant='contained' component='label'>
+<Button variant='contained' component='label' value='upload'>
   Upload Poster
 <input 
 multiple type="file"
 accept='image/*'
 id='add-movie-poster' 
 name='poster'
-className='add-movie-component'
-onChange={handleChange} ></input>
+className='add-movie-component' ></input>
 </Button>
 
 <textarea 
