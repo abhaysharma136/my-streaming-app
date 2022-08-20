@@ -87,7 +87,7 @@ setTimeout(verify,3000);
 
               <br></br>
 
-              <input type="checkbox" ></input>
+              <input type="checkbox" className='rememberMe-label'></input>
               <label htmlFor="rememberMe" id="rememberMe-text">Remember me</label>
               <Link to="/Need-Help" id="needhelp">Need help?</Link>
 
