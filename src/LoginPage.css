@@ -120,9 +120,11 @@
     .rememberMe-label{
         margin-left: 0px;
     }
-    #Center-dispay-div h1{
-        width: 314px;
+    #Center-dispay-div {
+        width: 318px;
         margin-left: 15px;
+        margin: 0px;
+        margin-left: 6px;
 
     }
 }
