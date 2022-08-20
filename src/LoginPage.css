@@ -114,8 +114,16 @@
     }
     #New-User-text{
         margin-left: 30px;
+        font-size: 14px;
     }
     #Learn-more-text{
         margin-left: 30px;
+        font-size: 14px;
+    }
+    #rememberMe-text{
+        font-size: 14px;
+    }
+    #needhelp{
+        font-size: 14px;
     }
 }
