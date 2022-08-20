@@ -88,13 +88,6 @@
 .login-seprater{
     display: none;
 }
-#language-option{
-    width: 93px;
-    height: 28px;
-    border:1px solid white;
-    background-color: transparent;
-    color: white;
-    }
 @media (max-width:600px) {
     .login-container{
         background-image: none;
@@ -126,5 +119,9 @@
     }
     .rememberMe-label{
         margin-left: 0px;
+    }
+    #Center-dispay-div h1{
+        width: 330px;
+
     }
 }
