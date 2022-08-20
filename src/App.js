@@ -1,5 +1,6 @@
 import { Routes,Route } from "react-router-dom";
 import { AdditionalLinks } from "./AdditionalLinks";
+import { AddMovie } from "./AdminDashBoard";
 import { AllMovie } from "./AllMovie";
 import { AllMovie2 } from "./AllMovie2";
 import "./App.css";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/movies/:id/:queryType/:query" element={<AllMovie/>}/>
         <Route path="/movies/:id/All" element={<AllMovie2/>}/>
         <Route path="/Email-Sent/:email" element={<LinkSend/>}/>
+        <Route path="/Onstream/Add-Movie" element={<AddMovie/>}/>
       </Routes>
 
       
