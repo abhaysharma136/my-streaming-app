@@ -99,20 +99,24 @@ setTimeout(verify,3000);
         </div>
       </div>
       <hr className='login-seprater'></hr>
-      <div className="All-link-element">
-        <p>Questions? Call 000-800-040-1843</p>
-    <div className="links">
-<li className='login-links'><a href="FAQ">FAQ</a></li>
-<li className='login-links'><a href="FAQ">Help Centre</a></li>
-<li className='login-links'><a href="FAQ">Terms of Use</a></li>
-<li className='login-links'><a href="FAQ">Privacy</a></li>
-<li className='login-links'><a href="FAQ">Cookie Preference</a></li>
-<li className='login-links'><a href="FAQ">Corporate Information</a></li>
-<li className='login-links'>
+      <div className="second-container" id="more-links">
+<p>Questions? Call 000-800-040-1843</p>
+    <div className="links-bottom-click">
+    <li className="link"><Link to="/FAQ">FAQ</Link></li>
+    <li><Link to="/FAQ">Help Centre</Link></li>
+    <li><Link to="/FAQ">Account</Link></li>
+    <li><Link to="/FAQ">Media Centre</Link></li>
+    <li><Link to="/FAQ">Investor Relation</Link></li>
+    <li><Link to="/FAQ">Jobs</Link></li>
+    <li><Link to="/FAQ">Ways to Watch</Link></li>
+    <li><Link to="/FAQ">Terms of Use</Link></li>
+    <li><Link to="/FAQ">Privacy</Link></li>
+    <li><Link to="/FAQ">Cookie Preference</Link></li>
+    <li><Link to="/FAQ">Corporate Information</Link></li>
+    <li><Link to="/FAQ">Contact Us</Link></li>
     
-    </li>
-    </div>
-    </div>
+        </div>
+</div>
     </div>
   );
 }
