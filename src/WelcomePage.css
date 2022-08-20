@@ -130,5 +130,10 @@ margin-top: 180px;
             padding: 10px;
             font-size: medium;
                 }
-        
+
+        .links-bottom-click{
+        row-gap:2rem;
+        font-size: 12px;
+        justify-content: space-between;
+    }
     }
