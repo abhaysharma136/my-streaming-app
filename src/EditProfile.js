@@ -4,8 +4,8 @@ import * as yup from 'yup';
 import { API } from "./global";
 import './EditProfile.css';
 import { NavBar } from "./NavBar";
-
-
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const PasswordValidationSchema=yup.object({
   FirstName:yup.string().required(),
@@ -40,26 +40,32 @@ const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
       <NavBar/>
       <div className="Edit-container">
         <form id="myForm-EditProfile" onSubmit={handleSubmit}>
-          <input type="text"
+          <TextField type="text"
             id="FirstName-EditProfile"
-            placeholder="First Name"
+            label="First Name"
             name='FirstName'
+            variant="outlined"
             value={values.FirstName}
+            error={touched.FirstName && errors.FirstName}
             onChange={handleChange}
+            helperText={touched.FirstName && errors.FirstName ? errors.FirstName : ""}
             onBlur={handleBlur}
-          ></input>
-          {touched.FirstName && errors.FirstName ? errors.FirstName : ""}
-          <input type="text"
+          />
+          
+          <TextField type="text"
             id="LastName-EditProfile"
-            placeholder="Last Name"
+            label="Last Name"
             name='LastName'
+            variant="outlined"
             value={values.LastName}
+            error={touched.LastName && errors.LastName}
             onChange={handleChange}
+            helperText={touched.LastName && errors.LastName ? errors.LastName : ""}
             onBlur={handleBlur}
-          ></input>
-          {touched.LastName && errors.LastName ? errors.LastName : ""}
-          <br />
-          <button type='submit' id="Save-Changes-EditProfile">Save Changes</button>
+          />
+          
+          
+          <Button variant="outlined" type='submit' id="Save-Changes-EditProfile">Save Changes</Button>
         </form>
       </div>
     </div>

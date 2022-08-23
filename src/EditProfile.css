@@ -1,41 +1,29 @@
-
+.top-container{
+    background-color: white;
+    background-color: aliceblue;
+}
 #myForm-EditProfile{
-    width: 400px;
-    background-color:inherit;
+   width:40%;
+    background-color:white;
     height: 400px;
     text-align: center;
     border-radius: 10px;
-    border: 1px solid red;
+   
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #FirstName-EditProfile{
-    width: 300px;
-    height: 50px;
-    margin-top: 30px;
-    color: white;
-    margin-top: 70px;
-    background-color: inherit;
-    border: 1px solid red;
-    border-radius: 10px;
+    padding-top: 30px;
 }
 
 #LastName-EditProfile{
-    width: 300px;
-    height: 50px;
-    margin-top: 30px;
-    color: white;
-    background-color: inherit;
-    border: 1px solid red;
-    border-radius: 10px;
+   padding-top: 30px;
 }
 #Save-Changes-EditProfile{
-    width: 300px;
-    height: 50px;
-    margin-top: 30px;
-    border: 1px solid red;
-    background-color: inherit;
-    border-radius: 10px;
-    color: red;
+   margin-top: 60px;
+   height: 60px;
 }
 .Edit-container{
     height: 100vh;
@@ -45,14 +33,3 @@
     align-items: center;
 }
 
-#FirstName-EditProfile::placeholder{
-    color: red;
-}
-
-#LastName-EditProfile::placeholder{
-    color: red;
-}
-#Save-Changes-EditProfile:active{
-    background-color: red;
-    color: black;
-}

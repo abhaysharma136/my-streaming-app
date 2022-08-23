@@ -1,17 +1,18 @@
 .profilePage-container{
     height: 100vh;
+    background-color: aliceblue;
 }
 .form-container-profilePage{
     padding: 100px;
 }
 .form-profilePage{
     width:300px;
-    gap: 20px;
+    gap: 10px;
     display: flex;
     flex-direction: column;
     padding: 40px;
-    background-color: inherit;
-    border: 1px solid red;
+    background-color: white;
+    /* border: 1px solid black; */
     margin: auto;
     border-radius: 5px;
 
@@ -21,17 +22,17 @@
 }
 .saveButton-profilePage{
     background-color:inherit;
-    color: white;
+    color: green;
     width: 300px;
     height: 64px;
     font-size:24px;
-    border: 1px solid red;
+    border: 1px solid black;
     border-radius: 5px;
 }
 .saveButton-profilePage:hover{
     background-color:red;
     border: none;
-    color: black;   
+    color: white;   
 }
 .saveButton-profilePage:active{
     background-color:white;
@@ -40,34 +41,37 @@
 }
 #firstName-profilePage{
     width:300px;
-    height:60px;
+    height:30px;
     margin-bottom: 20px;
-    text-align: center;
-    font-size: 25px;
+    text-align: left;
+    font-size: 18px;
     background-color:inherit;
     padding-top:15px ;
-    color:white;
+    color:black;
+    border-bottom: 1px solid red;
     font-family: Helvetica;
 }
 #LastName-profilePage{
     width:300px;
-    height:60px;
+    height:30px;
     margin-bottom: 20px;
-    text-align: center;
-    font-size: 25px;
+    text-align: left;
+    font-size: 18px;
     background-color: inherit;
     padding-top:15px ;
-    color:white;
+    color:black;
+    border-bottom: 1px solid red;
     font-family: Helvetica;
 }
 #Email-profilePage{
     width:300px;
-    height:60px;
+    height:30px;
     margin-bottom: 20px;
-    text-align: center;
-    font-size: 25px;
+    text-align: left;
+    font-size: 18px;
     background-color: inherit;
     padding-top:15px ;
-    color:white;
+    color:black;
+    border-bottom: 1px solid red;
     font-family: Helvetica;
 }

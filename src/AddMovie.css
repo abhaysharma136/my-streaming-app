@@ -1,0 +1,31 @@
+.Admin-portal-container{
+    background-color:white;
+    width: 100%;
+    height: 100%;
+    color: black;
+    padding: 1px;
+}
+.Add-movie-container{
+    background-color: aliceblue;
+    padding: 10px;
+    width: 60%;
+    margin: auto;
+}
+.Add-movie-container {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.select-fields{
+    display: flex;
+}
+.select-fields div{
+    width: 100%;
+}
+.upload-inputs{
+    display: flex;
+    flex-direction: column;
+}
+.upload-inputs div{
+    display: flex;
+}

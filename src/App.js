@@ -1,6 +1,7 @@
 import { Routes,Route } from "react-router-dom";
 import { AdditionalLinks } from "./AdditionalLinks";
-import { AddMovie } from "./AdminDashBoard";
+import { Addposter } from "./Addposter";
+import { AddMovie } from "./AddMovie";
 import { AllMovie } from "./AllMovie";
 import { AllMovie2 } from "./AllMovie2";
 import "./App.css";
@@ -13,6 +14,7 @@ import { NeedHelp } from "./NeedHelp";
 import { ProfilePage } from "./ProfilePage";
 import { Register } from "./Register";
 import { WelcomePage } from "./WelcomePage";
+import { AdminDashboard } from "./AdminDashboard";
 
 function App() {
   
@@ -31,7 +33,10 @@ function App() {
         <Route path="/movies/:id/:queryType/:query" element={<AllMovie/>}/>
         <Route path="/movies/:id/All" element={<AllMovie2/>}/>
         <Route path="/Email-Sent/:email" element={<LinkSend/>}/>
-        <Route path="/Onstream/Add-Movie" element={<AddMovie/>}/>
+        <Route path="/Onstream/AdminDashBoard/Add-Movie/:id" element={<AddMovie/>}/>
+        <Route path="/Onstream/AdminDashBoard/:id" element={<AdminDashboard/>}/>
+        <Route path="/Onstream/Add-poster" element={<Addposter/>}/>
+        
       </Routes>
 
       

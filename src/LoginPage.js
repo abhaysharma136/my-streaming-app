@@ -18,9 +18,13 @@ const[result,setResult]=useState("");
 const verify=()=>{
   if(result.token){
     console.log("veifing1");
-    localStorage.setItem('token',result.token);
+      localStorage.setItem('token',result.token);
+    if(result.message==='Succesfull Login'){
+      navigate(`/HomePage/Onstream/${result.id}`);
+    }else{
+      navigate(`/Onstream/AdminDashBoard/${result.id}`);
+    }
     
-    navigate(`/HomePage/Onstream/${result.id}`);
   }
 }
 console.log(result);
