@@ -21,14 +21,27 @@ export function Register() {
   const[result,setResult]=useState("");
   console.log(result);
   const verify=()=>{
-    if(result.acknowledged){
-      console.log("veifing1");
+    if(result.message==='Email Sent to registered Email'){
+      console.log("Sending Email to Register");
+      console.log(values.email);
+      sentRegistrationEmail(values);
       navigate(`/login-page`)
     }
   }
-  setTimeout(verify,3000);
+  setTimeout(verify,1000);
+  function sentRegistrationEmail(newUser){
+    fetch(`${API}/email/RegisterConfirmation`,{
+      method:"POST",
+      body:JSON.stringify(newUser),
+      headers:{
+        "content-Type":"application/json"
+      }
+    });
+    // res.then((result)=>result.json()).then((user)=>setResult(user));
+  }
+
   function CreateUser(newUser){
-    const res=fetch(`${API}/users/signup`,{
+    const res=fetch(`${API}/users/newuser`,{
       method:"POST",
       body:JSON.stringify(newUser),
       headers:{

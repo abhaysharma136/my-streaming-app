@@ -15,6 +15,7 @@ import { ProfilePage } from "./ProfilePage";
 import { Register } from "./Register";
 import { WelcomePage } from "./WelcomePage";
 import { AdminDashboard } from "./AdminDashboard";
+import { AccountConfirmation } from "./AccountConfirmation";
 
 function App() {
   
@@ -36,6 +37,7 @@ function App() {
         <Route path="/Onstream/AdminDashBoard/Add-Movie/:id" element={<AddMovie/>}/>
         <Route path="/Onstream/AdminDashBoard/:id" element={<AdminDashboard/>}/>
         <Route path="/Onstream/Add-poster" element={<Addposter/>}/>
+        <Route path="/Onstream/AccountConfirmation/:token" element={<AccountConfirmation/>}/>
         
       </Routes>
 
