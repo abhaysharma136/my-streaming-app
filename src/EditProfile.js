@@ -1,73 +1,96 @@
-import { useFormik } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
-import * as yup from 'yup';
 import { API } from "./global";
 import './EditProfile.css';
 import { NavBar } from "./NavBar";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { useEffect, useState } from "react";
 
-const PasswordValidationSchema=yup.object({
-  FirstName:yup.string().required(),
-  LastName:yup.string().required()
-})
+
 export function EditProfile() {
-  const navigate=useNavigate();
+  
   const {id}=useParams();
   console.log(id);
-  function CreateUser(newDetails){
-    const res=fetch(`${API}/users/${id}`,{
-      method:"PUT",
-      body:JSON.stringify(newDetails),
-      headers:{
-        "content-Type":"application/json"
-      }
-    });
-    res.then((result)=>result.json()).then(()=>navigate(`/ProfilePage/Onstream/${id}`));
+
+
+const[userDetails,setUserDetails]=useState();
+const GetUserDetails=()=>{
+  const res=fetch(`${API}/users/${id}`,{
+    method:"GET",
+  });
+  res.then((data)=>data.json())
+  .then((user)=>setUserDetails(user));
 }
 
-const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
-  initialValues:{FirstName:"",LastName:""},
-  validationSchema:PasswordValidationSchema,
-  onSubmit:(newDetails)=>{
-    console.log("OnSubmit",newDetails);
-    CreateUser(newDetails)
-  }
-})
+useEffect(()=> GetUserDetails(),[]);
+
+
 
   return (
     <div className="top-container">
       <NavBar/>
-      <div className="Edit-container">
-        <form id="myForm-EditProfile" onSubmit={handleSubmit}>
-          <TextField type="text"
+      {userDetails?<EditDetailsForm userDetails={userDetails}/>:".....Loading"}
+    </div>
+  );
+}
+
+
+function EditDetailsForm({userDetails,id}){
+  const navigate=useNavigate();
+ const [fname,setFName]=useState(userDetails.FirstName);
+ const [lname,setLName]=useState(userDetails.LastName);
+
+ const editUser={
+  FirstName:fname,
+  LastName:lname,
+ }
+ function CreateUser(editUser){
+  const res=fetch(`${API}/users/${userDetails._id}`,{
+    method:"PUT",
+    body:JSON.stringify(editUser),
+    headers:{
+      "content-Type":"application/json"
+    }
+  });
+  res.then((result)=>result.json()).then(()=>navigate(-1));
+}
+
+
+console.log(editUser);
+
+  return(
+<div className="Edit-container">
+        
+        <form id="myForm-EditProfile">
+        <h1>Edit Profile here</h1>
+          <TextField required 
             id="FirstName-EditProfile"
             label="First Name"
             name='FirstName'
             variant="outlined"
-            value={values.FirstName}
-            error={touched.FirstName && errors.FirstName}
-            onChange={handleChange}
-            helperText={touched.FirstName && errors.FirstName ? errors.FirstName : ""}
-            onBlur={handleBlur}
+            value={fname}
+            onChange={(event)=>setFName(event.target.value)}
+            
+            
           />
           
-          <TextField type="text"
+          <TextField required 
             id="LastName-EditProfile"
             label="Last Name"
             name='LastName'
             variant="outlined"
-            value={values.LastName}
-            error={touched.LastName && errors.LastName}
-            onChange={handleChange}
-            helperText={touched.LastName && errors.LastName ? errors.LastName : ""}
-            onBlur={handleBlur}
+            value={lname}
+            onChange={(event)=>setLName(event.target.value)}
+            
           />
           
-          
-          <Button variant="outlined" type='submit' id="Save-Changes-EditProfile">Save Changes</Button>
+          <Button type="submit"
+          variant="outlined"
+           color="success"
+          onClick={() => {
+            CreateUser(editUser)
+          }}>Save Changes</Button>
         </form>
       </div>
-    </div>
-  );
+  )
 }

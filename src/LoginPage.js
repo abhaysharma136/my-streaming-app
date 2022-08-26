@@ -19,6 +19,7 @@ const verify=()=>{
   if(result.token){
     console.log("veifing1");
       localStorage.setItem('token',result.token);
+      localStorage.setItem('id',result._id)
     if(result.message==='Succesfull Login'){
       navigate(`/HomePage/Onstream/${result.id}`);
     }else{

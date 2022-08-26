@@ -3,26 +3,28 @@
     background-color: aliceblue;
 }
 #myForm-EditProfile{
-   width:40%;
     background-color:white;
-    height: 400px;
     text-align: center;
     border-radius: 10px;
-   
+   width: 300px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 30px;
+    padding-bottom: 60px;
+}
+#myForm-EditProfile h1{
+    color: black;
 }
 
-#FirstName-EditProfile{
+/* #FirstName-EditProfile{
     padding-top: 30px;
 }
 
 #LastName-EditProfile{
    padding-top: 30px;
-}
+} */
 #Save-Changes-EditProfile{
-   margin-top: 60px;
    height: 60px;
 }
 .Edit-container{
@@ -31,5 +33,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 

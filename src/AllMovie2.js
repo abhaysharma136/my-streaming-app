@@ -4,7 +4,8 @@ import './AllMovies.css';
 import {useNavigate, useParams } from "react-router-dom";
 import { NavBar } from "./NavBar";
 
-export function AllMovie2() {
+
+function AllMovie2() {
   
  
   function GetMovies(){
@@ -52,3 +53,5 @@ function DisplayAllMovies({movie,movieid}){
     </>
   )
 }
+
+export default AllMovie2
