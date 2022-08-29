@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes,Route, Navigate } from "react-router-dom";
+import { Routes,Route } from "react-router-dom";
 import { AdditionalLinks } from "./AdditionalLinks";
 import { Addposter } from "./Addposter";
 import { AddMovie } from "./AddMovie";
@@ -41,8 +41,8 @@ function App() {
         <Route path="/Onstream/AdminDashBoard/Add-Movie/:id" element={<AddMovie/>}/>
         <Route path="/Onstream/AdminDashBoard/:id" element={<AdminDashboard/>}/>
         <Route path="/Onstream/Add-poster" element={<Addposter/>}/>
-        <Route path="/Onstream/AccountConfirmation/:token" element={<AccountConfirmation/>}/>
-        
+        <Route path="/Onstream/AccountConfirmation/:email/:token" element={<AccountConfirmation/>}/>
+        <Route path="/verify-email" element={<VerifyYourEmail/>}/>
       </Routes>
 
       
@@ -53,4 +53,11 @@ function App() {
 
 export default App;
 
+function VerifyYourEmail(){
 
+  return(
+    <div>
+      
+    </div>
+  )
+}

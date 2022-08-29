@@ -1,19 +1,24 @@
-
-
 .AdminDashboard-container{
  width: 100%;
 height: 100%;
 background-color: white;
-color: black;
-display: flex;
-flex-wrap: wrap;
- justify-content: center;
- gap: 25px;
 }
 
-.All-movies-AdminPage{
-    width: 200px;
-    height: 300px;
-    object-fit: cover;
-    margin-top: 40px;
+.TotalMovie{
+    color: black;
+    background-color: white;
+    width: 250px;
+    height: 200px;
+    flex-direction: column;
+}
+
+.Admin-container-movieData div{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+.TotalMovie{
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.75);
 }

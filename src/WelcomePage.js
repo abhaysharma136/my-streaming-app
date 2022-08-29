@@ -64,7 +64,7 @@ export function WelcomePage() {
             something to watch.</h2>
 
         </div>
-        <img className="second-container-img" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg" alt="img"></img>
+        <img className="second-container-img" src="https://i.pinimg.com/originals/94/20/3c/94203c5038cc7ce07a4fc0446cb8263f.jpg" alt="img"></img>
         <hr></hr>
       </div>
 

@@ -4,10 +4,12 @@
 }
 
 .login-container{
-    background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/59e045df-814d-4342-bf9d-e62ba23e916a/26b80b98-e1dc-48d2-ab1a-12b1001d959f/IN-en-20220418-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+    background-image: url(https://wallpaperaccess.com/full/3988284.jpg);
     color: azure;
     height:  100%;
     padding: 1px;
+    background-size: cover;
+    background-position: top;
 }
 #email_address{
     width: 286px;
@@ -39,6 +41,10 @@
 }
 #needhelp{
     margin-left: 120px;
+    text-decoration: none;
+    color: white;
+}
+#verify-email{
     text-decoration: none;
     color: white;
 }

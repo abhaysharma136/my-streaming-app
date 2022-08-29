@@ -24,6 +24,7 @@ export function Register() {
     if(result.message==='Email Sent to registered Email'){
       console.log("Sending Email to Register");
       console.log(values.email);
+
       sentRegistrationEmail(values);
       navigate(`/login-page`)
     }
@@ -41,7 +42,7 @@ export function Register() {
   }
 
   function CreateUser(newUser){
-    const res=fetch(`${API}/users/newuser`,{
+    const res=fetch(`${API}/users/signup`,{
       method:"POST",
       body:JSON.stringify(newUser),
       headers:{

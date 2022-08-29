@@ -24,8 +24,7 @@ const verify=()=>{
       navigate(`/HomePage/Onstream/${result.id}`);
     }else{
       navigate(`/Onstream/AdminDashBoard/${result.id}`);
-    }
-    
+    } 
   }
 }
 console.log(result);
@@ -92,8 +91,7 @@ setTimeout(verify,3000);
 
               <br></br>
 
-              <input type="checkbox" className='rememberMe-label'></input>
-              <label htmlFor="rememberMe" id="rememberMe-text">Remember me</label>
+              <Link to="/verify-email" id="verify-email">Verify Your email</Link>
               <Link to="/Need-Help" id="needhelp">Need help?</Link>
 
               <p id="New-User-text"> New to Onstream? <span><Link to="/Register-now" id="sign-up-Link">Sign up now.</Link></span></p>
