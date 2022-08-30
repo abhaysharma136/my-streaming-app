@@ -17,6 +17,7 @@ import { Register } from "./Register";
 import { WelcomePage } from "./WelcomePage";
 import { AdminDashboard } from "./AdminDashboard";
 import { AccountConfirmation } from "./AccountConfirmation";
+import { VerifyYourEmail } from "./VerifyYourEmail";
 const LazyAllMovies2 = React.lazy(()=>import('./AllMovie2'))
 function App() {
   // const token=localStorage.getItem("token");
@@ -53,11 +54,4 @@ function App() {
 
 export default App;
 
-function VerifyYourEmail(){
 
-  return(
-    <div>
-      
-    </div>
-  )
-}

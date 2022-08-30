@@ -1,0 +1,12 @@
+.VerifyEmail-container{
+    background-color: white;
+    height: 100vh;
+    color: black;
+    padding: 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.verify-email-button{
+    height: 55px;
+}
