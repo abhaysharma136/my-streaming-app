@@ -35,7 +35,7 @@ useEffect(()=> GetUserDetails(),[]);
 }
 
 
-function EditDetailsForm({userDetails,id}){
+export function EditDetailsForm({userDetails,id}){
   const navigate=useNavigate();
  const [fname,setFName]=useState(userDetails.FirstName);
  const [lname,setLName]=useState(userDetails.LastName);

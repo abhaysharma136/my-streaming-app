@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as yup from 'yup';
 import { API } from './global';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function LoginPage() {
 const navigate=useNavigate();
@@ -13,13 +13,15 @@ const navigate=useNavigate();
     password:yup.string().min(8).matches().required(),
   })
   
-const[result,setResult]=useState("");
+const[result,setResult]=useState({});
+console.log(result);
 // const [isLoggedin, setIsLoggedin] = useState(false);
 const verify=()=>{
   if(result.token){
     console.log("veifing1");
       localStorage.setItem('token',result.token);
-      localStorage.setItem('id',result._id)
+      localStorage.setItem('id',result.id);
+      localStorage.setItem('message',result.message);
     if(result.message==='Succesfull Login'){
       navigate(`/HomePage/Onstream/${result.id}`);
     }else{
@@ -27,7 +29,7 @@ const verify=()=>{
     } 
   }
 }
-console.log(result);
+
 setTimeout(verify,3000);
     function VerifyUser(newUser){
       const res=fetch(`${API}/users/login`,{
@@ -40,7 +42,6 @@ setTimeout(verify,3000);
       res.then((result1)=>result1.json()).then((user)=>setResult(user));
   }
   
-  
   const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
     initialValues:{email:"",password:"",},
     validationSchema:PasswordValidationSchema,
@@ -50,6 +51,21 @@ setTimeout(verify,3000);
       
     }
   })
+  
+let id=localStorage.getItem('id');
+  let message=localStorage.getItem('message');
+    useEffect(() => {
+        let isAuth = (localStorage.getItem('token'));
+        if(isAuth && isAuth !== null) {
+          if(message==="Succesfull Login"){
+            navigate(`/HomePage/Onstream/${id}`);
+          }else{
+            navigate(`/Onstream/AdminDashBoard/${id}`);
+          }
+            
+        }
+    }, []);
+
   const styles={
     color:result.message==='Succesfull Login'?"green":"red",
   }

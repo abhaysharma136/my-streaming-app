@@ -39,9 +39,16 @@ function DisplayUserData({userDetails}){
 const navigate=useNavigate();
 const Logout=()=>{
   localStorage.removeItem('token');
+  localStorage.removeItem('id');
+  localStorage.removeItem('message');
   navigate(`/`);
 }
-
+useEffect(() => {
+  let isAuth = (localStorage.getItem('token'));
+  if(isAuth===false || isAuth == null) {
+      navigate("/");
+  }
+}, []);
   return(
   <div className="profilePage-container">
   <div className='form-container-profilePage'>

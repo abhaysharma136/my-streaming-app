@@ -1,3 +1,8 @@
-.Admin-menu-Bar{
-    text-align: left;
+
+.Admin-profile-icon{
+   margin-left: auto;
+}
+#user_avatar-Admin{
+    width: 40px;
+
 }

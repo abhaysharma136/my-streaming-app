@@ -18,6 +18,9 @@ import { WelcomePage } from "./WelcomePage";
 import { AdminDashboard } from "./AdminDashboard";
 import { AccountConfirmation } from "./AccountConfirmation";
 import { VerifyYourEmail } from "./VerifyYourEmail";
+import { DisplayPasswordForm } from "./ChangePassword";
+import { AdminProfilePage } from "./AdminProfilePage";
+import { EditAdminProfile } from "./EditAdminProfile";
 const LazyAllMovies2 = React.lazy(()=>import('./AllMovie2'))
 function App() {
   // const token=localStorage.getItem("token");
@@ -28,7 +31,6 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomePage/>}/>
         <Route path="/FAQ" element={<AdditionalLinks/>}/>
-        {/* {!!token?<Route path="/login-page" element={<Navigate replace to='/HomePage/Onstream/:id'/>}/>:<Route path="/login-page" element={<Navigate replace to="/login-page" />}/>} */}
         <Route path="/login-page" element={<LoginPage/>}/>
         <Route path="/Need-Help" element={<NeedHelp/>}/>
         <Route path="/Register-now" element={<Register/>}/>
@@ -44,6 +46,9 @@ function App() {
         <Route path="/Onstream/Add-poster" element={<Addposter/>}/>
         <Route path="/Onstream/AccountConfirmation/:email/:token" element={<AccountConfirmation/>}/>
         <Route path="/verify-email" element={<VerifyYourEmail/>}/>
+        <Route path="/Onstream/forgotPassword/:email/:token" element={<DisplayPasswordForm/>}/>
+        <Route path="/AdminProfilePage/Onstream/:id" element={<AdminProfilePage/>}/>
+        <Route path="/Onstream/Edit/Admin/:id" element={<EditAdminProfile/>}/>
       </Routes>
 
       
