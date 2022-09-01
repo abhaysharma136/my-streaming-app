@@ -177,6 +177,7 @@ function GetMoviesDocumentary(){
         headers:{
           "content-Type":"application/json",
           "x-auth-token":localStorage.getItem('token'),
+          
         }
   });
   res.then((data)=>data.json())
