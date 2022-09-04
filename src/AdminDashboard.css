@@ -5,21 +5,51 @@ background-color: white;
 
 }
 
-.TotalMovie{
+ .TotalMovie{
     color: black;
     background-color: white;
-    width: 250px;
-    height: 200px;
+    width: 270px;
+    height: 250px;
     flex-direction: column;
 }
 
-.Admin-container-movieData div{
+.Movie-Count-components{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+/*.movie-count-components{
+    display: flex;
+    width: 20px;
+    height: 20px;
+    flex-direction: row;
+}*/
+.Admin-container-movieData{
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
 }
+
+
 .TotalMovie{
-    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
+} 
+.pie-chart-container{
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
+    width:552px;
+    height: 400px;
+    margin: auto;
+    margin-top: 45px;
+    padding-bottom: 5px;
+}
+
+@media (max-width:500px) {
+    .pie-chart-container{
+        width:370px;
+        margin-top: 45px;
+        
+    }
 }

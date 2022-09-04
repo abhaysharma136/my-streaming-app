@@ -5,9 +5,10 @@ import { API } from './global.js';
 import { useFormik } from "formik";
 import TextField from '@mui/material/TextField';
 import * as yup from 'yup';
-import { useState } from 'react';
-
-
+import { forwardRef, useState } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+// import Alert from '@mui/material/Alert';
 
 const PasswordValidationSchema=yup.object({
   email:yup.string().email().required(),
@@ -16,6 +17,9 @@ const PasswordValidationSchema=yup.object({
   LastName:yup.string().required()
 })
 
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 export function Register() {
   const navigate=useNavigate();
   const[result,setResult]=useState("");
@@ -55,21 +59,42 @@ export function Register() {
 const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
   initialValues:{FirstName:"",LastName:"",email:"",password:""},
   validationSchema:PasswordValidationSchema,
-  onSubmit:(newUser)=>{
+  onSubmit:(newUser,onSubmit)=>{
     console.log("OnSubmit",newUser);
     CreateUser(newUser)
+    setTimeout(()=>handleMessage(),300)
+    onSubmit.resetForm();
   }
 })
-const styles={
-  color:result.message==='email allready exists'?"red":"green",
-}
+// const styles={
+//   color:result.message==='email allready exists'?"red":"green",
+// }
+
+const [open, setOpen] = useState(false);
+
+  const handleMessage = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <div className="RegisterPage-container">
     <Header/>
     <div id="component-main-elements">
         <h1>Create your account to start your membership</h1>
             <form id="myForm-registerPage" onSubmit={handleSubmit}>
-              <p style={styles}>{result.message}</p>
+            <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={result.message==="Email Sent to registered Email"?"success":"error"} sx={{ width: '100%' }}>
+          {result.message}
+        </Alert>
+      </Snackbar>
             <TextField type="text" 
             id="FirstName-registerPage" 
             placeholder="First Name" 

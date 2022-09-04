@@ -4,8 +4,14 @@ import { useFormik } from "formik";
 import * as yup from 'yup';
 import { API } from './global';
 import TextField from '@mui/material/TextField';
-import { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
+
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 export function LoginPage() {
 const navigate=useNavigate();
   const PasswordValidationSchema=yup.object({
@@ -45,10 +51,11 @@ setTimeout(verify,3000);
   const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
     initialValues:{email:"",password:"",},
     validationSchema:PasswordValidationSchema,
-    onSubmit:(newUser)=>{
+    onSubmit:(newUser,onSubmit)=>{
       // console.log("OnSubmit",newUser);
       VerifyUser(newUser);
-      
+      setTimeout(()=>handleMessage(),300);
+      onSubmit.resetForm();
     }
   })
   
@@ -66,16 +73,36 @@ let id=localStorage.getItem('id');
         }
     }, []);
 
-  const styles={
-    color:result.message==='Succesfull Login'?"green":"red",
-  }
+  // const styles={
+  //   color:result.message==='Succesfull Login'?"green":"red",
+  // }
+
+  const [open, setOpen] = useState(false);
+
+  const handleMessage = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <div className='login-container'>
+      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={result.message==="Succesfull Login" ?"success" :result.message==="Succesfull Admin Login"?"success":"error"} sx={{ width: '100%' }}>
+          {result.message}
+        </Alert>
+      </Snackbar>
       <div id="input-elements-all">
         <div id="Center-dispay-div">
          
             <h1 className='sign-up-heading'>Sign In</h1>
-            <p style={styles}>{result.message}</p>
+            
             <div id="loginInput">
             <form  id="myForm" onSubmit={handleSubmit}>
               <TextField type="email"

@@ -5,13 +5,18 @@ import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { API } from './global';
-import { useState } from 'react';
-
+import { forwardRef, useState } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 
 const EmailValidationSchema=yup.object({
     email:yup.string().email().required(),
   })
+
+  const Alert = forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 export function NeedHelp(){
   const[result,setResult]=useState("");
   console.log(result);
@@ -38,19 +43,42 @@ export function NeedHelp(){
     const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
         initialValues:{email:""},
         validationSchema:EmailValidationSchema,
-        onSubmit:(User)=>{
+        onSubmit:(User,onSubmit)=>{
           console.log("OnSubmit",User);
           VerifyUser(User);
+          setTimeout(()=>handleMessage(),300)
+          // onSubmit.resetForm();
         }
       })
-      const styles={
-        color:result.message==='email Sent'?"green":"red",
-      }
+      // const styles={
+      //   color:result.message==='email Sent'?"green":"red",
+      // }
+
+      const [open, setOpen] = useState(false);
+
+      const handleMessage = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
+    
+
   return (
     <div>
       <Header/>
       <div id="form-content">
-      <p className='email-response' style={styles}>{result.message}</p>
+      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={result.message==="email Sent" ?"success":"error"} sx={{ width: '100%' }}>
+          {result.message}
+        </Alert>
+      </Snackbar>
+      {/* <p className='email-response' style={styles}>{result.message}</p> */}
       <form id="form_need-help" onSubmit={handleSubmit}>
         
         <div className="Page-text">

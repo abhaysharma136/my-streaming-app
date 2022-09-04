@@ -21,6 +21,9 @@ import { VerifyYourEmail } from "./VerifyYourEmail";
 import { DisplayPasswordForm } from "./ChangePassword";
 import { AdminProfilePage } from "./AdminProfilePage";
 import { EditAdminProfile } from "./EditAdminProfile";
+import CustomizedSnackbars from "./Alert";
+import { AdminMovies } from "./AdminMovies";
+import { AdminUsersData } from "./AdminUsersData";
 const LazyAllMovies2 = React.lazy(()=>import('./AllMovie2'))
 function App() {
   // const token=localStorage.getItem("token");
@@ -49,6 +52,9 @@ function App() {
         <Route path="/Onstream/forgotPassword/:email/:token" element={<DisplayPasswordForm/>}/>
         <Route path="/AdminProfilePage/Onstream/:id" element={<AdminProfilePage/>}/>
         <Route path="/Onstream/Edit/Admin/:id" element={<EditAdminProfile/>}/>
+        <Route path="/Onstream/Alert" element={<CustomizedSnackbars/>}/>
+        <Route path="/Onstream/AdminDashBoard/Movies/:id" element={<AdminMovies/>}/>
+        <Route path="/Onstream/AdminDashBoard/users/:id" element={<AdminUsersData/>}/>
       </Routes>
 
       
