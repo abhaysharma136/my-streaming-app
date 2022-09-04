@@ -2,10 +2,7 @@ import "./AdminDashboard.css";
 import { AdminAppBar } from "./AdminAppBar";
 import { useEffect, useState } from "react";
 import { API } from "./global";
-import { PieChart, Pie, Legend, Cell} from 'recharts';
-import { Box } from "@mui/system";
-import { Stack } from "react-bootstrap";
-import { Typography } from "@mui/material";
+import { PieChart, Pie, Legend} from 'recharts';
 
 
 
@@ -18,9 +15,10 @@ export function AdminDashboard() {
   return (
     <div className="AdminDashboard-container">
       <AdminAppBar/>
-      <div >
-        <div className="Admin-container-movieData">
+      <div className="Admin-container-movieData">
+        <div>
           <TotalMovieCount/>
+          <MovieGenreCount/>
           <TotalUserCount/>
           
         </div>
@@ -53,18 +51,20 @@ GetMovies()
     console.log(MovieList);
   return(
     <div className="TotalMovie">
-      <h1>Total Movies</h1>
-      <div className="Movie-Count-components">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdhdGzr9-dyR34OTlY7rIKMmzdnkDzFEEzrw&usqp=CAU" width="140px" height="140px"/>
-        <h1>{MovieList}</h1>
-      </div>
-    
-      
+      <h1>Total Movie</h1>
+      <h1>{MovieList}</h1>
     </div>
   )
 }
 
-
+function MovieGenreCount(){
+  return(
+    <div className="TotalMovie">
+      <h1>Total Genre</h1>
+      <h1>6</h1>
+    </div>
+  )
+}
 
 function TotalUserCount(){
   function GetMovies(){
@@ -87,41 +87,11 @@ GetMovies()
 
   return(
     <div className="TotalMovie">
-      <h1>Total Users</h1>
-      <div className="Movie-Count-components">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS4zTG1k4qxgt_7Cebw-uuGxTDsu5LWCL6giFFSLrfC8cYmtlfbTGMdZuaw0RsRKE7c9Q&usqp=CAU" width="140px" height="140px"/>
-        <h1>{UserCount}</h1>
-      </div>
+      <h1>Total User</h1>
+      <h1>{UserCount}</h1>
     </div>
   )
 }
-
-const RADIAN=Math.PI/180;
-const renderCustomlabel=({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-  index,
-})=>{
-  const radius=innerRadius+(outerRadius-innerRadius)*0.5;
-  const x=cx+radius*Math.cos(-midAngle*RADIAN);
-  const y=cy+radius*Math.sin(-midAngle*RADIAN);
-
-return(
-  <text
-  x={x}
-  y={y}
-  fill="white"
-  textAnchor={x>cx?'start':'end'}
-  dominantBaseline="central">
-
-{`${(percent*100).toFixed(0)}%`}   
-    
-  </text>
-)}
 
 function CreatePie(){
 //Comedy Movie Count
@@ -207,7 +177,6 @@ function GetMoviesDocumentary(){
         headers:{
           "content-Type":"application/json",
           "x-auth-token":localStorage.getItem('token'),
-          
         }
   });
   res.then((data)=>data.json())
@@ -221,7 +190,7 @@ GetMoviesDocumentary()
 },[])
 
   const data = [
-    {name: 'Comedy', Genres: MovieListComedy,fill:"pink",},
+    {name: 'Comedy', Genres: MovieListComedy,fill:"yellow",},
     {name: 'Horror', Genres:MovieListHorror,fill:"purple"},
     {name: 'Romance', Genres: MovieListRomance,fill:"red"},
     {name: 'Action', Genres: MovieListAction,fill:"blue"},
@@ -229,38 +198,12 @@ GetMoviesDocumentary()
   ];
 
   
-
-
-  return(
-    <Box className="pie-chart-container"
-    sx={{
-      display:'flex',
-      alignItems:'center',
-      justifyContent:'space-evenly',
-      flexWrap:'wrap',
-    }}
-    >
-      <PieChart width={400} height={400} className="Pie-Chart-components" >
-        <Pie 
-        data={data}
-        labelLine={false} 
-        dataKey="Genres"
-        outerRadius={100}
-        label={renderCustomlabel} />
-        
-        <Legend layout="vertical" verticalAlign="middle" align="right" margin={2} />
-      </PieChart>
-      
-    </Box>
-  )
-}
-
-
-function LatestMovies(){
-
   return(
     <div>
-      
+      <PieChart width={700} height={700}>
+        <Pie data={data} dataKey="Genres" outerRadius={250} label="Genres"/>
+        <Legend layout="horizontal" verticalAlign="top" align="center" />
+      </PieChart>
     </div>
   )
 }
