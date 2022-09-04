@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { API } from "./global";
 import { PieChart, Pie, Legend, Cell} from 'recharts';
 import { Box } from "@mui/system";
-import { Stack } from "react-bootstrap";
-import { Typography } from "@mui/material";
 
 
 
@@ -55,7 +53,7 @@ GetMovies()
     <div className="TotalMovie">
       <h1>Total Movies</h1>
       <div className="Movie-Count-components">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdhdGzr9-dyR34OTlY7rIKMmzdnkDzFEEzrw&usqp=CAU" width="140px" height="140px"/>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdhdGzr9-dyR34OTlY7rIKMmzdnkDzFEEzrw&usqp=CAU" alt="Movie-Icon" width="140px" height="140px"/>
         <h1>{MovieList}</h1>
       </div>
     
@@ -89,7 +87,7 @@ GetMovies()
     <div className="TotalMovie">
       <h1>Total Users</h1>
       <div className="Movie-Count-components">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS4zTG1k4qxgt_7Cebw-uuGxTDsu5LWCL6giFFSLrfC8cYmtlfbTGMdZuaw0RsRKE7c9Q&usqp=CAU" width="140px" height="140px"/>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS4zTG1k4qxgt_7Cebw-uuGxTDsu5LWCL6giFFSLrfC8cYmtlfbTGMdZuaw0RsRKE7c9Q&usqp=CAU" alt="user-icon" width="140px" height="140px"/>
         <h1>{UserCount}</h1>
       </div>
     </div>
