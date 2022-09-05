@@ -6,7 +6,17 @@
 }
 .All-movies{
     width: 200px;
-    height: 300px;
-    object-fit: cover;
+    max-height: 300px;
+    min-height: 140px;
+    object-fit: contain;
     margin-top: 40px;
+}
+
+@media (max-width:500px) {
+    .All-movies{
+        max-height: 200px;
+    }
+    .All-Movie-Container{
+        gap: 2px;
+    }
 }

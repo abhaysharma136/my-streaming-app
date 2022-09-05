@@ -2,7 +2,7 @@ import "./AdminDashboard.css";
 import { AdminAppBar } from "./AdminAppBar";
 import { useEffect, useState } from "react";
 import { API } from "./global";
-import { PieChart, Pie, Legend, Cell} from 'recharts';
+import { PieChart, Pie, Legend} from 'recharts';
 import { Box } from "@mui/system";
 
 

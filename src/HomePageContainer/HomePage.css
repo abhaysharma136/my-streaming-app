@@ -39,3 +39,9 @@ margin: 10px;
 font-family: Georgia;
 }
 
+@media (max-width:600px) {
+    .row_posterLarge{
+         max-height: 200px;
+    }
+   
+}
