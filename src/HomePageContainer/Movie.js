@@ -38,6 +38,13 @@ function Movie() {
                     </div>
                 </div>
             </div>
+            <div className='movie-info2'>
+                    <p>Director: <b>{movie.director}</b></p>
+                    <p>Cast: <b>{movie.Cast}</b></p>
+                    <p>Year: <b>{movie.Year}</b></p>
+                    <p>Genres: <b>{movie.Genres}</b></p>
+                    <p className='movie-summary'>{movie.summary}</p>
+                    </div>
             <p className='movie-summary-2'>{movie.summary}</p>
         </div>
         </div>

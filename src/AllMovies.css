@@ -14,9 +14,13 @@
 
 @media (max-width:500px) {
     .All-movies{
-        max-height: 200px;
+        height: 150px;
+        /* background-color: red; */
+        width: 100px;
     }
     .All-Movie-Container{
-        gap: 2px;
+        gap: 8px;
+
     }
 }
+

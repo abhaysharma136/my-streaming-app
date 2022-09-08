@@ -19,7 +19,7 @@ function Courosel() {
     }
 ];
     return (
-        <div>
+        <div className='courosal-top'>
            
             <Carousel autoPlay	infiniteLoop interval="5000">
             {movieBanner.map((movB)=>(

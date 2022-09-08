@@ -75,3 +75,31 @@
     border-bottom: 1px solid red;
     font-family: Helvetica;
 }
+
+
+@media (max-width:600px) {
+    .form-container-profilePage{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .form-profilePage{
+        width: 250px;
+    }
+
+    #firstName-profilePage{
+        width: 250px;
+    }
+    
+    #LastName-profilePage{
+        width: 250px;
+    }
+
+    #Email-profilePage{
+        width: 250px;
+    }
+
+    .saveButton-profilePage{
+        width: 250px;
+    }
+}

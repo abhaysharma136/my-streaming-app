@@ -30,9 +30,24 @@
 .movie-info p{
     margin:5px;
  }
-@media (max-width:800px) {
+
+ .movie-info2{
+    display: none;
+ }
+ @media (max-width:800px) {
+    .movie-summary-2{
+        display: block;
+    }
+    .movie-summary{
+        display: none;
+    }
+    .movie-info{
+        font-size: 14px;
+    }
+ }
+@media (max-width:434px) {
     .movie-poster{
-        width: 180px;
+        width: 150px;
         height: 290px;
     }
     .movie-summary{
@@ -40,9 +55,14 @@
     }
     .movie-info{
         line-height: 1.2em;
+        display: none;
     }
     .movie-summary-2{
         display: block;
+        width: 320px;
+        margin: auto;
+        padding-bottom: 30px;
+        text-align: left;
     }
     .movie-info p{
         font-size: 14px;
@@ -51,6 +71,14 @@
         font-size: 26px;
      }
      .movie-details{
-        margin-top: 55px;
+        margin-top: 90px;
+        height: fit-content;
+     }
+     .movie-info2{
+        display: block;
+        text-align: left;
+        font-size: 15px;
+        margin: auto;
+        width: 320px;
      }
 }

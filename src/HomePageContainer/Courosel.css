@@ -28,6 +28,24 @@
    transition: 6000ms;
    
 }
+.carousel .carousel-status {
+    bottom: 0;
+    left: 0;
+    right: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  
+  .courosal-top{
+    padding-top: 50px;
+  }
+
+  .control-arrow
+  {
+    z-index: 0.2;
+   }
+
 @media (min-width:580px) {
     .banner-container{
         height: 500px;

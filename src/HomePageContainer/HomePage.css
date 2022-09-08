@@ -45,3 +45,10 @@ font-family: Georgia;
     }
    
 }
+
+
+@media (max-width:430px) {
+    .row_posterLarge{
+        max-height: 150px;
+   }
+}

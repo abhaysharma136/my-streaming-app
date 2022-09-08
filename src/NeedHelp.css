@@ -15,8 +15,8 @@ font-size: 19px;
 color: red;
 }
 #signin-button:hover{
-    text-decoration: underline;
-    cursor: pointer;
+text-decoration: underline;
+cursor: pointer;
 }
 #logo-link{
 float: left;
@@ -27,17 +27,14 @@ color: red;
 font-size: 19px;
 }
 .Page-text{
-    width: fit-content;
-    margin: auto;
-    width: 380px;
+ width: fit-content;
+margin: auto;
+width: 380px;
 
 }
-#form_need-help{
-    margin-left: 50px;
-    
-}
+
 #form_need-help h1{
-    font-weight: 500;
+font-weight: 500;
 }
 #email_forgot_password{
 height: 20px;
@@ -47,51 +44,51 @@ accent-color: #0080FF;
 margin-left: 0px;
 }
 #Text_need_help{
-    height: 20px;
-    width: 20px;
-    vertical-align: text-bottom;
-    accent-color: #0080FF;
-    margin-left: 25px;
+height: 20px;
+width: 20px;
+vertical-align: text-bottom;
+accent-color: #0080FF;
+margin-left: 25px;
 }
 #email_textBox{
-    width: 360px;
-    height: 20px;
-    margin-right: 0px;
-    background-color: white;
+width: 360px;
+height: 20px;
+margin-right: 0px;
+background-color: white;
 }
 #email_textBox::placeholder{
-    color:grey;
+color:grey;
 }
 .select_contry_code{
-    width: 80px;
-    height: 45px;
+width: 80px;
+height: 45px;
 }
 #number_otp{
-    width:295px;
-    height: 40px;
-    margin-left: 0px;
+width:295px;
+height: 40px;
+margin-left: 0px;
 }
 #number_otp_div{
-    margin-bottom: 30px;
+margin-bottom: 30px;
     /* display: none; */
 }
 #Send-button{
-    width: 389px;
-    height: 49px;
-    background-color:#0080FF;
-    color: white;
-    border: none;
-    font-size: medium;
-    margin-top: 20px;
+width: 389px;
+height: 49px;
+background-color:#0080FF;
+color: white;
+border: none;
+font-size: medium;
+margin-top: 20px;
 }
 .div-button-text-box{
-    width: fit-content;
-    margin: auto;
+width: fit-content;
+margin: auto;
 }
 .links{
-    height: 150px;
-    list-style: none;
-    display: grid;
+height: 150px;
+list-style: none;
+display: grid;
 grid-template-columns: 1fr 1fr;
 font-size: small;
 margin-left: 10px;
@@ -99,18 +96,18 @@ row-gap: 0px;
 margin-bottom: 50px;
 }
 .links a{
-    text-decoration: none;
-    color: #757575;
+text-decoration: none;
+color: #757575;
 }
 .links li:hover{
     text-decoration: underline;
 }
 .All-link-element{
-    background-color: #000000BF;
-    width: 100%;
-    padding: 5px;
-    margin-top: 70px;
-    color: #757575;
+background-color: #000000BF;
+width: 100%;
+padding: 5px;
+margin-top: 70px;
+color: #757575;
 }
 #language-option{
     width: 93px;
@@ -130,12 +127,30 @@ margin-bottom: 50px;
         margin-top: 80px;
     }
     #form_need-help{
-        margin-left:5px; ;
+        margin-left:5px; 
     }
     
 }
 @media (max-width:649px) {
     .email-response{
         margin-left: 150px;
+    }
+}
+
+
+@media (max-width:401px) {
+    #form-content{
+        width:350px;
+        margin: auto;
+        margin-top: 50px;
+    }
+    .Page-text{
+        width: 304px;
+    }
+    #email_textBox{
+        width: 270px;
+    }
+    #Send-button{
+        width: 300px;
     }
 }

@@ -130,3 +130,37 @@
         width: 120px;
     }
   }
+
+
+  @media (max-width:430px) {
+    .logo{
+        margin-right: 0px;
+        width: 80px;
+    }
+    .Home-button{
+        font-size: 12px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .Genres-btn{
+        font-size: 12px;
+        margin-left: 0px;
+        padding: 14px 8px 14px 0px;
+    }
+    .search-movie::placeholder{
+        font-size: 12px;
+    }
+    
+    #user_avatar{
+        height: 22px;
+        width: 22px;
+    }
+    .search-movie{
+        width: 100px;
+    }
+    .search-movie::placeholder{
+        font-size: 9px;
+        color: #FFFFF7;
+    }
+  }

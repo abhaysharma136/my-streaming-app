@@ -238,15 +238,15 @@ GetMoviesDocumentary()
       flexWrap:'wrap',
     }}
     >
-      <PieChart width={400} height={400} className="Pie-Chart-components" >
+      <PieChart width={360} height={400} className="Pie-Chart-components" >
         <Pie 
         data={data}
         labelLine={false} 
         dataKey="Genres"
-        outerRadius={100}
+        outerRadius={90}
         label={renderCustomlabel} />
         
-        <Legend layout="vertical" verticalAlign="middle" align="right" margin={2} />
+        <Legend layout="vertical" verticalAlign="middle" align="right" margin={2} className="PieChart-label" />
       </PieChart>
       
     </Box>
