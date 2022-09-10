@@ -18,6 +18,7 @@ export function AdminAppBar() {
             <Button color="inherit" onClick={() => navigate(`/Onstream/AdminDashBoard/Add-Movie/${id}`)}>Add Movie</Button>
             <Button color="inherit" onClick={() => navigate(`/Onstream/AdminDashBoard/Movies/${id}`)}>Movies</Button>
             <Button color="inherit" onClick={() => navigate(`/Onstream/AdminDashBoard/users/${id}`)}>Users</Button>
+            <Button color="inherit" onClick={() => navigate(`/Onstream/AdminDashBoard/banners/${id}`)}>Banners</Button>
             <Button className="Admin-profile-icon" color="inherit" onClick={() => navigate(`/AdminProfilePage/Onstream/${id}`)}><img src={avatar} alt="profile pix" id="user_avatar-Admin" /></Button>
           </Toolbar>
         </AppBar>

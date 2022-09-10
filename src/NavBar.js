@@ -38,7 +38,7 @@ const{id}=useParams();
           placeholder="Search movie here"
           onChange={(event)=>setMovie(event.target.value)}/>
           </li>
-          <li><button className="search-button" type="submit" onClick={()=>navigate(`/movies/${id}/name/${movie}`)}>🔍</button></li>
+          <li><button className="search-button" type="submit" onClick={()=>navigate(`/movies/search/${id}/name/${movie}`)}>🔍</button></li>
         <li className='profile-img'><div onClick={() => navigate(`/ProfilePage/Onstream/${id}`)}><img src={avatar} alt="profile pix" id="user_avatar" /></div></li>
       </ul>
     </div>

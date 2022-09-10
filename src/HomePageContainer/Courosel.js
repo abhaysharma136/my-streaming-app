@@ -1,30 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Courosel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { useNavigate, useParams } from 'react-router-dom';
+import { API } from '../global';
 function Courosel() {
-    const movieBanner=[
-        {id:0,
-            name:"Kashmir Files",
-            banner:"https://www.mmppicture.co.in/wp-content/uploads/2022/03/The-Kashmir-Files-Poster-1-1080x608.jpg"},
-    {id:1,
-        name:"Insurgent",
-        banner:"https://www.wallpaperup.com/uploads/wallpapers/2015/12/12/858314/6b2103b79949d49de68d4e7a8d10fbcd.jpg"},
-    {id:2,
-        name:"Die Hard",
-        banner:"https://cdn.wallpapersafari.com/66/81/kmY4Rg.jpg"},
-        {id:3,
-            name:"Kill Bill",
-    banner:"https://wallpaperaccess.com/full/1512314.jpg"
-    }
-];
+   
+        function Getbanners(){
+            const res=fetch(`${API}/banners`,{
+              method:"GET",
+                  headers:{
+                    "content-Type":"application/json",
+                    "x-auth-token":localStorage.getItem('token'),
+                  }
+            });
+            res.then((data)=>data.json())
+            .then((mvs)=>setMovieBanners(mvs));
+        }
+        
+      const[movieBanner,setMovieBanners]=useState([]);
+    
+      useEffect(()=>{
+        Getbanners()
+      },[])
+        const navigate=useNavigate();
+    const{id}=useParams();
     return (
         <div className='courosal-top'>
            
-            <Carousel autoPlay	infiniteLoop interval="5000">
+            <Carousel autoPlay	infiniteLoop interval="5000" showThumbs={false}>
             {movieBanner.map((movB)=>(
+                <div onClick={()=>navigate(`/movie/${id}/${movB._id}`)} className="courisal-image-div">
                 <CreateBanner movB={movB} key={movB.id}/>
+                </div> 
             ))}
+            
             </Carousel>
         
         </div>
@@ -34,9 +44,10 @@ function Courosel() {
 export default Courosel;
 
 function CreateBanner({movB}){
+  
 return(
     <div className='banner-container'>
-        <img src={movB.banner} alt={movB.name} className='banner1'></img>
+        <img src={movB.banner} alt={movB.name} className='banner1' />
     </div>
 )
 }

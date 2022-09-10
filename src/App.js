@@ -24,6 +24,8 @@ import { EditAdminProfile } from "./EditAdminProfile";
 import CustomizedSnackbars from "./Alert";
 import { AdminMovies } from "./AdminMovies";
 import { AdminUsersData } from "./AdminUsersData";
+import { AdminBanners } from "./AdminBanners";
+import { SearchMovie } from "./SearchMovie";
 const LazyAllMovies2 = React.lazy(()=>import('./AllMovie2'))
 function App() {
   // const token=localStorage.getItem("token");
@@ -42,6 +44,7 @@ function App() {
         <Route path="/Onstream/edit/:id" element={<EditProfile/>}/>
         <Route path="/movie/:id/:movieid" element={<Movie/>}/>
         <Route path="/movies/:id/:queryType/:query" element={<AllMovie/>}/>
+        <Route path="/movies/search/:id/name/:query" element={<SearchMovie/>}/>
         <Route path="/movies/:id/All" element={<React.Suspense fallback="...Loading"><LazyAllMovies2/></React.Suspense>}/>
         <Route path="/Email-Sent/:email" element={<LinkSend/>}/>
         <Route path="/Onstream/AdminDashBoard/Add-Movie/:id" element={<AddMovie/>}/>
@@ -54,6 +57,7 @@ function App() {
         <Route path="/Onstream/Edit/Admin/:id" element={<EditAdminProfile/>}/>
         <Route path="/Onstream/Alert" element={<CustomizedSnackbars/>}/>
         <Route path="/Onstream/AdminDashBoard/Movies/:id" element={<AdminMovies/>}/>
+        <Route path="/Onstream/AdminDashBoard/banners/:id" element={<AdminBanners/>}/>
         <Route path="/Onstream/AdminDashBoard/users/:id" element={<AdminUsersData/>}/>
       </Routes>
 
