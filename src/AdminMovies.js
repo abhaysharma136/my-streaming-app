@@ -1,11 +1,20 @@
-import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
-import { AdminAppBar } from "./AdminAppBar";
-import './AdminMovies.css';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { TableBody, TableCell, TableContainer } from "@mui/material";
 import { API } from "./global";
-// import EditIcon from '@mui/icons-material/Edit';
-import { Button } from "bootstrap";
+import { Table } from "react-bootstrap";
+import Paper from '@mui/material/Paper';
+import './AdminMovies.css';
+import { AdminAppBar } from "./AdminAppBar";
+import { useNavigate, useParams } from "react-router-dom";
 
+
+
+// function createData(_id,id,name,Language, rating, Genres) {
+//   return { _id, id, name, Language, rating,Genres };
+//  }
+ 
 export function AdminMovies() {
 
   return (
@@ -20,94 +29,67 @@ export function AdminMovies() {
 
 
 function DisplayAdminmovies(){
-
+const navigate=useNavigate();
   // const handleClick = (event, cellValues) => {
   //   console.log(cellValues.row);
   // };
-  
-  const columns = [
-    { field: '_id', headerName: '_ID', width: 210 },
-    { field: 'id', headerName: 'ID', width: 60 },
-    { field: 'name', headerName: 'Title', width: 130 },
-    { field: 'poster', headerName: 'Poster', width: 130 },
-    {
-      field: 'rating',
-      headerName: 'Rating',
-      type: 'number',
-      width: 90,
-    },
-    { field: 'summary', headerName: 'Summary', width: 130 },
-    {
-      field: 'trailer',
-      headerName: 'Movie',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-    },
-    { field: 'director', headerName: 'Director', width: 130 ,type:"string",editable:true },
-    { field: 'Cast', headerName: 'Cast', width: 130 },
-    { field: 'Year', headerName: 'Year', width: 60 },
-    { field: 'Language', headerName: 'language', width: 90 },
-    { field: 'time', headerName: 'Run Time', width: 70 },
-    { field: 'Genres', headerName: 'Genre', width: 90 },
-    {
-      field: 'Edit',
-      headerName: 'Edit',
-      width:100,
-      renderCell:(cellValues)=>{
-        return (<div
-          onClick={(event)=>{
-            console.log(cellValues.row);
-          }}>
-            Edit
-        </div>)
-      }
-    },
-    {
-      field: 'Delete',
-      headerName: 'Delete',
-      width:100,
-      renderCell:(cellValues)=>{
-        return (<div
-          onClick={(event)=>{
-            console.log(cellValues.row);
-          }}>
-            Delete
-        </div>)
-      }
-    },
-  ];
-
-  function GetMovies(){
-    const res=fetch(`${API}/movies`,{
-      method:"GET",
-          headers:{
-            "content-Type":"application/json",
-            "x-auth-token":localStorage.getItem('token'),
-          }
-    });
-    res.then((data)=>data.json())
-    .then((mvs)=>setRows(mvs));
+const deleteMovie=(id)=>{
+  fetch(`${API}/movies/${id}`,{
+    method:"DELETE",
+  })
 }
-const[rows,setRows]=useState([]);
+const[data,setData]=useState([]);
+function GetMovies(){
+  const res=fetch(`${API}/movies`,{
+    method:"GET",
+        headers:{
+          "content-Type":"application/json",
+          "x-auth-token":localStorage.getItem('token'),
+        }
+  });
+  res.then((data)=>data.json())
+  .then((mvs)=>setData(mvs));
+}
+
 
 useEffect(()=>{
 GetMovies()
 },[])
-
-
+const {id}=useParams();
   return(
     <div>
-      <div style={{ height: 650, width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={20}
-        rowsPerPageOptions={[20]}
-        checkboxSelection
-        
-      />
-    </div>
+      <TableContainer component={Paper}>
+     <Table aria-label="simple table" >
+       <TableHead>
+         <TableRow>
+           <TableCell>Name</TableCell>
+           <TableCell align="left">_id</TableCell>
+           <TableCell align="right">id</TableCell>
+           <TableCell align="right">Language</TableCell>
+           <TableCell align="right">Rating</TableCell>
+           <TableCell align="right">Genres</TableCell>
+           <TableCell align="right">Delete</TableCell>
+           <TableCell align="right">Edit</TableCell>
+         </TableRow>
+       </TableHead>
+       <TableBody>
+         {data.map((row) => (
+           <TableRow key={row.id}>
+             <TableCell component="th" scope="row">
+               {row.name}
+             </TableCell>
+             <TableCell align="right">{row._id}</TableCell>
+             <TableCell align="right">{row.id}</TableCell>
+             <TableCell align="left">{row.Language}</TableCell>
+             <TableCell align="left">{row.rating}</TableCell>
+             <TableCell align="right">{row.Genres}</TableCell>
+             <TableCell align="right"><button onClick={()=>deleteMovie(row._id)}>Delete</button></TableCell>
+             <TableCell align="right"><button onClick={()=>navigate(`/Onstream/${id}/editmovie/${row._id}`)}>Edit</button></TableCell>
+           </TableRow>
+         ))}
+       </TableBody>
+     </Table>
+   </TableContainer>
     </div>
   )
 }

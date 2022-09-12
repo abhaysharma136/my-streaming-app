@@ -21,7 +21,7 @@ import { AdminAppBar } from './AdminAppBar';
     director:yup.string().required(),
     Cast:yup.string().required(),
     Year:yup.number().required(),
-    language:yup.string().required(),
+    Language:yup.string().required(),
     time:yup.string().required(),
     poster:yup.string().required(),
     summary:yup.string().required(),
@@ -73,7 +73,7 @@ console.log(urlResult);
 
 
   const {handleBlur,handleChange,handleSubmit,values,errors,touched}=useFormik({
-    initialValues:{poster:"",id:"",name:"",director:"",Cast:"",Year:"",language:"",time:"",trailer:"",summary:"",Genres:"",rating:""},
+    initialValues:{poster:"",id:"",name:"",director:"",Cast:"",Year:"",Language:"",time:"",trailer:"",summary:"",Genres:"",rating:""},
     validationSchema:MovieValidationSchema,
     onSubmit:(newmovie)=>{
       console.log("OnSubmit",newmovie);
@@ -167,13 +167,13 @@ className='add-movie-component' />
 
 <TextField 
 type="text" 
-name='language'
-value={values.language}
-label='language'
+name='Language'
+value={values.Language}
+label='Language'
 onBlur={handleBlur} 
 onChange={handleChange}
-error={touched.language && errors.language}
-helperText={touched.language && errors.language?errors.language:""}
+error={touched.Language && errors.Language}
+helperText={touched.Language && errors.Language?errors.Language:""}
 className='add-movie-component' />
 
 
