@@ -1,0 +1,35 @@
+.Edit-Movie-container{
+    background-color: white;
+    height: 100%;
+    margin: auto;
+    padding: 1px;
+    
+}
+
+.Edit-Banner-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto;
+    padding: 10%;
+}
+
+.Edit-Banner-container{
+    background-color: white;
+    padding: 1px;
+    height: 100vh;
+}
+.rating-genre-container{
+    display: flex;
+    gap: 5px;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.movie-id{
+    color: black;
+    text-align: left;
+}
+.edit-movie-heading{
+    color: black;
+}

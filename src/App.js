@@ -27,6 +27,7 @@ import { AdminUsersData } from "./AdminUsersData";
 import { AdminBanners } from "./AdminBanners";
 import { SearchMovie } from "./SearchMovie";
 import { EditMovie } from "./EditMovie";
+import { EditBanner } from "./EditBanner";
 const LazyAllMovies2 = React.lazy(()=>import('./AllMovie2'))
 function App() {
   // const token=localStorage.getItem("token");
@@ -61,7 +62,7 @@ function App() {
         <Route path="/Onstream/AdminDashBoard/banners/:id" element={<AdminBanners/>}/>
         <Route path="/Onstream/AdminDashBoard/users/:id" element={<AdminUsersData/>}/>
         <Route path="/Onstream/:id/editmovie/:movieId" element={<EditMovie/>}/>
-        
+        <Route path="/Onstream/:id/editbanner/:bannerId" element={<EditBanner/>}/>
       </Routes>
 
       

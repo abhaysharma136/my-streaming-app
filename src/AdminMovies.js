@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { TableBody, TableCell, TableContainer } from "@mui/material";
+import {TableBody, TableCell, TableContainer } from "@mui/material";
 import { API } from "./global";
 import { Table } from "react-bootstrap";
 import Paper from '@mui/material/Paper';
 import './AdminMovies.css';
 import { AdminAppBar } from "./AdminAppBar";
 import { useNavigate, useParams } from "react-router-dom";
-
-
-
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 // function createData(_id,id,name,Language, rating, Genres) {
 //   return { _id, id, name, Language, rating,Genres };
 //  }
@@ -56,10 +56,13 @@ useEffect(()=>{
 GetMovies()
 },[])
 const {id}=useParams();
+
+
+
   return(
     <div>
       <TableContainer component={Paper}>
-     <Table aria-label="simple table" >
+     <Table aria-label="simple table"  className="movie-table">
        <TableHead>
          <TableRow>
            <TableCell>Name</TableCell>
@@ -83,8 +86,8 @@ const {id}=useParams();
              <TableCell align="left">{row.Language}</TableCell>
              <TableCell align="left">{row.rating}</TableCell>
              <TableCell align="right">{row.Genres}</TableCell>
-             <TableCell align="right"><button onClick={()=>deleteMovie(row._id)}>Delete</button></TableCell>
-             <TableCell align="right"><button onClick={()=>navigate(`/Onstream/${id}/editmovie/${row._id}`)}>Edit</button></TableCell>
+             <TableCell align="right"><IconButton color="primary" onClick={()=>deleteMovie(row._id)}><DeleteIcon/></IconButton></TableCell>
+             <TableCell align="right"><IconButton  color="primary" onClick={()=>navigate(`/Onstream/${id}/editmovie/${row._id}`)}><EditIcon/></IconButton></TableCell>
            </TableRow>
          ))}
        </TableBody>

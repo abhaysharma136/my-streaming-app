@@ -1,30 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
 import './AdminMovies.css';
 import { API } from "./global";
 import { AdminAppBar } from "./AdminAppBar";
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import {TableBody, TableCell, TableContainer } from "@mui/material";
+import { Table } from "react-bootstrap";
+import Paper from '@mui/material/Paper';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import { useNavigate, useParams } from "react-router-dom";
+
+
 export function AdminBanners() {
-
-  return (
-    <div>
-<div className="Admin-movies-container">
-  <AdminAppBar/>
-      <h1>Users</h1>
-      <DisplayUserData/>
-    </div>
-    </div>
-  );
-}
-
-
-function DisplayUserData(){
-  const columns = [
-    { field: '_id', headerName: 'ID', width: 240 },
-    { field: 'name', headerName: 'Name', width: 240 },
-    { field: 'banner', headerName: 'Banner', width: 130 },
-  ];
-
-
   function GetBanners(){
     const res=fetch(`${API}/banners`,{
       method:"GET",
@@ -34,25 +23,63 @@ function DisplayUserData(){
           }
     });
     res.then((data)=>data.json())
-    .then((mvs)=>setRows(mvs));
+    .then((mvs)=>setData(mvs));
 }
-const[rows,setRows]=useState([]);
+const[data,setData]=useState([]);
 useEffect(()=>{
   GetBanners()
   },[])
+  return (
+    <div>
+<div className="Admin-movies-container">
+  <AdminAppBar/>
+      <h1>Banners</h1>
+      <DisplayBanners data={data} />
 
+    </div>
+    </div>
+  );
+}
+
+
+function DisplayBanners({data}){
+  const navigate=useNavigate()
+  const deleteBanner=(id)=>{
+    fetch(`${API}/banners/${id}`,{
+      method:"DELETE",
+    })
+  }
+
+  
+  const {id}=useParams();
   return(
     <div>
-<div style={{ height: 650, width: '100%' }}>
-      <DataGrid
-      getRowId={(row) => row._id}
-        rows={rows}
-        columns={columns}
-        pageSize={20}
-        rowsPerPageOptions={[20]}
-        checkboxSelection
-      />
-    </div>
+<TableContainer component={Paper}>
+     <Table aria-label="simple table"  className="movie-table">
+       <TableHead>
+         <TableRow>
+           <TableCell>Name</TableCell>
+           <TableCell align="left">_id</TableCell>
+           <TableCell align="left">Banner</TableCell>
+           <TableCell align="right">Delete</TableCell>
+           <TableCell align="right">Edit</TableCell>
+         </TableRow>
+       </TableHead>
+       <TableBody>
+         {data.map((row) => (
+           <TableRow key={row._id}>
+             <TableCell component="th" scope="row">
+               {row.name}
+             </TableCell>
+             <TableCell align="right">{row._id}</TableCell>
+             <TableCell align="left">{row.banner}</TableCell>
+             <TableCell align="right"><IconButton color="primary" onClick={()=>deleteBanner()}><DeleteIcon/></IconButton></TableCell>
+             <TableCell align="right"><IconButton  color="primary" onClick={()=>navigate(`/Onstream/${id}/editbanner/${row._id}`)}><EditIcon/></IconButton></TableCell>
+           </TableRow>
+         ))}
+       </TableBody>
+     </Table>
+   </TableContainer>
     </div>
   );
 }

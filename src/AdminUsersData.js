@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import './AdminMovies.css';
+import './AdminUserData.css';
 import { API } from "./global";
 import { AdminAppBar } from "./AdminAppBar";
+import { IconButton } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
 export function AdminUsersData() {
 
   return (
@@ -18,6 +20,13 @@ export function AdminUsersData() {
 
 
 function DisplayUserData(){
+
+
+  const deleteMovie=(id)=>{
+    fetch(`${API}/users/${id}`,{
+      method:"DELETE",
+    })
+  }
   const columns = [
     { field: '_id', headerName: 'ID', width: 240 },
     { field: 'email', headerName: 'Email', width: 240 },
@@ -38,6 +47,14 @@ function DisplayUserData(){
       valueGetter: (params) =>
         `${params.row.FirstName || ''} ${params.row.LastName || ''}`,
     },
+    {
+      field: "Delete",
+      renderCell: (cellValues) => {
+        return (
+          <IconButton color="primary" onClick={()=>deleteMovie(cellValues.id)}><DeleteIcon/></IconButton>
+        );
+      }
+    }
   ];
 
 
@@ -58,7 +75,7 @@ useEffect(()=>{
   },[])
 
   return(
-    <div>
+    <div className="Admin-user-container">
 <div style={{ height: 650, width: '100%' }}>
       <DataGrid
       getRowId={(row) => row._id}
@@ -66,7 +83,6 @@ useEffect(()=>{
         columns={columns}
         pageSize={20}
         rowsPerPageOptions={[20]}
-        checkboxSelection
       />
     </div>
     </div>

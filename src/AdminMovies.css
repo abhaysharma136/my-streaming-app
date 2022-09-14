@@ -4,3 +4,8 @@
     height: 100vh;
     padding: 1px;
 }
+
+.movie-table{
+    width: 700px;
+    margin: auto;
+}
