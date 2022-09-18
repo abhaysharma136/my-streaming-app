@@ -38,6 +38,7 @@
     background-color: red;
     color: white;
     font-size: 16px;
+    cursor: pointer;
 }
 #needhelp{
     margin-left: 120px;
@@ -89,6 +90,11 @@
     color: #737373;
     text-align: left;
     margin-left: 70px;
+}
+#more-links-loginpage{
+    background-color: black;
+    padding-left: 0px;
+    margin-left: 0px;
 }
 
 .login-seprater{

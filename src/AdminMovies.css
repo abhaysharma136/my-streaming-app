@@ -1,11 +1,21 @@
-.Admin-movies-container{
+.Admin-movies-container {
     background-color: white;
     color: black;
     height: 100vh;
     padding: 1px;
 }
 
-.movie-table{
+.movie-table {
     width: 700px;
     margin: auto;
 }
+
+.bottom-pagination {
+    width: 400px;
+    margin: auto;
+}
+
+footer {
+    background-color: white;
+}
+

@@ -28,7 +28,7 @@ function Courosel() {
     return (
         <div className='courosal-top'>
            
-            <Carousel autoPlay	infiniteLoop interval="5000" showThumbs={false}>
+            <Carousel autoPlay	infiniteLoop interval="5000" showThumbs={false} width="100%">
             {movieBanner.map((movB)=>(
                 <div onClick={()=>navigate(`/movie/${id}/${movB._id}`)} className="courisal-image-div">
                 <CreateBanner movB={movB} key={movB.id}/>

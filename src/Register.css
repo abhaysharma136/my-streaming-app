@@ -45,6 +45,7 @@ background-color: white;
     height: 64px;
     font-size:24px;
     border-radius: 5px;
+    cursor:pointer;
 }
 #component-main-elements{
     width:440px;

@@ -1,44 +1,53 @@
-#container-top{
+#container-top {
     background-image: url(https://wallpaperaccess.com/full/3988284.jpg);
     width: auto;
-    height: 600px;
+    height: 100vh;
     padding: 1px;
     background-position: center;
     background-size: cover;
-    box-shadow:inset 0 0 600px #000000;
+    box-shadow: inset 0 0 600px #000000;
 }
 
-.nav-bar-header{
+.nav-bar-header {
     overflow: hidden;
 }
-.nav-bar-header li{
-float: left;
-list-style: none;
-margin-right: 20px;
-}
-.nav-bar-header div{
-float: right;
+
+.nav-bar-header li {
+    float: left;
+    list-style: none;
+    margin-right: 20px;
+
 }
 
-#logo{
-color: red;
-font-size: 24px;
-}
-#language-option{
-width: 93px;
-height: 28px;
-border:1px solid white;
-background-color: transparent;
-color: white;
+.nav-bar-header div {
+    float: right;
 }
 
-#language-option option{
-background-color: grey;
+#logo {
+    color: red;
+    font-size: 24px;
+
 }
-#SignIn-button1{
-width: 93px;
-height: 28px;
-background-color: red;
-color: white;
-border: none;
+
+#language-option {
+    width: 93px;
+    height: 28px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+#language-option option {
+    background-color: grey;
+}
+
+#SignIn-button1 {
+    width: 110px;
+    height: 30px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 15px;
 }

@@ -1,26 +1,34 @@
-.All-Movie-Container{
+.All-Movie-Container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
+    background-color: #151414;
 }
-.All-movies{
+
+.All-movies {
     width: 200px;
-    max-height: 300px;
+    max-height: 250px;
     min-height: 140px;
     object-fit: contain;
     margin-top: 40px;
+    cursor: pointer;
+    transition: transform 450ms;
+}
+
+.All-movies:hover {
+    transform: scale(1.08);
 }
 
 @media (max-width:500px) {
-    .All-movies{
+    .All-movies {
         height: 150px;
         /* background-color: red; */
         width: 100px;
     }
-    .All-Movie-Container{
+
+    .All-Movie-Container {
         gap: 8px;
 
     }
 }
-
