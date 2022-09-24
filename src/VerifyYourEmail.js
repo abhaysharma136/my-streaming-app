@@ -42,8 +42,7 @@ export function VerifyYourEmail() {
       onSubmit: (newUser, onSubmit) => {
         // console.log("OnSubmit",newUser);
         VerifyUserStatus(newUser);
-        setTimeout(() => handleMessage(), 300);
-        onSubmit.resetForm();
+        // onSubmit.resetForm();
       },
     });
 

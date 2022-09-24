@@ -24,16 +24,13 @@ export function Register() {
   const navigate = useNavigate();
   const [result, setResult] = useState("");
   console.log(result);
-  const verify = () => {
-    if (result.message === "Email Sent to registered Email") {
+  const verify = (message) => {
       console.log("Sending Email to Register");
-      console.log(values.email);
-
-      sentRegistrationEmail(values);
+      console.log(message.email);
+      sentRegistrationEmail({"email":message.email});
       navigate(`/login-page`);
-    }
   };
-  setTimeout(verify, 1000);
+ 
   function sentRegistrationEmail(newUser) {
     fetch(`${API}/email/RegisterConfirmation`, {
       method: "POST",
@@ -87,8 +84,12 @@ export function Register() {
     }
 
     setOpen(false);
+    if(result.message==="Email Sent to registered Email"){
+      verify(result);
+    }
+    
   };
-
+  
   return (
     <div className="RegisterPage-container">
       <Header />
