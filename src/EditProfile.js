@@ -7,16 +7,24 @@ import Button from "@mui/material/Button";
 import { forwardRef, useEffect, useState } from "react";
 import { Snackbar } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
+import Example from "./Loading";
+import * as yup from "yup";
+import { useFormik } from "formik";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+const userValidationSchema = yup.object({
+  FirstName: yup.string().required(),
+  LastName: yup.string().required(),
+});
 export function EditProfile() {
   const { id } = useParams();
   console.log(id);
 
   const [userDetails, setUserDetails] = useState();
+  console.log(userDetails);
   const GetUserDetails = () => {
     const res = fetch(`${API}/users/${id}`, {
       method: "GET",
@@ -27,12 +35,12 @@ export function EditProfile() {
   useEffect(() => GetUserDetails(), []);
 
   return (
-    <div className="top-container">
+    <div>
       <NavBar />
       {userDetails ? (
         <EditDetailsForm userDetails={userDetails} />
       ) : (
-        ".....Loading"
+        <Example />
       )}
     </div>
   );
@@ -40,13 +48,6 @@ export function EditProfile() {
 
 export function EditDetailsForm({ userDetails }) {
   const navigate = useNavigate();
-  const [fname, setFName] = useState(userDetails.FirstName);
-  const [lname, setLName] = useState(userDetails.LastName);
-
-  const editUser = {
-    FirstName: fname,
-    LastName: lname,
-  };
 
   const handleFinalResult = () => {
     navigate(-1);
@@ -63,7 +64,18 @@ export function EditDetailsForm({ userDetails }) {
     res.then((result) => result.json()).then(() => handleFinalResult());
   }
 
-  console.log(editUser);
+  const { handleBlur, handleChange, handleSubmit, values, errors, touched } =
+    useFormik({
+      initialValues: {
+        FirstName: userDetails.FirstName,
+        LastName: userDetails.LastName,
+      },
+      validationSchema: userValidationSchema,
+      onSubmit: (editUser) => {
+        console.log("OnSubmit", editUser);
+        CreateUser(editUser);
+      },
+    });
 
   const [open, setOpen] = useState(false);
 
@@ -80,45 +92,57 @@ export function EditDetailsForm({ userDetails }) {
   };
 
   return (
-    <div className="Edit-container">
-      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          Profile updated
-        </Alert>
-      </Snackbar>
-      <form id="myForm-EditProfile">
-        <h1>Edit Profile here</h1>
-        <TextField
-          required
-          id="FirstName-EditProfile"
-          label="First Name"
-          name="FirstName"
-          variant="outlined"
-          value={fname}
-          onChange={(event) => setFName(event.target.value)}
-        />
+    <div className="top-container">
+      <div className="Edit-container">
+        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Profile updated
+          </Alert>
+        </Snackbar>
+        <form id="myForm-EditProfile" onSubmit={handleSubmit}>
+          <h1>Edit Profile here</h1>
+          <TextField
+            id="FirstName-EditProfile"
+            label="First Name"
+            name="FirstName"
+            variant="standard"
+            value={values.FirstName}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.FirstName && errors.FirstName}
+            helperText={
+              touched.FirstName && errors.FirstName ? errors.FirstName : ""
+            }
+          />
 
-        <TextField
-          required
-          id="LastName-EditProfile"
-          label="Last Name"
-          name="LastName"
-          variant="outlined"
-          value={lname}
-          onChange={(event) => setLName(event.target.value)}
-        />
+          <TextField
+            id="LastName-EditProfile"
+            label="Last Name"
+            name="LastName"
+            variant="standard"
+            value={values.LastName}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.LastName && errors.LastName}
+            helperText={
+              touched.LastName && errors.LastName ? errors.LastName : ""
+            }
+          />
 
-        <Button
-          type="submit"
-          variant="outlined"
-          color="success"
-          onClick={() => {
-            CreateUser(editUser);
-          }}
-        >
-          Save Changes
-        </Button>
-      </form>
+          <Button
+            type="submit"
+            variant="outlined"
+            color="success"
+            id="Save-Changes-EditProfile"
+          >
+            Save Changes
+          </Button>
+        </form>
+      </div>
     </div>
   );
 }

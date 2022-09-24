@@ -4,6 +4,7 @@ import { API } from "./global";
 import { NavBar } from "./NavBar";
 import "./ProfilePage.css";
 import EditIcon from '@mui/icons-material/Edit';
+import Example from "./Loading";
 
 export function ProfilePage() {
   const { id } = useParams();
@@ -26,7 +27,7 @@ export function ProfilePage() {
       {userDetails ? (
         <DisplayUserData userDetails={userDetails} />
       ) : (
-        "....Loading"
+        <Example/>
       )}
     </div>
   );

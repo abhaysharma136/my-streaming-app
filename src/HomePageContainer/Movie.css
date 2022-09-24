@@ -1,84 +1,103 @@
-.movie-screen{
+.movie-screen {
     width: 100%;
     height: 100vh;
 }
-.movie-poster{
+
+.movie-poster {
     width: 200px;
     object-fit: contain;
     max-height: 400px;
     margin: 50px;
 }
-.movie-specs{
+
+.movie-specs {
     display: flex;
 }
-.movie-details{
+
+.movie-details {
     margin-top: 40px;
     text-align: left;
 }
-.movie-rating{
-    text-align: left;
-}
-.movie-info{
-    text-align: left;
-}
-.movie-conatiner{
- padding-top: 30px;   
-}
-.movie-summary-2{
-    display: none;
-}
-.movie-info p{
-    margin:5px;
- }
 
- .movie-info2{
+.movie-rating {
+    text-align: left;
+}
+
+.movie-info {
+    text-align: left;
+}
+
+.movie-conatiner {
+    padding-top: 0px;
+}
+
+.movie-summary-2 {
     display: none;
- }
- @media (max-width:800px) {
-    .movie-summary-2{
+}
+
+.movie-info p {
+    margin: 5px;
+}
+
+.movie-info2 {
+    display: none;
+}
+
+@media (max-width:800px) {
+    .movie-summary-2 {
         display: block;
     }
-    .movie-summary{
+
+    .movie-summary {
         display: none;
     }
-    .movie-info{
+
+    .movie-info {
         font-size: 14px;
     }
- }
+}
+
 @media (max-width:434px) {
-    .movie-poster{
+    .movie-poster {
         width: 150px;
         height: 290px;
     }
-    .movie-summary{
+
+    .movie-summary {
         display: none;
     }
-    .movie-info{
+
+    .movie-info {
         line-height: 1.2em;
         display: none;
     }
-    .movie-summary-2{
+
+    .movie-summary-2 {
         display: block;
         width: 320px;
         margin: auto;
         padding-bottom: 30px;
         text-align: left;
     }
-    .movie-info p{
+
+    .movie-info p {
         font-size: 14px;
-     }
-     .movie-details h1{
+    }
+
+    .movie-details h1 {
         font-size: 26px;
-     }
-     .movie-details{
+    }
+
+    .movie-details {
         margin-top: 90px;
         height: fit-content;
-     }
-     .movie-info2{
+    }
+
+    .movie-info2 {
         display: block;
         text-align: left;
         font-size: 15px;
         margin: auto;
         width: 320px;
-     }
+    }
 }

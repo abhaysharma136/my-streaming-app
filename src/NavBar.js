@@ -30,18 +30,22 @@ export function NavBar() {
   };
 
   const { id } = useParams();
-  const Logout=()=>{
-    localStorage.removeItem('token');
-    localStorage.removeItem('id');
-    localStorage.removeItem('message');
+  const Logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("message");
     navigate(`/`);
-  }
+  };
   useEffect(() => {
-    let isAuth = (localStorage.getItem('token'));
-    if(isAuth===false || isAuth == null) {
-        navigate("/");
+    let isAuth = localStorage.getItem("token");
+    if (isAuth === false || isAuth == null) {
+      navigate("/");
     }
-  },);
+  });
+
+  const styles = {
+    "margin-top": "60px",
+  };
   return (
     <div className="MenuBar">
       <ul>
@@ -111,6 +115,7 @@ export function NavBar() {
               <AccountCircle />
             </IconButton>
             <Menu
+              style={styles}
               id="menu-appbar"
               anchorEl={anchorEl}
               anchorOrigin={{
@@ -125,12 +130,28 @@ export function NavBar() {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={() => navigate(`/ProfilePage/Onstream/${id}`)}>Profile</MenuItem>
-              <MenuItem onClick={()=>Logout()}>Logout</MenuItem>
+              <MenuItem onClick={() => navigate(`/ProfilePage/Onstream/${id}`)}>
+                Profile
+              </MenuItem>
+              <MenuItem onClick={() => Logout()}>Logout</MenuItem>
             </Menu>
           </div>
         </li>
       </ul>
+      <div className="search-bar-container2">
+            <input
+              className="search-movie2"
+              placeholder="Search movie here"
+              onChange={(event) => setMovie(event.target.value)}
+            />
+            <button
+              className="search-button2"
+              type="submit"
+              onClick={() => navigate(`/movies/search/${id}/name/${movie}`)}
+            >
+              🔍
+            </button>
+          </div>
     </div>
   );
 }

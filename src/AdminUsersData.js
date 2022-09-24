@@ -5,19 +5,35 @@ import { API } from "./global";
 import { AdminAppBar } from "./AdminAppBar";
 import { Box, Button, IconButton, Modal, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Example from "./Loading";
+
 export function AdminUsersData() {
+  function GetUsers() {
+    const res = fetch(`${API}/users`, {
+      method: "GET",
+      headers: {
+        "content-Type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+    });
+    res.then((data) => data.json()).then((mvs) => setRows(mvs));
+  }
+  const [rows, setRows] = useState();
+  useEffect(() => {
+    GetUsers();
+  }, []);
   return (
     <div>
       <div className="Admin-movies-container">
         <AdminAppBar />
         <h1>Users</h1>
-        <DisplayUserData />
+        {rows?<DisplayUserData rows={rows}/>:<Example/>}
       </div>
     </div>
   );
 }
 
-function DisplayUserData() {
+function DisplayUserData({rows}) {
   const [open, setOpen] = useState(false);
   const [val, setval] = useState();
 
@@ -73,20 +89,7 @@ function DisplayUserData() {
     },
   ];
 
-  function GetUsers() {
-    const res = fetch(`${API}/users`, {
-      method: "GET",
-      headers: {
-        "content-Type": "application/json",
-        "x-auth-token": localStorage.getItem("token"),
-      },
-    });
-    res.then((data) => data.json()).then((mvs) => setRows(mvs));
-  }
-  const [rows, setRows] = useState([]);
-  useEffect(() => {
-    GetUsers();
-  }, []);
+  
 
   const style = {
     position: "absolute",

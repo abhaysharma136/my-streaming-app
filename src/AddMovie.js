@@ -37,42 +37,76 @@ const MovieValidationSchema = yup.object({
 export function AddMovie(newmovie) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [percent, setPercent] = useState(0);
-  const [urlResult, setUrlResult] = useState("");
-  function handleUpload() {
-    if (!file) {
+  const [posterpercent, setPosterPercent] = useState(0);
+  const [trailerpercent, setTrailerPercent] = useState(0);
+  const [urlPoster, setUrlPoster] = useState("");
+  const [urlTrailer, setUrlTrailer] = useState("");
+  function handlePosterUpload() {
+    if (!poster) {
       alert("Please choose a file first!");
     }
-    const storageRef = ref(storage, `/files/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    const storageRef = ref(storage, `/files/${poster.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, poster);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
+        const posterpercent = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
 
         // update progress
-        setPercent(percent);
+        setPosterPercent(posterpercent);
       },
       (err) => console.log(err),
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          setUrlResult(url);
+          setUrlPoster(url);
         });
       }
     );
   }
-  console.log(urlResult);
-  const [file, setFile] = useState("");
+
+  function handleTrailerUpload() {
+    if (!trailer) {
+      alert("Please choose a file first!");
+    }
+    const storageRef = ref(storage, `/files/${trailer.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, trailer);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const trailerpercent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+
+        // update progress
+        setTrailerPercent(trailerpercent);
+      },
+      (err) => console.log(err),
+      () => {
+        // download url
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          setUrlTrailer(url);
+        });
+      }
+    );
+  }
+
+  console.log(urlPoster);
+  const [poster, setPoster] = useState("");
+  const [trailer, setTrailer] = useState("");
 
   // Handles input change event and updates state
-  function handleChangefile(event) {
-    setFile(event.target.files[0]);
+  function handleChangePoster(event) {
+    setPoster(event.target.files[0]);
   }
-  console.log(file);
+  console.log(poster);
 
+  function handleChangeTrailer(event) {
+    setTrailer(event.target.files[0]);
+  }
+  console.log(poster);
   const { handleBlur, handleChange, handleSubmit, values, errors, touched } =
     useFormik({
       initialValues: {
@@ -242,14 +276,15 @@ export function AddMovie(newmovie) {
                 <input
                   type="file"
                   accept="image/*"
-                  onChange={handleChangefile}
+                  onChange={handleChangePoster}
                 />
 
-                <Button onClick={handleUpload} type="button">
+                <Button onClick={handlePosterUpload} type="button">
                   Upload to Firebase
                 </Button>
-                <p>{percent}"% done"</p>
+                <p>{posterpercent}"% done"</p>
               </div>
+              <div ><p className="link-result">{urlPoster}</p></div>
 
               <TextField
                 type="text"
@@ -272,14 +307,14 @@ export function AddMovie(newmovie) {
                 <input
                   type="file"
                   accept="video/*"
-                  onChange={handleChangefile}
+                  onChange={handleChangeTrailer}
                 />
-                <Button onClick={handleUpload} type="button">
+                <Button onClick={handleTrailerUpload} type="button">
                   Upload to Firebase
                 </Button>
-                <p>{percent}"% done"</p>
+                <p>{trailerpercent}"% done"</p>
               </div>
-
+              <div ><p className="link-result">{urlTrailer}</p></div>
               <TextField
                 type="text"
                 label="trailer"
@@ -354,7 +389,6 @@ export function AddMovie(newmovie) {
               Add Movie
             </Button>
           </form>
-          <p>{urlResult}</p>
         </div>
       </div>
     </div>

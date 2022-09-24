@@ -19,6 +19,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import { useNavigate, useParams } from "react-router-dom";
+import Example from "./Loading";
 
 export function AdminBanners() {
   function GetBanners() {
@@ -31,7 +32,7 @@ export function AdminBanners() {
     });
     res.then((data) => data.json()).then((mvs) => setData(mvs));
   }
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   useEffect(() => {
     GetBanners();
   }, []);
@@ -40,7 +41,7 @@ export function AdminBanners() {
       <div className="Admin-movies-container">
         <AdminAppBar />
         <h1>Banners</h1>
-        <DisplayBanners data={data} />
+        {data?<DisplayBanners data={data} />:<Example/>}
       </div>
     </div>
   );

@@ -1,19 +1,23 @@
-.top-container{
-    background-color: white;
+.top-container {
     background-color: aliceblue;
 }
-#myForm-EditProfile{
-    background-color:white;
+
+#myForm-EditProfile {
+    background-color: white;
     text-align: center;
     border-radius: 10px;
-   width: 300px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 30px;
     padding-bottom: 60px;
+    margin-top: 0px;
+    height: fit-content;
+    margin: 100px;
 }
-#myForm-EditProfile h1{
+
+#myForm-EditProfile h1 {
     color: black;
 }
 
@@ -24,15 +28,15 @@
 #LastName-EditProfile{
    padding-top: 30px;
 } */
-#Save-Changes-EditProfile{
-   height: 60px;
+#Save-Changes-EditProfile {
+    height: 60px;
 }
-.Edit-container{
+
+.Edit-container {
     height: 100vh;
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
-    
-}
+    background-color: aliceblue;
 
+}

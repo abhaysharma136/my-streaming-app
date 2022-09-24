@@ -1,0 +1,9 @@
+.loading-component{
+    background-color:aliceblue;
+    margin: auto;
+    width: 400px;
+}
+.top-loading-container{
+    background-color: aliceblue;
+    height: 100vh;
+}

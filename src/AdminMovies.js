@@ -20,6 +20,7 @@ import IconButton from "@mui/material/IconButton";
 import Pagination from "@mui/material/Pagination";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
+import Example from "./Loading";
 // function createData(_id,id,name,Language, rating, Genres) {
 //   return { _id, id, name, Language, rating,Genres };
 //  }
@@ -53,8 +54,8 @@ export function AdminMovies() {
     <div className="Admin-movies-container">
       <AdminAppBar />
       <h1>Movies</h1>
-      <DisplayAdminmovies page={page} />
-      <footer>
+      {MovieList?<DisplayAdminmovies page={page} />:<Example/>}
+      <footer className="pagination-footer">
         <Pagination
           count={count}
           showFirstButton
