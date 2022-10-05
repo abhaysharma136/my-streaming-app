@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "./AdminUserData.css";
 import { API } from "./global";
 import { AdminAppBar } from "./AdminAppBar";
-import { Box, Button, IconButton, Modal, Typography } from "@mui/material";
+import { Box, Button, IconButton, Modal, Snackbar, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Example from "./Loading";
+import MuiAlert from "@mui/material/Alert";
 
+
+
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 export function AdminUsersData() {
   function GetUsers() {
     const res = fetch(`${API}/users`, {
@@ -27,13 +33,29 @@ export function AdminUsersData() {
       <div className="Admin-movies-container">
         <AdminAppBar />
         <h1>Users</h1>
-        {rows?<DisplayUserData rows={rows}/>:<Example/>}
+        {rows ? <DisplayUserData rows={rows} /> : <Example />}
       </div>
     </div>
   );
 }
 
-function DisplayUserData({rows}) {
+function DisplayUserData({ rows }) {
+
+
+  const [Snackbaropen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarMessage = () => {
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackbarOpen(false);
+  };
+
   const [open, setOpen] = useState(false);
   const [val, setval] = useState();
 
@@ -50,6 +72,7 @@ function DisplayUserData({rows}) {
     deleteMovie(val.id);
     // deleteMovie(val._id);
     setOpen(false);
+    handleSnackbarMessage();
   };
 
   const deleteMovie = (id) => {
@@ -58,15 +81,46 @@ function DisplayUserData({rows}) {
     });
   };
   const columns = [
-    { field: "_id", headerName: "ID", width: 240 },
-    { field: "email", headerName: "Email", width: 240 },
-    { field: "FirstName", headerName: "First Name", width: 130 },
-    { field: "LastName", headerName: "Last Name", width: 130 },
+    {
+      field: "_id",
+      headerName: "ID",
+      width: 240,
+      align: "center",
+      headerAlign: "center",
+      flex: 1,
+    },
+    {
+      field: "email",
+      headerName: "Email",
+      width: 240,
+      align: "center",
+      headerAlign: "center",
+      flex: 1,
+    },
+    {
+      field: "FirstName",
+      headerName: "First Name",
+      width: 130,
+      align: "center",
+      headerAlign: "center",
+      flex: 1,
+    },
+    {
+      field: "LastName",
+      headerName: "Last Name",
+      width: 130,
+      align: "center",
+      headerAlign: "center",
+      flex: 1,
+    },
     {
       field: "confirm",
       headerName: "Account Status",
       type: "boolean",
       width: 190,
+      align: "center",
+      headerAlign: "center",
+      flex: 1,
     },
     {
       field: "fullName",
@@ -76,9 +130,15 @@ function DisplayUserData({rows}) {
       width: 160,
       valueGetter: (params) =>
         `${params.row.FirstName || ""} ${params.row.LastName || ""}`,
+      align: "center",
+      headerAlign: "center",
+      flex: 1,
     },
     {
       field: "Delete",
+      align: "center",
+      headerAlign: "center",
+      flex: 1,
       renderCell: (cellValues) => {
         return (
           <IconButton color="primary" onClick={() => handleopen(cellValues)}>
@@ -88,8 +148,6 @@ function DisplayUserData({rows}) {
       },
     },
   ];
-
-  
 
   const style = {
     position: "absolute",
@@ -105,6 +163,22 @@ function DisplayUserData({rows}) {
 
   return (
     <div className="Admin-user-container">
+      {Snackbaropen ? (
+        <Snackbar
+          open={Snackbaropen}
+          autoHideDuration={2000}
+          Close={handleSnackbarClose}
+        >
+          <Alert
+            onClose={handleSnackbarClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            User Deleted Succesfully
+          </Alert>
+        </Snackbar>
+      ) : null}
+
       <div style={{ height: 650, width: "100%" }}>
         <DataGrid
           getRowId={(row) => row._id}

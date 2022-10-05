@@ -131,13 +131,13 @@ export function AddBanner() {
           <form onSubmit={handleSubmit} className="Add-movie-container">
             <TextField
               label="id"
-              name="id"
-              value={values.id}
+              name="_id"
+              value={values._id}
               id="add-movie-id"
               onBlur={handleBlur}
               onChange={handleChange}
-              error={touched.id && errors.id}
-              helperText={touched.id && errors.id ? errors.id : ""}
+              error={touched._id && errors._id}
+              helperText={touched._id && errors._id ? errors._id : ""}
               className="add-movie-component"
             />
 
@@ -173,7 +173,7 @@ export function AddBanner() {
               <TextField
                 type="text"
                 id="add-movie-poster"
-                name="_banner"
+                name="banner"
                 label="banner"
                 onBlur={handleBlur}
                 onChange={handleChange}

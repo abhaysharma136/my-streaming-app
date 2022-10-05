@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import {
   Box,
   Button,
+  Snackbar,
   TableBody,
   TableCell,
   TableContainer,
@@ -21,10 +22,14 @@ import Pagination from "@mui/material/Pagination";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import Example from "./Loading";
+import MuiAlert from "@mui/material/Alert";
 // function createData(_id,id,name,Language, rating, Genres) {
 //   return { _id, id, name, Language, rating,Genres };
 //  }
 
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 export function AdminMovies() {
   const [page, setPage] = useState(1);
   const onPageChange = (event, value) => {
@@ -54,7 +59,7 @@ export function AdminMovies() {
     <div className="Admin-movies-container">
       <AdminAppBar />
       <h1>Movies</h1>
-      {MovieList?<DisplayAdminmovies page={page} />:<Example/>}
+      {MovieList ? <DisplayAdminmovies page={page} /> : <Example />}
       <footer className="pagination-footer">
         <Pagination
           count={count}
@@ -74,6 +79,20 @@ function DisplayAdminmovies({ page }) {
   //   console.log(cellValues.row);
   // };
 
+  const [Snackbaropen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarMessage = () => {
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackbarOpen(false);
+  };
+
   const [open, setOpen] = useState(false);
   const [val, setval] = useState();
 
@@ -89,6 +108,7 @@ function DisplayAdminmovies({ page }) {
   const handleDelete = (val) => {
     deleteMovie(val._id);
     setOpen(false);
+    handleSnackbarMessage();
   };
   const deleteMovie = (id) => {
     fetch(`${API}/movies/${id}`, {
@@ -125,6 +145,21 @@ function DisplayAdminmovies({ page }) {
   };
   return (
     <div>
+      {Snackbaropen ? (
+        <Snackbar
+          open={Snackbaropen}
+          autoHideDuration={2000}
+          Close={handleSnackbarClose}
+        >
+          <Alert
+            onClose={handleSnackbarClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Movie Deleted Succesfully
+          </Alert>
+        </Snackbar>
+      ) : null}
       <TableContainer component={Paper}>
         <Table aria-label="simple table" className="movie-table">
           <TableHead>
@@ -185,7 +220,7 @@ function DisplayAdminmovies({ page }) {
             Delete Movie
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }} color="black">
-            Are you sure yoi want to delete this movie?
+            Are you sure you want to delete this movie?
           </Typography>
 
           <Button onClick={() => handleDelete(val)}>delete</Button>

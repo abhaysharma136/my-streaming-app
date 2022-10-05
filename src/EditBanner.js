@@ -6,12 +6,13 @@ import { API } from "./global";
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { Box, Modal, Typography } from "@mui/material";
+import Example from "./Loading";
 
 export function EditBanner() {
   const { bannerId } = useParams();
   console.log(bannerId);
 
-  const [bannerDetails, setBannerDetails] = useState();
+  const [bannerDetails, setBannerDetails] = useState("");
   const GetBannerDetails = () => {
     const res = fetch(`${API}/banners/${bannerId}`, {
       method: "GET",
@@ -26,7 +27,7 @@ export function EditBanner() {
       {bannerDetails ? (
         <DisplayEditBannerForm bannerDetails={bannerDetails} />
       ) : (
-        ".....Loading"
+        <Example/>
       )}
     </div>
   );
@@ -90,6 +91,7 @@ function DisplayEditBannerForm({ bannerDetails }) {
           variant="outlined"
           value={bannerDetails._id}
           onChange={(event) => setId(event.target.value)}
+          disabled
         />
 
         <TextField

@@ -51,7 +51,6 @@ export function NeedHelp() {
       onSubmit: (User, onSubmit) => {
         console.log("OnSubmit", User);
         VerifyUser(User);
-        setTimeout(() => handleMessage(), 300);
         // onSubmit.resetForm();
       },
     });
@@ -69,7 +68,7 @@ export function NeedHelp() {
     if (reason === "clickaway") {
       return;
     }
-
+    
     setOpen(false);
   };
 

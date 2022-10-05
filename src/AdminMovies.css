@@ -1,5 +1,5 @@
 .Admin-movies-container {
-    background-color: white;
+    background-color:white;
     color: black;
     height: 100vh;
     padding: 1px;
@@ -10,6 +10,7 @@
     margin-bottom: 15px;
     padding-bottom: 15px;
     margin: auto;
+    height: 700px;
 }
 
 .bottom-pagination {
@@ -19,7 +20,7 @@
 
 .pagination-footer {
     background-color: white;
-    position: fixed;
+    position: relative;
     bottom: 0px;
     left: 0px;
     right: 0px;

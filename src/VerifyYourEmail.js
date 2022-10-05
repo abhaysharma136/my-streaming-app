@@ -8,6 +8,7 @@ import { useFormik } from "formik";
 import { API } from "./global";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import { Link } from "react-router-dom";
 
 const EmailValidationSchema = yup.object({
   email: yup.string().email().required(),
@@ -26,7 +27,9 @@ export function VerifyYourEmail() {
         "content-Type": "application/json",
       },
     });
-    res.then((result1) => result1.json()).then((user) => handleFinalResult(user));
+    res
+      .then((result1) => result1.json())
+      .then((user) => handleFinalResult(user));
   }
 
   function handleFinalResult(user) {
@@ -34,22 +37,21 @@ export function VerifyYourEmail() {
     handleMessage();
   }
 
-
   const { handleBlur, handleChange, handleSubmit, values, errors, touched } =
     useFormik({
       initialValues: { email: "" },
       validationSchema: EmailValidationSchema,
       onSubmit: (newUser, onSubmit) => {
-        // console.log("OnSubmit",newUser);
+        console.log("OnSubmit", newUser);
         VerifyUserStatus(newUser);
-        // onSubmit.resetForm();
+        onSubmit.resetForm();
       },
     });
 
-  function sentRegistrationEmail(newUser) {
+  function sentRegistrationEmail(message) {
     fetch(`${API}/email/RegisterConfirmation`, {
       method: "POST",
-      body: JSON.stringify(newUser),
+      body: JSON.stringify({ email: message.email }),
       headers: {
         "content-Type": "application/json",
       },
@@ -58,7 +60,7 @@ export function VerifyYourEmail() {
   }
 
   if (UserStatus.message === "email Sent") {
-    sentRegistrationEmail(values);
+    sentRegistrationEmail(UserStatus);
   }
 
   const [open, setOpen] = useState(false);
@@ -111,6 +113,9 @@ export function VerifyYourEmail() {
         >
           verify
         </Button>
+        <p>Dont have an Account Yet?<span><Link to="/Register-now" id="sign-up-Link-2">
+                    Sign up now.
+                  </Link></span></p>
       </form>
     </div>
   );

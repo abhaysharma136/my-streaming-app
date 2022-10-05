@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import "./AdminMovies.css";
 import { API } from "./global";
 import { AdminAppBar } from "./AdminAppBar";
@@ -8,6 +8,7 @@ import {
   Box,
   Button,
   Modal,
+  Snackbar,
   TableBody,
   TableCell,
   TableContainer,
@@ -20,7 +21,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import { useNavigate, useParams } from "react-router-dom";
 import Example from "./Loading";
+import MuiAlert from "@mui/material/Alert";
 
+
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 export function AdminBanners() {
   function GetBanners() {
     const res = fetch(`${API}/banners`, {
@@ -50,6 +56,20 @@ export function AdminBanners() {
 function DisplayBanners({ data }) {
   const navigate = useNavigate();
 
+  const [Snackbaropen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarMessage = () => {
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackbarOpen(false);
+  };
+
   const [open, setOpen] = useState(false);
   const [val, setval] = useState();
 
@@ -65,6 +85,7 @@ function DisplayBanners({ data }) {
   const handleDelete = (val) => {
     deleteBanner(val._id);
     setOpen(false);
+    handleSnackbarMessage();
   };
 
   const deleteBanner = (id) => {
@@ -88,6 +109,21 @@ function DisplayBanners({ data }) {
   };
   return (
     <div>
+      {Snackbaropen ? (
+        <Snackbar
+          open={Snackbaropen}
+          autoHideDuration={2000}
+          Close={handleSnackbarClose}
+        >
+          <Alert
+            onClose={handleSnackbarClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Movie Deleted Succesfully
+          </Alert>
+        </Snackbar>
+      ) : null}
       <TableContainer component={Paper}>
         <Table aria-label="simple table" className="movie-table">
           <TableHead>

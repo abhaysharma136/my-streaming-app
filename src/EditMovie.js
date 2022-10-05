@@ -14,11 +14,12 @@ import {
   Select,
   Typography,
 } from "@mui/material";
+import Example from "./Loading";
 
 export function EditMovie() {
   const { movieId } = useParams();
 
-  const [movieDetails, setMovieDetails] = useState();
+  const [movieDetails, setMovieDetails] = useState("");
   const GetMovieDetails = () => {
     const res = fetch(`${API}/movies/${movieId}`, {
       method: "GET",
@@ -34,7 +35,7 @@ export function EditMovie() {
       {movieDetails ? (
         <DisplayEditMovieForm movieDetails={movieDetails} />
       ) : (
-        ".....Loading"
+        <Example/>
       )}
     </div>
   );
