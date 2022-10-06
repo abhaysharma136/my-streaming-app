@@ -4,6 +4,10 @@ import "./WelcomePage.css";
 import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import img3 from "./OnstreamImages/img3.png"
+import img2 from "./OnstreamImages/img2.jpg"
+import frame1 from "./OnstreamImages/tv_image.png"
+import frame2 from "./OnstreamImages/device-pile-in.png"
 
 export function WelcomePage() {
   const style = {
@@ -62,7 +66,7 @@ export function WelcomePage() {
         </div>
         <img
           className="second-container-img"
-          src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png"
+          src={frame1}
           alt="img"
         ></img>
       </div>
@@ -78,7 +82,7 @@ export function WelcomePage() {
         </div>
         <img
           className="second-container-img"
-          src="https://i.pinimg.com/originals/94/20/3c/94203c5038cc7ce07a4fc0446cb8263f.jpg"
+          src={img2}
           width="300px"
           alt="img"
         ></img>
@@ -94,7 +98,7 @@ export function WelcomePage() {
         </div>
         <img
           className="fourth-container-img"
-          src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile-in.png"
+          src={frame2}
           alt="img"
         ></img>
       </div>
@@ -109,7 +113,7 @@ export function WelcomePage() {
         </div>
         <img
           className="second-container-img"
-          src="https://occ-0-6546-3647.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABVxdX2WnFSp49eXb1do0euaj-F8upNImjofE77XStKhf5kUHG94DPlTiGYqPeYNtiox-82NWEK0Ls3CnLe3WWClGdiJP.png?r=5cf"
+          src={img3}
           alt="img"
         ></img>
       </div>
