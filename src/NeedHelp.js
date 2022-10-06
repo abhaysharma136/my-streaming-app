@@ -125,14 +125,31 @@ export function NeedHelp() {
           </div>
         </form>
       </div>
-      <div className="All-link-element">
-        <p>Questions? Call 000-800-040-1843</p>
-        <div className="links">
+      <div className="last-container" id="more-links">
+        <div className="additionalal-link-container">
+        <p className="Additional-links-heading">Questions? Call 000-800-040-1843</p>
+        <div className="links-bottom-click">
+        
           <li>
             <Link to="/FAQ">FAQ</Link>
           </li>
           <li>
             <Link to="/FAQ">Help Centre</Link>
+          </li>
+          <li>
+            <Link to="/FAQ">Account</Link>
+          </li>
+          <li>
+            <Link to="/FAQ">Media Centre</Link>
+          </li>
+          <li>
+            <Link to="/FAQ">Investor Relation</Link>
+          </li>
+          <li>
+            <Link to="/FAQ">Jobs</Link>
+          </li>
+          <li>
+            <Link to="/FAQ">Ways to Watch</Link>
           </li>
           <li>
             <Link to="/FAQ">Terms of Use</Link>
@@ -146,7 +163,12 @@ export function NeedHelp() {
           <li>
             <Link to="/FAQ">Corporate Information</Link>
           </li>
+          <li>
+            <Link to="/FAQ">Contact Us</Link>
+          </li>
         </div>
+        </div>
+        
       </div>
     </div>
   );

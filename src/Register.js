@@ -11,10 +11,17 @@ import MuiAlert from "@mui/material/Alert";
 // import Alert from '@mui/material/Alert';
 
 const PasswordValidationSchema = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string().min(8).matches().required(),
-  FirstName: yup.string().required(),
-  LastName: yup.string().required(),
+  email: yup
+    .string()
+    .email("Please enter a valid email address")
+    .required("This is a required field"),
+  password: yup
+    .string()
+    .min(8)
+    .matches()
+    .required("Your password must contain between 4 and 60 characters."),
+  FirstName: yup.string().required("This is a required field"),
+  LastName: yup.string().required("This is a required field"),
 });
 
 const Alert = forwardRef(function Alert(props, ref) {
@@ -25,12 +32,12 @@ export function Register() {
   const [result, setResult] = useState("");
   console.log(result);
   const verify = (message) => {
-      console.log("Sending Email to Register");
-      console.log(message.email);
-      sentRegistrationEmail({"email":message.email});
-      navigate(`/login-page`);
+    console.log("Sending Email to Register");
+    console.log(message.email);
+    sentRegistrationEmail({ email: message.email });
+    navigate(`/login-page`);
   };
- 
+
   function sentRegistrationEmail(newUser) {
     fetch(`${API}/email/RegisterConfirmation`, {
       method: "POST",
@@ -84,12 +91,11 @@ export function Register() {
     }
 
     setOpen(false);
-    if(result.message==="Email Sent to registered Email"){
+    if (result.message === "Email Sent to registered Email") {
       verify(result);
     }
-    
   };
-  
+
   return (
     <div className="RegisterPage-container">
       <Header />

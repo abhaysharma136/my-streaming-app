@@ -209,9 +209,11 @@ export function WelcomePage() {
       </div>
 
       <div className="last-container" id="more-links">
-        <p className="FAQ-heading">Questions? Call 000-800-040-1843</p>
+        <div className="additionalal-link-container">
+        <p className="Additional-links-heading">Questions? Call 000-800-040-1843</p>
         <div className="links-bottom-click">
-          <li className="link">
+        
+          <li>
             <Link to="/FAQ">FAQ</Link>
           </li>
           <li>
@@ -248,6 +250,8 @@ export function WelcomePage() {
             <Link to="/FAQ">Contact Us</Link>
           </li>
         </div>
+        </div>
+        
       </div>
     </div>
   );

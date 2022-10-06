@@ -1,53 +1,25 @@
-.info-container{
+.info-container {
     background-color: white;
     color: black;
     height: 100vh;
     padding: 1px;
     text-align: left;
-    padding-left: 40px;
+    padding-top: 1px;
     margin: auto;
 }
-.img-div{
-    background-image: url(https://preview.redd.it/7q4lfyernkz41.png?auto=webp&s=df01b4d31c42f6087a2084d984a264dd3f854310);
-    max-width: 100%;
-    height: 300px;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-@media (min-width:600px) {
-    .img-div{
-        width: 590px;
-        background-size: contain;
-    }
+
+.FAQ-container {
+    width: fit-content;
+    margin: auto;
+    padding: 0px 25px;
 }
 
-@media (min-width:750px) {
-    .img-div{
-        width: 720px;
-        height: 404px;
-    }
-    .para-div{
-        max-width: 720px;
-    }
+.img-div {
+    background-image: url("https://img.favpng.com/23/14/10/television-film-illustration-television-film-royalty-free-png-favpng-jZvj3WrdGMsDzmRSu9SSgq540.jpg");
+    width: 100%;
+    height: 400px;
+
 }
-
-
-@media (max-width:430px) {
-    .img-div{
-        width: 350px;
-        height: 200px;
-    }
-    .para-div{
-        width: 350px;
-    }
-}
-
-@media (max-width:398px) {
-    .img-div{
-        width: 320px;
-        height: 180px;
-    }
-    .para-div{
-        width: 320px;
-    }
+.para-div{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }

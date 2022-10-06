@@ -11,7 +11,7 @@ import MuiAlert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
 
 const EmailValidationSchema = yup.object({
-  email: yup.string().email().required(),
+  email: yup.string().email().required("Please enter a valid email address"),
 });
 
 const Alert = forwardRef(function Alert(props, ref) {
@@ -113,9 +113,14 @@ export function VerifyYourEmail() {
         >
           verify
         </Button>
-        <p>Dont have an Account Yet?<span><Link to="/Register-now" id="sign-up-Link-2">
-                    Sign up now.
-                  </Link></span></p>
+        <p>
+          Dont have an Account Yet?
+          <span>
+            <Link to="/Register-now" id="sign-up-Link-2">
+              Sign up now.
+            </Link>
+          </span>
+        </p>
       </form>
     </div>
   );

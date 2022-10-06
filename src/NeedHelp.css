@@ -1,6 +1,7 @@
 #form-content{
     text-align: left;
     margin-top: 80px;
+    margin-bottom: 100px;
 }
 .email-response{
     margin-left: 14px;
@@ -125,6 +126,7 @@ color: #757575;
         padding: 30px;
         color: black;
         margin-top: 80px;
+        margin-bottom: 100px;
     }
     #form_need-help{
         margin-left:5px; 

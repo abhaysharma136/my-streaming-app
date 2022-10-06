@@ -14,8 +14,16 @@ const Alert = forwardRef(function Alert(props, ref) {
 export function LoginPage() {
   const navigate = useNavigate();
   const PasswordValidationSchema = yup.object({
-    email: yup.string().email().required(),
-    password: yup.string().min(8).matches().required(),
+    email: yup
+      .string()
+      .email("must be a valid email")
+      .required("Please enter a valid email address."),
+    password: yup
+      .string()
+      .min(8)
+      .max(10)
+      .matches()
+      .required("Your password must contain between 8 and 60 characters."),
   });
 
   const [result, setResult] = useState({});
@@ -165,13 +173,14 @@ export function LoginPage() {
               </button>
 
               <br></br>
-
-              <Link to="/verify-email" id="verify-email">
-                Verify Your email
-              </Link>
-              <Link to="/Need-Help" id="needhelp">
-                Need help?
-              </Link>
+              <div className="links-loginpage">
+                <Link to="/verify-email" id="verify-email">
+                  Verify Your email
+                </Link>
+                <Link to="/Need-Help" id="needhelp">
+                  Need help?
+                </Link>
+              </div>
 
               <p id="New-User-text">
                 {" "}
@@ -191,45 +200,49 @@ export function LoginPage() {
         </div>
       </div>
       <hr className="login-seprater"></hr>
-      <div className="second-container" id="more-links-loginpage">
-        <p>Questions? Call 000-800-040-1843</p>
-        <div className="links-bottom-click">
-          <li className="link">
-            <Link to="/FAQ">FAQ</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Help Centre</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Account</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Media Centre</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Investor Relation</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Jobs</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Ways to Watch</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Terms of Use</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Privacy</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Cookie Preference</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Corporate Information</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Contact Us</Link>
-          </li>
+      <div className="last-container" id="more-links-loginpage">
+        <div className="additionalal-link-container">
+          <p className="Additional-links-heading">
+            Questions? Call 000-800-040-1843
+          </p>
+          <div className="links-bottom-click">
+            <li>
+              <Link to="/FAQ">FAQ</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Help Centre</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Account</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Media Centre</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Investor Relation</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Jobs</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Ways to Watch</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Terms of Use</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Privacy</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Cookie Preference</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Corporate Information</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Contact Us</Link>
+            </li>
+          </div>
         </div>
       </div>
     </div>

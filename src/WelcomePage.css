@@ -11,7 +11,6 @@ body {
     text-align: center;
     clear: both;
     box-shadow: inset 0 0 500px #000000;
-
 }
 
 .email-elements {
@@ -99,7 +98,11 @@ body {
     background-color: black;
 
 }
-
+.Frequently-Asked-Question-heading{
+    width: 420px;
+    margin: auto;
+    text-align: left;
+}
 .frequent-questions {
     background-color: #303030;
     width: 400px;
@@ -133,8 +136,36 @@ hr {
     border: none;
 }
 
-.FAQ-heading {
-    font-size: 40px;
+.last-container {
+    list-style: none;
+
+}
+
+a {
+    text-decoration: none;
+    color: #757575;
+}
+
+.additionalal-link-container {
+    width: 400px;
+    margin: auto;
+}
+
+.links-bottom-click {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    text-align: left;
+    row-gap: 10px;
+}
+
+a:hover {
+    color: aliceblue;
+}
+
+.Additional-links-heading {
+    font-size: 25px;
+    text-align: left;
 }
 
 @media (min-width:800px) {
@@ -149,27 +180,25 @@ hr {
         padding: 30px;
         font-size: larger;
     }
+
+    .additionalal-link-container {
+        width: 600px;
+    }
+
+    .Additional-links-heading {
+        font-size: 30px;
+        text-align: left;
+    }
+
+    .links-bottom-click {
+        row-gap: 30px;
+    }
+    .Frequently-Asked-Question-heading{
+        width: 660px;
+    }
 }
 
-.links-bottom-click {
-    display: grid;
-    list-style: none;
-    grid-template-columns: 1fr 1fr;
-    justify-items: start;
-    margin-left: 25%;
-    margin-top: 50px;
-    row-gap: 2rem;
-    font-size: small;
-}
 
-a {
-    text-decoration: none;
-    color: #757575;
-}
-
-a:hover {
-    text-decoration: underline;
-}
 
 @media (max-width:400px) {
 
@@ -177,6 +206,7 @@ a:hover {
         width: 330px;
         padding: 10px;
         font-size: medium;
+        text-align: left;
     }
 
     .frequent-answers {
@@ -184,11 +214,11 @@ a:hover {
         padding: 10px;
         font-size: medium;
     }
-
-    .links-bottom-click {
-        row-gap: 2rem;
-        font-size: 12px;
-        justify-content: space-between;
+    .additionalal-link-container {
+        width: 360px;
+    }
+    .Frequently-Asked-Question-heading{
+        width: 350px;
     }
 }
 
