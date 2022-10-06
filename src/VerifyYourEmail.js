@@ -19,6 +19,7 @@ const Alert = forwardRef(function Alert(props, ref) {
 });
 export function VerifyYourEmail() {
   const [UserStatus, setUserStatus] = useState("");
+  
   function VerifyUserStatus(newUser) {
     const res = fetch(`${API}/users/verfyaccountstatus`, {
       method: "POST",

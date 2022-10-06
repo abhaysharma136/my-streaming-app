@@ -1,25 +1,8 @@
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { API } from './global';
 import './LinkSend.css';
 export function LinkSend() {
   const{email}=useParams();
 
-const emaildata={
-  email:email
-}
-  function SendEmail(emaildata){
-    fetch(`${API}/email/sent`,{
-      method:"POST",
-      body:JSON.stringify(emaildata),
-      headers:{
-        "content-Type":"application/json"
-      }
-    });
-}
-useEffect(()=>{
-  SendEmail(emaildata)
-},[])
   return (
     <div className='email-screen-container'>
       <div className='emailTextContainer'>

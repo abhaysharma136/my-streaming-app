@@ -1,4 +1,4 @@
-.VerifyEmail-container{
+.VerifyEmail-container {
     background-color: white;
     height: 100vh;
     color: black;
@@ -7,9 +7,10 @@
     flex-direction: column;
 }
 
-.verify-email-button{
+.verify-email-button {
     height: 55px;
 }
-#sign-up-Link-2:hover{
-color:black;
+
+#sign-up-Link-2:hover {
+    color: black;
 }

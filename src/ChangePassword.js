@@ -8,11 +8,16 @@ import { API } from "./global";
 import { useParams } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import { ref } from "firebase/storage";
+import { ref } from "yup";
 
-
+const EmailValidationSchema=yup.object({
+  password:yup.string().required().min(8),
+  confirmpassword:yup.string()
+  .required("Please confirm your password")
+  .oneOf([ref("password")], "Passwords do not match"),
+})
 export function DisplayPasswordForm(){
-  const[userConfirmation,setUserConfirmation]=useState({});
+  const[userConfirmation,setUserConfirmation]=useState("");
   const {token}=useParams();
   const GetConfirmationResonse=()=>{
     const res=fetch(`${API}/email/verify/${token}`,{
@@ -34,11 +39,7 @@ useEffect(()=> GetConfirmationResonse(),[]);
 }
 
 
-const EmailValidationSchema=yup.object({
-  password:yup.string().required().min(8),
-  confirmpassword:yup.string().required("please Confirm Your password")
-  .min(8).oneOf([ref('password')], 'Passwords do not match'),
-})
+
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;

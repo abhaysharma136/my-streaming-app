@@ -18,16 +18,25 @@ const Alert = forwardRef(function Alert(props, ref) {
 });
 export function NeedHelp() {
   const [result, setResult] = useState("");
-  console.log(result);
-  const navigate = useNavigate();
-  const verify = () => {
-    if (result.message === "email Sent") {
-      console.log("veifing1");
-      navigate(`/Email-Sent/${values.email}`);
-    }
+  const navigate=useNavigate();
+  const verify = (message) => {
+    console.log("Sending Email to Registered Email");
+    console.log(message.email);
+    sentRegistrationEmail({ email: message.email });
+    navigate(`/Email-Sent/${message.email}`);
   };
-  console.log(result);
-  setTimeout(verify, 3000);
+
+  function sentRegistrationEmail(email) {
+    fetch(`${API}/email/sent`, {
+      method: "POST",
+      body: JSON.stringify(email),
+      headers: {
+        "content-Type": "application/json",
+      },
+    });
+    // res.then((result)=>result.json()).then((user)=>setResult(user));
+  }
+
   function VerifyUser(User) {
     const res = fetch(`${API}/users/forgotPassword`, {
       method: "POST",
@@ -36,7 +45,9 @@ export function NeedHelp() {
         "content-Type": "application/json",
       },
     });
-    res.then((result1) => result1.json()).then((user) => handleFinalResult(user));
+    res
+      .then((result1) => result1.json())
+      .then((user) => handleFinalResult(user));
   }
 
   const handleFinalResult = (user) => {
@@ -51,13 +62,13 @@ export function NeedHelp() {
       onSubmit: (User, onSubmit) => {
         console.log("OnSubmit", User);
         VerifyUser(User);
-        // onSubmit.resetForm();
+        onSubmit.resetForm();
       },
     });
-  // const styles={
-  //   color:result.message==='email Sent'?"green":"red",
-  // }
 
+ 
+
+  
   const [open, setOpen] = useState(false);
 
   const handleMessage = () => {
@@ -68,8 +79,11 @@ export function NeedHelp() {
     if (reason === "clickaway") {
       return;
     }
-    
+
     setOpen(false);
+    if (result.message === "email Sent") {
+      verify(result);
+    }
   };
 
   return (
@@ -127,48 +141,48 @@ export function NeedHelp() {
       </div>
       <div className="last-container" id="more-links">
         <div className="additionalal-link-container">
-        <p className="Additional-links-heading">Questions? Call 000-800-040-1843</p>
-        <div className="links-bottom-click">
-        
-          <li>
-            <Link to="/FAQ">FAQ</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Help Centre</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Account</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Media Centre</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Investor Relation</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Jobs</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Ways to Watch</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Terms of Use</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Privacy</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Cookie Preference</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Corporate Information</Link>
-          </li>
-          <li>
-            <Link to="/FAQ">Contact Us</Link>
-          </li>
+          <p className="Additional-links-heading">
+            Questions? Call 000-800-040-1843
+          </p>
+          <div className="links-bottom-click">
+            <li>
+              <Link to="/FAQ">FAQ</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Help Centre</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Account</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Media Centre</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Investor Relation</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Jobs</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Ways to Watch</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Terms of Use</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Privacy</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Cookie Preference</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Corporate Information</Link>
+            </li>
+            <li>
+              <Link to="/FAQ">Contact Us</Link>
+            </li>
+          </div>
         </div>
-        </div>
-        
       </div>
     </div>
   );
