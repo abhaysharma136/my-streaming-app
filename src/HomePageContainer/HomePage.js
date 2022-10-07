@@ -105,21 +105,6 @@ export function HomePage() {
 
   return (
     <div className="homePage-container">
-      {/* <div className="MenuBar">
-      <ul>
-        <li className='logo'>Onstream</li>
-        <button onClick={()=>navigate(`/HomePage/Onstream/${id}`)}>Home</button>
-        <div className='Genres-dropdown'>
-          <button className='Genres-btn'>Genres</button>
-          <div className='dropdown-content'>
-            <a href='/movieAll'>Link1</a>
-            <a href='#'>Link2</a>
-            <a href='#'>Link3</a>
-          </div>
-          </div>
-        <li className='profile-img'><div onClick={()=>navigate(`/ProfilePage/Onstream/${id}`)}><img src={avatar} alt="profile pix" id="user_avatar" /></div></li>
-      </ul>
-    </div> */}
       <NavBar />
       <Courosel />
 

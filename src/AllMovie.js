@@ -4,6 +4,7 @@ import "./AllMovies.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { NavBar } from "./NavBar";
 import { Pagination } from "@mui/material";
+import Example from "./Loading";
 
 export function AllMovie() {
   const { queryType } = useParams();
@@ -48,27 +49,34 @@ export function AllMovie() {
 
   useEffect(() => {
     GetMovies();
-  }, [query,page]);
+  }, [query, page]);
 
   const [MovieList, setMovieList] = useState([]);
 
   return (
     <div>
       <NavBar />
-      <div className="All-Movie-Container">
-        {MovieList.map((movie) => (
-          <DisplayAllMovies movie={movie} key={movie._id} movieid={movie._id} />
-        ))}
+      <h2 className="Movie-heading-genre">{query} Movies</h2>
+      <div className="movie-page-all-content">
+        {MovieList?<div className="All-Movie-Container">
+          {MovieList.map((movie) => (
+            <DisplayAllMovies
+              movie={movie}
+              key={movie._id}
+              movieid={movie._id}
+            />
+          ))}
+        </div>:<Example/>}
+        <footer className="pagination-footer">
+          <Pagination
+            count={count}
+            showFirstButton
+            showLastButton
+            className="bottom-pagination"
+            onChange={onPageChange}
+          />
+        </footer>
       </div>
-      <footer className="pagination-footer">
-        <Pagination
-          count={count}
-          showFirstButton
-          showLastButton
-          className="bottom-pagination"
-          onChange={onPageChange}
-        />
-      </footer>
     </div>
   );
 }

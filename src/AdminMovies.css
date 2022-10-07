@@ -14,7 +14,7 @@
 }
 
 .bottom-pagination {
-    width: 400px;
+    width: fit-content;
     margin: auto;
 }
 

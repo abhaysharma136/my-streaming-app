@@ -14,6 +14,7 @@
     margin-right: 10px;
     transition: transform 450ms;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .row_posters {
@@ -34,6 +35,7 @@
 .row_posterLarge {
     max-height: 250px;
     min-height: 140px;
+    border-radius: 10px;
 }
 
 .row_posterLarge:hover {

@@ -4,6 +4,8 @@ import './AllMovies.css';
 import {useNavigate, useParams } from "react-router-dom";
 import { NavBar } from "./NavBar";
 import { Pagination } from "@mui/material";
+import Example from "./Loading";
+
 
 
 function AllMovie2() {
@@ -53,13 +55,13 @@ const[MovieList,setMovieList]=useState([]);
   return (
     <div>
       <NavBar/>
-       <div className="All-Movie-Container">
+      <h2 className="Movie-heading-genre">All Movies</h2>
+      {MovieList?<div className="movie-page-all-content">
+      <div className="All-Movie-Container">
        {MovieList.map((movie)=>(
         <DisplayAllMovies movie={movie} key={movie._id} movieid={movie._id}/>
       ))}
-        
-    
-      
+
     </div>
     <footer className="pagination-footer">
         <Pagination
@@ -70,6 +72,8 @@ const[MovieList,setMovieList]=useState([]);
           onChange={onPageChange}
         />
       </footer>
+      </div>:<Example/>}
+  
     </div>
    
   );
