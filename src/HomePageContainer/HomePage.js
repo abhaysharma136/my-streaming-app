@@ -174,7 +174,7 @@ function DisplayMovies({ movie, movieid }) {
       <img
         src={movie.poster}
         alt={movie.name}
-        className="row_posterLarge row_poster"
+        className="row_poster"
         onClick={() => navigate(`/movie/${id}/${movieid}`)}
       />
     </>
