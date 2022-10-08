@@ -254,10 +254,10 @@ function CreatePie() {
         />
 
         <Legend
-          layout="vertical"
-          verticalAlign="middle"
-          align="right"
-          margin={2}
+          layout="horizontal"
+          horizontalAlign="middle"
+          align="center"
+          margin={1}
           className="PieChart-label"
         />
       </PieChart>
@@ -265,6 +265,6 @@ function CreatePie() {
   );
 }
 
-function LatestMovies() {
-  return <div></div>;
-}
+// function LatestMovies() {
+//   return <div></div>;
+// }

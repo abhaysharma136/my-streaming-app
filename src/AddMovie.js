@@ -148,6 +148,13 @@ export function AddMovie(newmovie) {
     handleMessage();
     // navigate(`/Onstream/AdminDashBoard/${id}`)
   };
+
+  const verify = (message) => {
+    if(message){
+      navigate(`/Onstream/AdminDashBoard/${id}`)
+    }
+  };
+
   const [open, setOpen] = useState(false);
 
   const handleMessage = () => {
@@ -160,6 +167,8 @@ export function AddMovie(newmovie) {
     }
 
     setOpen(false);
+    verify(result)
+    
   };
   return (
     <div className="Admin-portal-container">

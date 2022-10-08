@@ -1,9 +1,5 @@
 import "./AddMovie.css";
 import TextField from "@mui/material/TextField";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -22,7 +18,7 @@ const Alert = forwardRef(function Alert(props, ref) {
 });
 
 const MovieValidationSchema = yup.object({
-  _id: yup.number().required(),
+  _id: yup.string().required(),
   name: yup.string().required(),
   banner: yup.string().required(),
 });
@@ -81,7 +77,7 @@ export function AddBanner() {
 
   const [result, setResult] = useState();
   function addMovie(newmovie) {
-    fetch(`${API}/movies/add`, {
+    fetch(`${API}/banners/add`, {
       method: "POST",
       body: JSON.stringify(newmovie),
       headers: {
@@ -97,6 +93,12 @@ export function AddBanner() {
     handleMessage();
     // navigate(`/Onstream/AdminDashBoard/${id}`)
   };
+
+  const verify = (message) => {
+    if(message){
+      navigate(`/Onstream/AdminDashBoard/${id}`)
+    }
+  };
   const [open, setOpen] = useState(false);
 
   const handleMessage = () => {
@@ -109,6 +111,7 @@ export function AddBanner() {
     }
 
     setOpen(false);
+    verify(result)
   };
   return (
     <div className="Admin-portal-banner">
@@ -153,6 +156,7 @@ export function AddBanner() {
               className="add-movie-component"
             />
 
+            
             <div className="upload-inputs">
               <div>
                 <input
