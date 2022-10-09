@@ -40,3 +40,19 @@
     background-color: aliceblue;
 
 }
+
+@media (max-width:480px) {
+    #myForm-EditProfile {
+        background-color: white;
+        text-align: center;
+        border-radius: 10px;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px;
+        padding-bottom: 60px;
+        height: fit-content;
+        margin:100px 10px;
+    }
+}
