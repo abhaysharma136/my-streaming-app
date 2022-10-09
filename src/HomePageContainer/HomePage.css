@@ -1,4 +1,3 @@
-
 /* .row_poster {
     width: 180px;
     object-fit: contain;
@@ -61,7 +60,7 @@
     }
 } */
 
-.row_poster{
+.row_poster {
     width: 150px;
     height: 200px;
     background-size: cover;
@@ -70,11 +69,13 @@
     cursor: pointer;
     margin: 10px;
 }
-.row_poster:hover{
+
+.row_poster:hover {
     transform: scale(1.08);
     border-radius: 10px;
 }
-.row{
+
+.row {
     background-color: #151414;
     display: flex;
     flex-direction: column;
@@ -84,16 +85,19 @@
     text-align: left;
     padding: 10px;
 }
-.row_posters{
+
+.row_posters {
     display: flex;
     column-gap: 10px;
     overflow-y: hidden;
     overflow-x: auto;
 }
+
 .row_posters::-webkit-scrollbar {
     width: 0;
-  display: none;
+    display: none;
 }
+
 .row h2 {
     text-align: left;
     margin-left: 10px;

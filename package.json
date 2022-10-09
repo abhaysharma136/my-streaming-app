@@ -18,6 +18,7 @@
     "react-bootstrap": "^2.5.0",
     "react-charts-d3": "^2.4.1",
     "react-dom": "^18.2.0",
+    "react-indiana-drag-scroll": "^2.2.0",
     "react-loading": "^2.0.3",
     "react-responsive-carousel": "^3.1.33",
     "react-router-dom": "^6.3.0",

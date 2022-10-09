@@ -4,6 +4,7 @@ import Courosel from "./Courosel";
 import { useEffect, useState } from "react";
 import { API } from "../global.js";
 import { NavBar } from "../NavBar";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 export function HomePage() {
   function GetMovies() {
@@ -110,11 +111,13 @@ export function HomePage() {
 
       <div className="row">
         <h2>Trending Now</h2>
+        <ScrollContainer className="scroll-container" >
         <div className="row_posters">
           {MovieList.map((movie) => (
             <DisplayMovies movie={movie} key={movie._id} movieid={movie._id} />
           ))}
         </div>
+        </ScrollContainer>
       </div>
 
       <div className="row">
