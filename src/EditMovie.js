@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import "./EditMovie.css";
 import { AdminAppBar } from "./AdminAppBar";
 import TextField from "@mui/material/TextField";
@@ -6,15 +6,21 @@ import { API } from "./global";
 import { useNavigate, useParams } from "react-router-dom";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
+import MuiAlert from "@mui/material/Alert";
 import {
   Box,
   InputLabel,
   MenuItem,
   Modal,
   Select,
+  Snackbar,
   Typography,
 } from "@mui/material";
 import Example from "./Loading";
+
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export function EditMovie() {
   const { movieId } = useParams();
@@ -81,6 +87,20 @@ function DisplayEditMovieForm({ movieDetails }) {
     });
     res.then((result) => result.json()).then(() => navigate(-1));
   };
+
+  const [Snackbaropen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarMessage = () => {
+    setSnackbarOpen(true);
+  };
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackbarOpen(false);
+  };
+
   const [modalopen, setModalOpen] = useState(false);
   const handleModalopen = () => {
     setModalOpen(true);
@@ -91,7 +111,9 @@ function DisplayEditMovieForm({ movieDetails }) {
   const handleModalSave = () => {
     editMovie();
     setModalOpen(false);
+    handleSnackbarMessage();
   };
+
 
   const style = {
     position: "absolute",
@@ -105,8 +127,25 @@ function DisplayEditMovieForm({ movieDetails }) {
     p: 4,
   };
 
+  
+
   return (
     <div className="Edit-Movie-container">
+      {Snackbaropen ? (
+        <Snackbar
+          open={Snackbaropen}
+          autoHideDuration={2000}
+          Close={handleSnackbarClose}
+        >
+          <Alert
+            onClose={handleSnackbarClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Movie Updated Succesfully
+          </Alert>
+        </Snackbar>
+      ) : null}
       <h1 className="edit-movie-heading">Edit Movie</h1>
       <form>
         <TextField

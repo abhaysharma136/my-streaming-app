@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import "./EditBanner.css";
 import { AdminAppBar } from "./AdminAppBar";
 import TextField from "@mui/material/TextField";
 import { API } from "./global";
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Modal, Snackbar, Typography } from "@mui/material";
 import Example from "./Loading";
+import MuiAlert from "@mui/material/Alert";
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export function EditBanner() {
   const { bannerId } = useParams();
@@ -57,6 +61,19 @@ function DisplayEditBannerForm({ bannerDetails }) {
     res.then((result) => result.json()).then(() => navigate(-1));
   };
 
+  const [Snackbaropen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarMessage = () => {
+    setSnackbarOpen(true);
+  };
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackbarOpen(false);
+  };
+
   const [modalopen, setModalOpen] = useState(false);
   const handleModalopen = () => {
     setModalOpen(true);
@@ -68,6 +85,7 @@ function DisplayEditBannerForm({ bannerDetails }) {
   const handleModalSave = () => {
     editBanner();
     setModalOpen(false);
+    handleSnackbarMessage();
   };
   const style = {
     position: "absolute",
@@ -82,6 +100,21 @@ function DisplayEditBannerForm({ bannerDetails }) {
   };
   return (
     <div className="Edit-Banner-container">
+       {Snackbaropen ? (
+        <Snackbar
+          open={Snackbaropen}
+          autoHideDuration={2000}
+          Close={handleSnackbarClose}
+        >
+          <Alert
+            onClose={handleSnackbarClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Banner Updated Succesfully
+          </Alert>
+        </Snackbar>
+      ) : null}
       <h1 className="edit-movie-heading">Edit Banner</h1>
       <form>
         <TextField

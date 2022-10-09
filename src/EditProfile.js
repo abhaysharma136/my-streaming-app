@@ -50,7 +50,7 @@ export function EditDetailsForm({ userDetails }) {
   const navigate = useNavigate();
 
   const handleFinalResult = () => {
-    navigate(-1);
+    handleMessage();
   };
 
   function CreateUser(editUser) {
@@ -89,6 +89,7 @@ export function EditDetailsForm({ userDetails }) {
     }
 
     setOpen(false);
+    navigate(-1);
   };
 
   return (
@@ -100,7 +101,7 @@ export function EditDetailsForm({ userDetails }) {
             severity="success"
             sx={{ width: "100%" }}
           >
-            Profile updated
+            Profile updated Succesfully
           </Alert>
         </Snackbar>
         <form id="myForm-EditProfile" onSubmit={handleSubmit}>
