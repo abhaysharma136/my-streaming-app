@@ -104,6 +104,7 @@ export function HomePage() {
     GetDocumentaryMovies();
   }, []);
 
+  
   return (
     <div className="homePage-container">
       <NavBar />
@@ -111,58 +112,74 @@ export function HomePage() {
 
       <div className="row">
         <h2>Trending Now</h2>
-        <ScrollContainer className="scroll-container" >
-        <div className="row_posters">
+        <ScrollContainer
+        horizontal={true}
+        className="row_posters"
+      >
           {MovieList.map((movie) => (
             <DisplayMovies movie={movie} key={movie._id} movieid={movie._id} />
           ))}
-        </div>
         </ScrollContainer>
       </div>
 
       <div className="row">
         <h2>Action Movies</h2>
-        <div className="row_posters">
+        <ScrollContainer
+        horizontal={true}
+        className="row_posters"
+      >
           {ActionMovieList.map((movie) => (
             <DisplayMovies movie={movie} key={movie._id} movieid={movie._id} />
           ))}
-        </div>
+        </ScrollContainer>
       </div>
 
       <div className="row">
         <h2>Comedy Movies</h2>
-        <div className="row_posters">
+        <ScrollContainer
+        horizontal={true}
+        className="row_posters"
+      >
           {ComedyMovieList.map((movie) => (
             <DisplayMovies movie={movie} key={movie._id} movieid={movie._id} />
           ))}
-        </div>
+        </ScrollContainer>
       </div>
 
       <div className="row">
         <h2>Horror Movies</h2>
-        <div className="row_posters">
+        <ScrollContainer
+        horizontal={true}
+        className="row_posters"
+      >
           {HorrorMovieList.map((movie) => (
             <DisplayMovies movie={movie} key={movie._id} movieid={movie._id} />
           ))}
-        </div>
+        </ScrollContainer>
       </div>
 
       <div className="row">
         <h2>Romance Movies</h2>
-        <div className="row_posters">
+        <ScrollContainer
+        horizontal={true}
+        className="row_posters"
+      >
           {RomanceMovieList.map((movie) => (
             <DisplayMovies movie={movie} key={movie._id} movieid={movie._id} />
           ))}
-        </div>
+        </ScrollContainer>
       </div>
 
       <div className="row">
         <h2>Documentaries</h2>
-        <div className="row_posters">
+        <ScrollContainer
+        horizontal={true}
+        className="row_posters"
+      >
           {DocumentaryMovieList.map((movie) => (
             <DisplayMovies movie={movie} key={movie._id} movieid={movie._id} />
           ))}
-        </div>
+        </ScrollContainer>
       </div>
     </div>
   );
