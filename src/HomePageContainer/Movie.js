@@ -38,41 +38,28 @@ function Movie() {
             alt={movie.name}
           ></img>
           <div className="movie-details">
-            <h1>{movie.name}</h1>
-            <p>{movie.rating}⭐</p>
+            <h2 className="movie-name-heading">{movie.name}</h2>
+            <div className="movie-time-container">
+              <p>{movie.rating}⭐</p>
+              <p>{movie.time}</p>
+            </div>
             <div className="movie-info">
               <p>
-                Director: <b>{movie.director}</b>
+                Director: <span className="movie-specs-result">{movie.director}</span>
               </p>
               <p>
-                Cast: <b>{movie.Cast}</b>
+                Cast: <span className="movie-specs-result">{movie.Cast}</span>
               </p>
               <p>
-                Year: <b>{movie.Year}</b>
+                Year: <span className="movie-specs-result">{movie.Year}</span>
               </p>
               <p>
-                Genres: <b>{movie.Genres}</b>
+                Genres: <span className="movie-specs-result">{movie.Genres}</span>
               </p>
               <p className="movie-summary">{movie.summary}</p>
             </div>
           </div>
         </div>
-        <div className="movie-info2">
-          <p>
-            Director: <b>{movie.director}</b>
-          </p>
-          <p>
-            Cast: <b>{movie.Cast}</b>
-          </p>
-          <p>
-            Year: <b>{movie.Year}</b>
-          </p>
-          <p>
-            Genres: <b>{movie.Genres}</b>
-          </p>
-          <p className="movie-summary">{movie.summary}</p>
-        </div>
-        <p className="movie-summary-2">{movie.summary}</p>
       </div>
     </div>
   );
