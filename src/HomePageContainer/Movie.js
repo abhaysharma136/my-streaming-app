@@ -45,7 +45,8 @@ function Movie() {
             </div>
             <div className="movie-info">
               <p>
-                Director: <span className="movie-specs-result">{movie.director}</span>
+                Director:{" "}
+                <span className="movie-specs-result">{movie.director}</span>
               </p>
               <p>
                 Cast: <span className="movie-specs-result">{movie.Cast}</span>
@@ -54,7 +55,8 @@ function Movie() {
                 Year: <span className="movie-specs-result">{movie.Year}</span>
               </p>
               <p>
-                Genres: <span className="movie-specs-result">{movie.Genres}</span>
+                Genres:{" "}
+                <span className="movie-specs-result">{movie.Genres}</span>
               </p>
               <p className="movie-summary">{movie.summary}</p>
             </div>
