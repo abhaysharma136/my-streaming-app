@@ -68,7 +68,7 @@ export default function MainHeader() {
       if (isAuth) {
         setIsDropdownOpen(!isDropdownOpen);
       } else {
-        navigate("/login-page");
+        navigate("/login");
       }
     }
   };

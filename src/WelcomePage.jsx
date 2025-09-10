@@ -1,7 +1,7 @@
 import { Header } from "./Header";
 import { Link, useNavigate } from "react-router-dom";
 import "./WelcomePage.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import img3 from "./OnstreamImages/img3.png";
@@ -13,49 +13,81 @@ import heroImage from "./assets/Images/ImageBackground.jpg";
 import Button from "./components/ui/button";
 import { Award, Calendar, Play, TrendingUp } from "lucide-react";
 import MovieCard from "./components/movieCard";
+import { API } from "./global";
 
 export function WelcomePage() {
   const navigate = useNavigate();
-
-  const featuredMovies = [
-    {
-      id: "1",
-      title: "Stellar Odyssey",
-      year: 2024,
-      rating: 8.7,
-      poster:
-        "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
-      genre: "Sci-Fi",
-    },
-    {
-      id: "2",
-      title: "Midnight Chronicles",
-      year: 2024,
-      rating: 8.2,
-      poster:
-        "https://images.unsplash.com/photo-1489599243109-0c2b5be3b3a5?w=400&h=600&fit=crop",
-      genre: "Action",
-    },
-    {
-      id: "3",
-      title: "Digital Dreams",
-      year: 2023,
-      rating: 7.9,
-      poster:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop",
-      genre: "Drama",
-    },
-    {
-      id: "4",
-      title: "Ocean's Edge",
-      year: 2024,
-      rating: 8.4,
-      poster:
-        "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop",
-      genre: "Thriller",
-    },
-  ];
+  const [featuredMovies, setFeaturedMovies] = useState([]);
+  // const featuredMovies = [
+  //   {
+  //     id: "1",
+  //     title: "Stellar Odyssey",
+  //     year: 2024,
+  //     rating: 8.7,
+  //     poster:
+  //       "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
+  //     genre: "Sci-Fi",
+  //   },
+  //   {
+  //     id: "2",
+  //     title: "Midnight Chronicles",
+  //     year: 2024,
+  //     rating: 8.2,
+  //     poster:
+  //       "https://images.unsplash.com/photo-1489599243109-0c2b5be3b3a5?w=400&h=600&fit=crop",
+  //     genre: "Action",
+  //   },
+  //   {
+  //     id: "3",
+  //     title: "Digital Dreams",
+  //     year: 2023,
+  //     rating: 7.9,
+  //     poster:
+  //       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop",
+  //     genre: "Drama",
+  //   },
+  //   {
+  //     id: "4",
+  //     title: "Ocean's Edge",
+  //     year: 2024,
+  //     rating: 8.4,
+  //     poster:
+  //       "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop",
+  //     genre: "Thriller",
+  //   },
+  // ];
   let isAuth = localStorage.getItem("token");
+
+  function GetMovies() {
+    // Get the URLSearchParams from the current URL
+    const urlParams = new URLSearchParams(window.location.search);
+    // Get the Genres parameter from the URL
+    const genres = urlParams.get("Genres");
+
+    // Build the base URL
+    let url = `${API}/movies/last/10`;
+
+    // Add genres query parameter if it exists in the URL
+    if (genres) {
+      url += `?Genres=${encodeURIComponent(genres)}`;
+    }
+
+    const res = fetch(url, {
+      method: "GET",
+      headers: {
+        "content-Type": "application/json",
+        "x-auth-token": localStorage.getItem("token"),
+      },
+    });
+    res
+      .then((data) => data.json())
+      .then((result) => {
+        setFeaturedMovies(result); // Set the movies array
+      });
+  }
+  useEffect(() => {
+    GetMovies();
+  }, []);
   return (
     <div>
       <div>
@@ -116,15 +148,7 @@ export function WelcomePage() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {featuredMovies.map((movie) => (
-                <MovieCard
-                  id={movie?.id}
-                  title={movie?.title}
-                  poster={movie?.poster}
-                  key={movie?.id}
-                  rating={movie?.rating}
-                  year={movie?.year}
-                  genre={movie?.genre}
-                />
+                <MovieCard key={movie.id} {...movie} />
               ))}
             </div>
           </div>
