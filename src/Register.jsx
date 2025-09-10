@@ -1,5 +1,5 @@
 import "./Register.css";
-import { Header } from "./Header";
+import { Header } from "./Header.jsx";
 import { useNavigate } from "react-router-dom";
 import { API } from "./global.js";
 import { useFormik } from "formik";
@@ -27,7 +27,7 @@ const PasswordValidationSchema = yup.object({
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
-export function Register() {
+export function OldRegister() {
   const navigate = useNavigate();
   const [result, setResult] = useState("");
   console.log(result);

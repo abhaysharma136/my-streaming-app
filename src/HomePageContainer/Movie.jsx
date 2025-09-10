@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API } from "../global.js";
-import { NavBar } from "../NavBar.js";
+import { NavBar } from "../NavBar.jsx";
 import "./Movie.css";
 
 function Movie() {

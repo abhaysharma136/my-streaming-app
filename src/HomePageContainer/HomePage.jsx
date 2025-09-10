@@ -1,6 +1,6 @@
 import "./HomePage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import Courosel from "./Courosel";
+import Courosel from "./Courosel.jsx";
 import { useEffect, useState } from "react";
 import { API } from "../global.js";
 import { NavBar } from "../NavBar";

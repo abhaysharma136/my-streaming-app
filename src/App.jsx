@@ -13,7 +13,7 @@ import { LinkSend } from "./LinkSend";
 import { LoginPage } from "./LoginPage";
 import { NeedHelp } from "./NeedHelp";
 import { ProfilePage } from "./ProfilePage";
-import { Register } from "./Register";
+import { OldRegister } from "./Register";
 import { WelcomePage } from "./WelcomePage";
 import { AdminDashboard } from "./AdminDashboard";
 import { AccountConfirmation } from "./AccountConfirmation";
@@ -29,6 +29,12 @@ import { EditMovie } from "./EditMovie";
 import { EditBanner } from "./EditBanner";
 import Example from "./Loading";
 import { AddBanner } from "./AddBanner";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import MovieDetail from "./pages/MovieDetails";
+import Dashboard from "./pages/Dashboard";
+import { Layout } from "./components/Layout";
+import Profile from "./pages/Profile";
 const LazyAllMovies2 = React.lazy(() => import("./AllMovie2"));
 function App() {
   // const token=localStorage.getItem("token");
@@ -37,12 +43,21 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<WelcomePage />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/movie/:movieId" element={<MovieDetail />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
         <Route path="/FAQ" element={<AdditionalLinks />} />
         <Route path="/login-page" element={<LoginPage />} />
+        <Route path="/login" element={<Login />} />
+
         <Route path="/Need-Help" element={<NeedHelp />} />
         <Route path="/Loading" element={<Example />} />
-        <Route path="/Register-now" element={<Register />} />
+        <Route path="/Register-now" element={<OldRegister />} />
+
         <Route path="/HomePage/Onstream/:id" element={<HomePage />} />
         <Route path="/ProfilePage/Onstream/:id" element={<ProfilePage />} />
         <Route path="/Onstream/edit/:id" element={<EditProfile />} />
