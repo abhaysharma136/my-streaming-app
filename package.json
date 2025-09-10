@@ -35,7 +35,6 @@
     "yup": "^0.32.11",
     "zustand": "^5.0.8"
   },
-  "type": "module",
   "engines": {
     "node": ">=20.0.0"
   },
