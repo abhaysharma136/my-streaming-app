@@ -35,6 +35,8 @@ import MovieDetail from "./pages/MovieDetails";
 import Dashboard from "./pages/Dashboard";
 import { Layout } from "./components/Layout";
 import Profile from "./pages/Profile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const LazyAllMovies2 = React.lazy(() => import("./AllMovie2"));
 function App() {
   // const token=localStorage.getItem("token");
@@ -42,18 +44,29 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<WelcomePage />} />
           <Route path="/movie/:movieId" element={<MovieDetail />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/register" element={<Register />} />
         </Route>
         <Route path="/FAQ" element={<AdditionalLinks />} />
         <Route path="/login-page" element={<LoginPage />} />
         <Route path="/login" element={<Login />} />
-
+        <Route path="/register" element={<Register />} />
         <Route path="/Need-Help" element={<NeedHelp />} />
         <Route path="/Loading" element={<Example />} />
         <Route path="/Register-now" element={<OldRegister />} />

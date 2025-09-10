@@ -4,6 +4,8 @@ import { useState } from "react";
 import Button from "../components/ui/button";
 import { Card, CardContent } from "@mui/material";
 import { API } from "../global";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -99,13 +101,21 @@ export default function Register() {
         // Send verification email
         await sentRegistrationEmail({ email: formData.email });
 
-        // Navigate to login page
-        navigate(`/login`);
+        toast.success("Account created successfully! Verification email sent.");
+
+        // Navigate to login page after a short delay
+        setTimeout(() => {
+          navigate(`/login`);
+        }, 2000);
       } else {
-        setErrors({ submit: result.message || "Failed to create account" });
+        const errorMessage = result.message || "Failed to create account";
+        setErrors({ submit: errorMessage });
+        toast.error(errorMessage);
       }
     } catch (error) {
-      setErrors({ submit: "An error occurred. Please try again." });
+      const errorMessage = "An error occurred. Please try again.";
+      setErrors({ submit: errorMessage });
+      toast.error(errorMessage);
       console.error("Registration error:", error);
     } finally {
       setLoading(false);
@@ -124,6 +134,7 @@ export default function Register() {
       console.log("Registration email sent to:", userData.email);
     } catch (error) {
       console.error("Error sending registration email:", error);
+      toast.warning("Account created, but verification email failed to send.");
     }
   };
 
@@ -169,9 +180,10 @@ export default function Register() {
                     placeholder="John"
                     value={formData.firstName}
                     onChange={handleChange}
+                    disabled={loading}
                     className={`bg-input/50 border-border/50 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-3 py-3 text-white ${
                       errors.firstName ? "border-red-500" : ""
-                    }`}
+                    } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                   />
                   {errors.firstName && (
                     <p className="text-red-500 text-sm">{errors.firstName}</p>
@@ -188,9 +200,10 @@ export default function Register() {
                     placeholder="Doe"
                     value={formData.lastName}
                     onChange={handleChange}
+                    disabled={loading}
                     className={`bg-input/50 border-border/50 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-3 py-3 text-white ${
                       errors.lastName ? "border-red-500" : ""
-                    }`}
+                    } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                   />
                   {errors.lastName && (
                     <p className="text-red-500 text-sm">{errors.lastName}</p>
@@ -208,9 +221,10 @@ export default function Register() {
                   placeholder="john.doe@example.com"
                   value={formData.email}
                   onChange={handleChange}
+                  disabled={loading}
                   className={`bg-input/50 border-border/50 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-3 py-3 text-white ${
                     errors.email ? "border-red-500" : ""
-                  }`}
+                  } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm">{errors.email}</p>
@@ -228,9 +242,10 @@ export default function Register() {
                     placeholder="Create a strong password"
                     value={formData.password}
                     onChange={handleChange}
+                    disabled={loading}
                     className={`bg-input/50 border-border/50 pr-10 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-3 py-3 text-white ${
                       errors.password ? "border-red-500" : ""
-                    }`}
+                    } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                   />
                   <Button
                     type="button"
@@ -238,6 +253,7 @@ export default function Register() {
                     size="icon"
                     className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
+                    disabled={loading}
                   >
                     {showPassword ? (
                       <EyeOff className="h-4 w-4 text-muted-foreground" />
@@ -262,9 +278,10 @@ export default function Register() {
                     placeholder="Confirm your password"
                     value={formData.confirmPassword}
                     onChange={handleChange}
+                    disabled={loading}
                     className={`bg-input/50 border-border/50 pr-10 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-3 py-3 text-white ${
                       errors.confirmPassword ? "border-red-500" : ""
-                    }`}
+                    } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                   />
                   <Button
                     type="button"
@@ -272,6 +289,7 @@ export default function Register() {
                     size="icon"
                     className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
                     onClick={() => setShowPassword(!showPassword)}
+                    disabled={loading}
                   >
                     {showPassword ? (
                       <EyeOff className="h-4 w-4 text-muted-foreground" />
@@ -294,6 +312,7 @@ export default function Register() {
                     id="terms"
                     className="rounded border-border"
                     required
+                    disabled={loading}
                   />
                   <label
                     htmlFor="terms"
@@ -324,7 +343,14 @@ export default function Register() {
                 size="lg"
                 disabled={loading}
               >
-                {loading ? "Creating Account..." : "Create Account"}
+                {loading ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                    Creating Account...
+                  </div>
+                ) : (
+                  "Create Account"
+                )}
               </Button>
             </form>
 
@@ -340,10 +366,18 @@ export default function Register() {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <Button variant="outline" className="bg-card/50 text-white p-3">
+              <Button
+                variant="outline"
+                className="bg-card/50 text-white p-3"
+                disabled={loading}
+              >
                 Google
               </Button>
-              <Button variant="outline" className="bg-card/50 text-white">
+              <Button
+                variant="outline"
+                className="bg-card/50 text-white"
+                disabled={loading}
+              >
                 Apple
               </Button>
             </div>
